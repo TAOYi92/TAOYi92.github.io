@@ -5,13 +5,13 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://taoyi92.github.io">
   <title>Tag: systemd | Yi&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="My Personal Blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Yi&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/systemd/index.html">
+<meta property="og:url" content="http://taoyi92.github.io/tags/systemd/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="My Personal Blog">
 <meta property="og:locale" content="default">
@@ -102,6 +102,11 @@ var _hmt = _hmt || [];
 		        
 					<a class="jianshu" target="_blank" href="https://www.jianshu.com/u/1cffa0af5605" title="jianshu"><i class="icon-jianshu"></i></a>
 		        
+			</div>
+
+			<!--音乐播放插件-->
+			<div style="margin-top:30px;">
+				<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="240" height="52" src="//music.163.com/outchain/player?type=2&id=441617634&auto=1&height=66"></iframe>
 			</div>
 		</nav>
 	</header>		
@@ -270,6 +275,23 @@ var _hmt = _hmt || [];
     <div id="footer-info">
     	<div class="footer-left">
     		&copy; 2019 Yi Tao
+          <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+          <script>
+              var now = new Date(); 
+              function createtime() { 
+                  var grt= new Date("05/28/2019 21:00:00");//此处修改你的建站时间或者网站上线时间 
+                  now.setTime(now.getTime()+250); 
+                  days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                  hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                  if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                  mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                  seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                  snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                  document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                  document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+              } 
+              setInterval("createtime()",250);
+          </script>
     	</div>
         <!--统计start-->
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
