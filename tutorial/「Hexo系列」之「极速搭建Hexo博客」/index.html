@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="详细记录配置微信公众号后台的各个步骤">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-03T03:50:38.105Z">
+<meta property="og:updated_time" content="2019-06-03T04:08:03.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Hexo系列」之「极速搭建Hexo博客」">
 <meta name="twitter:description" content="详细记录配置微信公众号后台的各个步骤">
@@ -203,7 +203,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">606字</span>
+        <span class="post-count">609字</span>
       </span>
     </span>
 
@@ -247,7 +247,7 @@ var _hmt = _hmt || [];
 <h2 id="本地启动（用于测试，可跳过）"><a href="#本地启动（用于测试，可跳过）" class="headerlink" title="本地启动（用于测试，可跳过）"></a>本地启动（用于测试，可跳过）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s       <span class="comment"># 等价于`hexo server`</span></span><br><span class="line"><span class="comment"># 在另一个终端下</span></span><br><span class="line">$ elinks http://localhost:4000/</span><br></pre></td></tr></table></figure>
 <p>执行上面第一条命令时如遇到“FATAL Port 4000 has been used. Try other port instead.”，则需要切换端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s -p 5000    <span class="comment"># 其他端口类似</span></span><br><span class="line"><span class="comment"># 在另一个终端下</span></span><br><span class="line">$ elinks http://localhost:5000/</span><br></pre></td></tr></table></figure></p>
 <p><code>Ctrl + C</code>退出。</p>
-<h1 id="部署到Github-Page"><a href="#部署到Github-Page" class="headerlink" title="部署到Github Page"></a>部署到Github Page</h1><h2 id="创建指定repo"><a href="#创建指定repo" class="headerlink" title="创建指定repo"></a>创建指定repo</h2><p>首先需要到你的Github上开启一个新的项目，但是需要按照一定规则：假设你的Github用户名是“<guser>”，那么repo名称必须为<code>&lt;guser&gt;.github.io.git</code>，随后创建即可。</guser></p>
+<h1 id="部署到Github-Page"><a href="#部署到Github-Page" class="headerlink" title="部署到Github Page"></a>部署到Github Page</h1><h2 id="创建指定repo"><a href="#创建指定repo" class="headerlink" title="创建指定repo"></a>创建指定repo</h2><p>首先需要到你的Github上开启一个新的项目，但是需要按照一定规则：假设你的Github用户名是“<code>&lt;guser&gt;</code>”，那么repo名称必须为<code>&lt;guser&gt;.github.io.git</code>，随后创建即可。</p>
 <h2 id="安装git-deployer插件"><a href="#安装git-deployer插件" class="headerlink" title="安装git deployer插件"></a>安装git deployer插件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <h2 id="修改网站配置文件-config-yml"><a href="#修改网站配置文件-config-yml" class="headerlink" title="修改网站配置文件_config.yml"></a>修改网站配置文件<code>_config.yml</code></h2><p>打开<code>Blog</code>目录下的<code>_config.yml</code>文件，找到<code># Deployment</code>部分（一般是文件末尾处），<code>deploy</code>下的参数设置如下<br><figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="attr">https://github.com/&lt;guser&gt;/&lt;guser&gt;.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></p>
 <p>保存退出。</p>
