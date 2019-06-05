@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="CentOS7上使用Chrome的无头浏览器">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-05T13:06:47.954Z">
+<meta property="og:updated_time" content="2019-06-05T13:26:02.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS7上使用Chrome的无头浏览器">
 <meta name="twitter:description" content="CentOS7上使用Chrome的无头浏览器">
@@ -203,7 +203,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">664字</span>
+        <span class="post-count">665字</span>
       </span>
     </span>
 
@@ -246,7 +246,7 @@ var _hmt = _hmt || [];
 <h2 id="2-3-添加至环境变量-PATH"><a href="#2-3-添加至环境变量-PATH" class="headerlink" title="2.3 添加至环境变量$PATH"></a>2.3 添加至环境变量<code>$PATH</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim ~/.bash_profile</span><br></pre></td></tr></table></figure>
 <p>打开后在适当的位置添加：<br>（假设你把<code>chromedriver</code>放到了<code>/home/xxx/drivers/bin/</code>目录下）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/home/xxx/drivers/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
 <p>在<code>CentOS</code>中，更推荐在最后<code>export PATH</code>，而前面加上一行赋值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH=<span class="variable">$PATH</span>:/home/xxx/drivers/bin</span><br></pre></td></tr></table></figure></p>
-<p>这两种方式作用上是完全等价的。</p>
+<p>这两种方式在作用上是完全等价的。</p>
 <h1 id="3-安装selenium"><a href="#3-安装selenium" class="headerlink" title="3. 安装selenium"></a>3. 安装<code>selenium</code></h1><p><code>selenium</code>可以在你项目的虚拟环境中简单地用<code>pip</code>安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip3 install selenium</span><br></pre></td></tr></table></figure></p>
 <h1 id="4-脚本测试"><a href="#4-脚本测试" class="headerlink" title="4. 脚本测试"></a>4. 脚本测试</h1><figure class="highlight python"><figcaption><span>test_headless.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> Chrome</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line"></span><br><span class="line">DRIVER_PATH = <span class="string">'/home/xxx/drivers/bin/chromedriver'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># 设置浏览器</span></span><br><span class="line">    options = Options()</span><br><span class="line">    options.add_argument(<span class="string">'--no-sandbox'</span>)</span><br><span class="line">    options.add_argument(<span class="string">'--headless'</span>)  <span class="comment"># 无头参数</span></span><br><span class="line">    options.add_argument(<span class="string">'--disable-gpu'</span>)</span><br><span class="line">    <span class="comment"># 启动浏览器</span></span><br><span class="line">    driver = Chrome(executable_path=DRIVER_PATH, options=options)</span><br><span class="line">    <span class="comment"># 访问目标URL</span></span><br><span class="line">    driver.get(<span class="string">'https://www.baidu.com/'</span>)</span><br><span class="line">    print(driver.page_source)</span><br><span class="line">    driver.close()</span><br><span class="line">    driver.quit()</span><br></pre></td></tr></table></figure>
 <p>注意，这里的<code>--no-sandbox</code>和<code>--headless</code>是必须的，而且必须按照<code>--no-sandbox</code>在最前面的顺序，否则会报一些非常摸不着头脑的<a href="https://stackoverflow.com/questions/50642308/org-openqa-selenium-webdriverexception-unknown-error-devtoolsactiveport-file-d" target="_blank" rel="noopener">错误</a>（这就是最坑的地方）。</p>
