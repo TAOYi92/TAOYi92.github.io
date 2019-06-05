@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="利用最大似然法得到高斯判别分析模型的最佳拟合参数">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-05T08:55:06.420Z">
+<meta property="og:updated_time" content="2019-06-05T09:14:38.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最大似然求解k分类GDA模型">
 <meta name="twitter:description" content="利用最大似然法得到高斯判别分析模型的最佳拟合参数">
@@ -253,7 +253,7 @@ var _hmt = _hmt || [];
   =& \frac{\partial }{\partial \phi_{s}} \big(\sum_{i=1}^{m} \log{[(1-\sum_{s'=1}^{k-1}\phi_{s'})^{1 - \sum_{s'=1}^{k-1} \mathbf{1} \{ y^{(i)} = {s'} \} } \cdot \prod_{s'=1}^{k-1}\phi_{s'}^{ \mathbf{1} \{ y = s' \} } ]}\big) \\ 
   =& \frac{\partial }{\partial \phi_{s}} \big(\sum_{i=1}^m \big[ (1- \sum_{s'=1}^{k-1}\mathbf{1} \{ y^{(i)} = s' \}) \log{(1 - \sum_{s'=1}^{k-1}\phi_{s'})} + \sum_{s'=1}^{k-1} \mathbf{1} \{ y^{(i)} = s' \} \log{\phi_{s'}} \big] \big) \\ 
   =& \sum_{i=1}^m \big[ (1- \sum_{s'=1}^{k-1} \mathbf{1} \{ y^{(i)} = s' \} )\cdot(1 - \sum_{s'=1}^{k-1}\phi_{s'})^{-1} \cdot (-1) + \mathbf{1} \{ y^{(i)} = s \}\cdot\phi_{s}^{-1} \big] \triangleq 0 \\ 
-  & \Rightarrow\qquad (1 - \sum_{s'=1}^{k-1}\phi_{s'})^{-1} \cdot \sum_{i=1}^m (1- \sum_{s'=1}^{k-1} \mathbf{1} \{ y^{(i)} = s' \} ) = \phi_{s}^{-1} \cdot \sum_{i=1}^m \mathbf{1} \{ y^{(i)} = s \} \\ 
+  & \Rightarrow (1 - \sum_{s'=1}^{k-1}\phi_{s'})^{-1} \cdot \sum_{i=1}^m (1- \sum_{s'=1}^{k-1} \mathbf{1} \{ y^{(i)} = s' \} ) = \phi_{s}^{-1} \cdot \sum_{i=1}^m \mathbf{1} \{ y^{(i)} = s \} \\ 
   & \frac{\phi_{s}}{\sum_{i=1}^m \mathbf{1} \{ y^{(i)} = s \}} = \frac{(1 - \sum_{s'=1}^{k-1}\phi_{s'})}{\sum_{i=1}^m (1 - \sum_{s'=1}^{k-1} \mathbf{1} \{ y^{(i)} = s' \} )} = \frac{\phi_{0}}{\sum_{i=1}^m \mathbf{1} \{ y^{(i)}=0 \}} \\ 
   & \Rightarrow \qquad\qquad\quad \phi_{s} = \frac{\phi_{0}}{\sum_{i=1}^m \mathbf{1} \{ y^{(i)}=0 \}}\sum_{i=1}^m \mathbf{1} \{ y^{(i)} = s \} \qquad\qquad\qquad (\star)
 \end{align}</script><p>对$s$求和，</p>
@@ -261,12 +261,12 @@ var _hmt = _hmt || [];
 <p>$(\star)$式右$= \frac{\phi_{0}}{\sum_{i=1}^m \mathbf{1} \{ y^{(i)}=0 \}}\sum_{s=0}^{k}\sum_{i=1}^{m}\mathbf{1} \{ y^{(i)} = s \} = m\cdot\frac{\phi_{0}}{\sum_{i=1}^m \mathbf{1} \{ y^{(i)}=0 \}}$</p>
 <p>因此$\frac{\phi_{0}}{\sum_{i=1}^m \mathbf{1} \{ y^{(i)}=0 \}} = \frac{1}{m}$，带入$(\star)$式得到：</p>
 <script type="math/tex; mode=display">\begin{equation} 
-  \phi_{s} = \frac{1}{m} \sum_{i=1}^{m} \mathbf{1} \{ y^{(i)} = s \}, \quad  s=1,\cdots,k-1
+  \phi_{s} = \frac{1}{m} \sum_{i=1}^{m} \mathbf{1} \{ y^{(i)} = s \}, \quad s=1,\cdots,k-1
 \end{equation}</script><p>2）对$\vec{\mu}_{s_{a}}, s_{a} = 0,1,\cdots, k-1$求偏导：</p>
 <script type="math/tex; mode=display">\begin{align} 
   & \frac{\partial l(\phi_{s}, \vec{\mu}_{s_{a}}, \Sigma, s = 1,\cdots,k-1, s_{a} = 0,\cdots,k-1) }{\partial \vec{\mu}_{s_{a}}} \\ 
   =& \frac{\partial}{\partial \vec{\mu}_{s_{a}}} \big( \sum_{i=1}^{m} \mathbf{1} \{ y^{(i)} = s_{a} \} \log{p(\vec{x}^{(i)}|y^{(i)} = s_{a}; \vec{\mu}_{s_{a}}, \Sigma)} \big) \\ 
-  =& \quad \frac{\partial}{\partial \vec{\mu}_{s_{a}}} \big( \sum_{i=1}^{m} \mathbf{1} \{ y^{(i)} = s_{a} \} \big[ \log{\frac{1}{(2\pi)^{\frac{n}{2}}|\Sigma|^{\frac{1}{2}}}} - \frac{1}{2}(\vec{x}^{(i)} - \vec{\mu}_{s_{a}})^{T}\Sigma^{-1}(\vec{x}^{(i)} - \vec{\mu}_{s_{a}}) \big] \big) \\ 
+  =& \frac{\partial}{\partial \vec{\mu}_{s_{a}}} \big( \sum_{i=1}^{m} \mathbf{1} \{ y^{(i)} = s_{a} \} \big[ \log{\frac{1}{(2\pi)^{\frac{n}{2}}|\Sigma|^{\frac{1}{2}}}} - \frac{1}{2}(\vec{x}^{(i)} - \vec{\mu}_{s_{a}})^{T}\Sigma^{-1}(\vec{x}^{(i)} - \vec{\mu}_{s_{a}}) \big] \big) \\ 
   =& \sum_{i=1}^{m} \mathbf{1} \{ y^{(i)} = s_{a} \} \big(2\cdot(-\frac{1}{2})\cdot\Sigma^{-1}(\vec{x}^{(i)} - \vec{\mu}_{s_{a}})\cdot(-1) \big) \\ 
   =& \sum_{i=1}^{m} \mathbf{1} \{ y^{(i)} = s_{a} \}\Sigma^{-1}(\vec{x}^{(i)} - \vec{\mu}_{s_{a}}) \triangleq 0 \\ 
   & \Rightarrow \qquad \Sigma^{-1}\vec{\mu}_{s_{a}} = \frac{\sum_{i=1}^{m}\mathbf{1} \{ y^{(i)} = s_{a} \}\Sigma^{-1}\vec{x}^{(i)}}{\sum_{i=1}^{m}\mathbf{1} \{ y^{(i)} = s_{a} \} } \\ 
