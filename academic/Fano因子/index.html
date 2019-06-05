@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="Fano因子的理论模型">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-05T02:34:02.404Z">
+<meta property="og:updated_time" content="2019-06-05T02:45:55.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fano因子">
 <meta name="twitter:description" content="Fano因子的理论模型">
@@ -257,7 +257,7 @@ R_{Poisson} = 2.35\times \frac{W\times\sqrt{\bar{n}}}{W\times\bar{n}} = 2.35\tim
 \sigma^{2}(n) &= \frac{1}{L}\sum_{k=1}^{L}(\sum_{i=1}^{N_k}\nu_{ik})^2 = \frac{1}{L}(\sum_{k=1}^{L}\sum_{i=1}^{N_k}\nu^{2}_{ik} + \sum_{k}^{L}\sum_{i\neq j}^{N_k}\nu_{ik}\nu_{jk}) \\ 
 &= \frac{1}{L}(\sum_{k=1}^{L}\sum_{i=1}^{N_k}\nu^{2}_{ik} + \sum_{k=1}^{L}\sum_{i=1}^{N_k}\nu_{ik}(\sum_{j=1}^{N_k}\nu_{jk} - \nu_{ik}))
 \end{eqnarray}</script>这里我们记平均值$\bar{\nu}_{k} = \cfrac{1}{N_k}\sum_{j=1}^{N_k}\nu_{jk}$，上式化为（这里将右端最后一项$\nu_{ik}$用$\bar{\nu}_k$近似，假定$N_k$与$\bar{\nu}_k$不相关联，且当$N_k$足够大时$\bar{\nu}_k=\bar{\nu}$）：<script type="math/tex; mode=display">\begin{eqnarray} 
-\sigma^{2}(n) =& \frac{1}{L}(\sum_{k=1}^{L}N_{k}\overline{\nu_{k}^2} + \sum_{k=1}^{L}N_{k}\bar{\nu}_{k}(N_{k}{\nu}_{k}-{\nu}_{k})) \qquad\quad \\ 
+\sigma^{2}(n) =& \frac{1}{L}(\sum_{k=1}^{L}N_{k}\overline{\nu_{k}^2} + \sum_{k=1}^{L}N_{k}\bar{\nu}_{k}(N_{k}{\nu}_{k}-{\nu}_{k})) \\ 
 =& \overline{N}\overline{\nu^2} + (\overline{N^2} - \overline{N}) \bar{\nu}^2
 \end{eqnarray}</script>注意到$\bar{\nu}=\overline{m_i-\frac{E_i}{W}}=\overline{m_i} - \frac{E_i}{W}=0$，因此只有第一项有贡献。由理想实验自洽性，$\overline{N}=\frac{\bar{n}}{\bar{m}_i}$，所以<script type="math/tex; mode=display">\begin{equation} 
 \sigma^{2}(n) = \overline{N}\cdot\overline{(m_i-\frac{E_i}{W})^2} = \frac{\overline{(m_i - \frac{E_i}{W})^2}}{\bar{m}_i}\bar{n} \equiv F\cdot\bar{n} = F\cdot\sigma_{Poisson}^2(n) 
