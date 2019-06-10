@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://taoyi92.github.io/"/>
-  <updated>2019-06-07T10:21:48.694Z</updated>
+  <updated>2019-06-10T14:06:55.081Z</updated>
   <id>http://taoyi92.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「Linux Shell系列」之「文本匹配」</title>
+    <link href="http://taoyi92.github.io/tutorial/%E3%80%8CLinux-Shell%E7%B3%BB%E5%88%97%E3%80%8D%E4%B9%8B%E3%80%8C%E6%96%87%E6%9C%AC%E5%8C%B9%E9%85%8D%E3%80%8D/"/>
+    <id>http://taoyi92.github.io/tutorial/「Linux-Shell系列」之「文本匹配」/</id>
+    <published>2019-06-10T13:19:59.000Z</published>
+    <updated>2019-06-10T14:06:55.081Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>grep sed awk 对目标文件匹配任意特定目标文本</p></blockquote><a id="more"></a><p>在以下的代码中，<code>PATTERN_1</code>和<code>PATTERN_2</code>是匹配文本，<code>FILE</code>是目标文件</p><h2 id="匹配任意一个目标文本（or匹配）"><a href="#匹配任意一个目标文本（or匹配）" class="headerlink" title="匹配任意一个目标文本（or匹配）"></a>匹配任意一个目标文本（or匹配）</h2><h3 id="grep方式"><a href="#grep方式" class="headerlink" title="grep方式"></a><code>grep</code>方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ grep <span class="string">'PATTERN_1\|PATTERN_2'</span> FILE</span><br><span class="line">$ grep -E <span class="string">'PATTERN_1|PATTERN_2'</span> FILE  <span class="comment"># 等价于egrep 'PATTERN_1|PATTERN_2' FILE, 以下的grep -E均等价于egrep</span></span><br><span class="line">$ grep -e <span class="string">'PATTERN_1'</span> -e <span class="string">'PATTERN_2'</span> FILE  <span class="comment"># 这里的引号不是必需的</span></span><br></pre></td></tr></table></figure><h3 id="awk方式"><a href="#awk方式" class="headerlink" title="awk方式"></a><code>awk</code>方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ awk <span class="string">'/PATTERN_1|PATTERN_2/'</span> FILE</span><br></pre></td></tr></table></figure><h3 id="sed方式"><a href="#sed方式" class="headerlink" title="sed方式"></a><code>sed</code>方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sed -e <span class="string">'/PATTERN_1/b'</span> -e <span class="string">'/PATTERN_2/b'</span> -e d FILE</span><br></pre></td></tr></table></figure><h2 id="匹配全部目标文本（and匹配）"><a href="#匹配全部目标文本（and匹配）" class="headerlink" title="匹配全部目标文本（and匹配）"></a>匹配全部目标文本（and匹配）</h2><h3 id="grep方式-1"><a href="#grep方式-1" class="headerlink" title="grep方式"></a><code>grep</code>方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># PATTERN_1在PATTERN_2必须在之前</span></span><br><span class="line">$ grep </span><br><span class="line">$ grep -E <span class="string">'PATTERN_1.*PATTERN_2'</span> FILE</span><br><span class="line"><span class="comment"># PATTERN_1和PATTERN_2顺序任意</span></span><br><span class="line">$ grep -E <span class="string">'PATTERN_1.*PATTERN_2|PATTERN_2.*PATTERN_1'</span> FILE</span><br><span class="line">$ grep <span class="string">'PATTERN_1'</span> FILE | grep <span class="string">'PATTERN_2'</span>  <span class="comment"># [Recommend]</span></span><br></pre></td></tr></table></figure><h3 id="awk方式-1"><a href="#awk方式-1" class="headerlink" title="awk方式"></a><code>awk</code>方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># PATTERN_1在PATTERN_2必须在之前</span></span><br><span class="line">$ awk <span class="string">'/PATTERN_1.*PATTERN_2/'</span> FILE</span><br><span class="line"><span class="comment"># PATTERN_1和PATTERN_2顺序任意</span></span><br><span class="line">$ awk <span class="string">'/PATTERN_1/ &amp;&amp; /PATTERN_2/'</span> FILE  <span class="comment"># [Recommend]</span></span><br><span class="line">``` bash</span><br><span class="line"><span class="comment">### `sed`方式</span></span><br><span class="line">``` bash</span><br><span class="line"><span class="comment"># PATTERN_1在PATTERN_2必须在之前</span></span><br><span class="line">$ sed <span class="string">'/PATTERN1.*PATTERN2/!d'</span> FILE</span><br><span class="line"><span class="comment"># PATTERN_1和PATTERN_2顺序任意</span></span><br><span class="line">$ sed <span class="string">'/PATTERN_1/!d; /PATTERN_2/!d'</span> FILE</span><br></pre></td></tr></table></figure><h2 id="匹配不含目标文本（not匹配）"><a href="#匹配不含目标文本（not匹配）" class="headerlink" title="匹配不含目标文本（not匹配）"></a>匹配不含目标文本（not匹配）</h2><h3 id="grep方式-2"><a href="#grep方式-2" class="headerlink" title="grep方式"></a><code>grep</code>方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep -v <span class="string">'PATTERN_1'</span> FILE</span><br></pre></td></tr></table></figure><h3 id="awk方式-2"><a href="#awk方式-2" class="headerlink" title="awk方式"></a><code>awk</code>方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ awk <span class="string">'!/PATTERN_1/'</span> FILE</span><br></pre></td></tr></table></figure><h3 id="sed方式-1"><a href="#sed方式-1" class="headerlink" title="sed方式"></a><code>sed</code>方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sed -n <span class="string">'/PATTERN_1/!p'</span> FILE</span><br></pre></td></tr></table></figure><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul><li>对于熟练使用正则表达式的小伙伴来说，<code>grep</code>和<code>awk</code>用起来很顺手</li><li><code>grep</code>相比<code>awk</code>和<code>sed</code>来说的一个重要优势是输出有高亮</li><li><code>egrep</code>比<code>grep</code>更方便</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      系统命令相关的文本匹配功能
+    
+    </summary>
+    
+      <category term="tutorial" scheme="http://taoyi92.github.io/categories/tutorial/"/>
+    
+    
+      <category term="Linux Shell" scheme="http://taoyi92.github.io/tags/Linux-Shell/"/>
+    
+      <category term="grep" scheme="http://taoyi92.github.io/tags/grep/"/>
+    
+      <category term="sed" scheme="http://taoyi92.github.io/tags/sed/"/>
+    
+      <category term="awk" scheme="http://taoyi92.github.io/tags/awk/"/>
+    
+      <category term="文本匹配" scheme="http://taoyi92.github.io/tags/%E6%96%87%E6%9C%AC%E5%8C%B9%E9%85%8D/"/>
+    
+  </entry>
   
   <entry>
     <title>「Python基础系列」之「字符编码」</title>
