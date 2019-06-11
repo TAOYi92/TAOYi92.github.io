@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="一些重要的步骤记录">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-11T08:52:41.050Z">
+<meta property="og:updated_time" content="2019-06-11T13:52:00.269Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「服务器运维记录系列」之「当机器换了机房之后」">
 <meta name="twitter:description" content="一些重要的步骤记录">
@@ -203,7 +203,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">385字</span>
+        <span class="post-count">401字</span>
       </span>
     </span>
 
@@ -242,6 +242,10 @@ var _hmt = _hmt || [];
 <h3 id="开放特定端口"><a href="#开放特定端口" class="headerlink" title="开放特定端口"></a>开放特定端口</h3><p>当发现IP地址<code>1WW.XXX.YYY.ZZ</code>可以被<code>ping</code>通之后，说明网络连接已经没有问题。但是如果这时无法正常通过SSH访问（当然<strong>搬机房之前</strong>SSH配置已经完成了，这里讲的是换机房的操作，第一次set-up时会更繁琐些）。<br>修改防火墙配置，允许端口<code>&lt;PORT&gt;</code>放行（如<code>3456</code>），注意要注明协议<code>tcp</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ufw allow &lt;PORT&gt;/tcp</span><br></pre></td></tr></table></figure></p>
 <h3 id="挂载存储服务器"><a href="#挂载存储服务器" class="headerlink" title="挂载存储服务器"></a>挂载存储服务器</h3><p>可以注意到，在上面提及的<code>/etc/network/interfaces</code>已经配好了在局域网中计算服务器的内网IP地址<code>192.168.2.1</code>。现在我们需要在计算服务器上挂载存储服务器，然后就可以在计算服务器上直接访问存储数据了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mount -t nfs 192.168.PP.QQ:/data /data</span><br></pre></td></tr></table></figure></p>
 <h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>以上操作结束后，就可以正常使用服务器了。</p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ul>
+<li>计算服务器<a href="https://www.supermicro.org.cn/manuals/superserver/4U/MNL-1583.pdf" target="_blank" rel="noopener">手册</a></li>
+<li>存储服务器<a href="https://www.supermicro.org.cn/manuals/superserver/4U/MNL-1727.pdf" target="_blank" rel="noopener">手册</a></li>
+</ul>
 
       
       <!-- 添加版权声明 -->
@@ -430,7 +434,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#修改IP地址"><span class="toc-number">1.</span> <span class="toc-text">修改IP地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开放特定端口"><span class="toc-number">2.</span> <span class="toc-text">开放特定端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#挂载存储服务器"><span class="toc-number">3.</span> <span class="toc-text">挂载存储服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结束"><span class="toc-number">4.</span> <span class="toc-text">结束</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#修改IP地址"><span class="toc-number">1.</span> <span class="toc-text">修改IP地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开放特定端口"><span class="toc-number">2.</span> <span class="toc-text">开放特定端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#挂载存储服务器"><span class="toc-number">3.</span> <span class="toc-text">挂载存储服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结束"><span class="toc-number">4.</span> <span class="toc-text">结束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补充"><span class="toc-number">5.</span> <span class="toc-text">补充</span></a></li></ol>
                     </div>
                 </span>
             </div>
