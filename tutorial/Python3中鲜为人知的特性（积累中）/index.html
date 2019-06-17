@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://taoyi92.github.io">
-  <title>Yi&#39;s Blog</title>
+  <title>Python3中鲜为人知的特性（积累中） | Yi&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yi&#39;s Blog">
-<meta property="og:url" content="http://taoyi92.github.io/404.html">
+  <meta name="description" content="Python3中鲜为人知的特性（积累中）">
+<meta name="keywords" content="Python3,语言特性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3中鲜为人知的特性（积累中）">
+<meta property="og:url" content="http://taoyi92.github.io/tutorial/Python3中鲜为人知的特性（积累中）/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
+<meta property="og:description" content="Python3中鲜为人知的特性（积累中）">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-31T12:11:32.422Z">
+<meta property="og:updated_time" content="2019-06-17T02:08:52.793Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yi&#39;s Blog">
+<meta name="twitter:title" content="Python3中鲜为人知的特性（积累中）">
+<meta name="twitter:description" content="Python3中鲜为人知的特性（积累中）">
   
     <link rel="alternative" href="/atom.xml" title="Yi&#39;s Blog" type="application/atom+xml">
   
@@ -177,18 +181,92 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-Python3中鲜为人知的特性（积累中）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python3中鲜为人知的特性（积累中）
+    </h1>
+  
+
+        
+        <a href="/tutorial/Python3中鲜为人知的特性（积累中）/" class="archive-article-date">
+  	<time datetime="2019-06-15T10:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-15</time>
+</a>
+        <!-- 添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">166字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+
+          
+        <!-- 添加完成 -->
+        
+        <!-- 添加阅读量统计-->
+        
+          <span class="archive-article-date">
+            阅读量 <span id="busuanzi_value_page_pv"></span>
+          </span>
+        
+        <!-- 添加完成 -->
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script type="text/javascript" src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js" charset="utf-8" homepageurl="http://taoyi92.github.io" homepagename="回到我的主页"></script>
+        <blockquote>
+<p>小众知识点，说不定有奇效</p>
+</blockquote>
+<a id="more"></a>
+<ol>
+<li>列表超出索引范围不会报错的情况<br>通常当我们试图去访问一个列表的超出其最大索引的元素时，是会报错的<figure class="highlight python"><figcaption><span>console</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_list[<span class="number">4</span>]          <span class="comment"># 索引合法</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_list[<span class="number">5</span>]          <span class="comment"># 索引非法</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">IndexError: list index out of range</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>然而，如果使用<strong>切片</strong>方式尝试超限访问<br><figure class="highlight python"><figcaption><span>console</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_list[<span class="number">5</span>:]</span><br><span class="line">[]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_list[:<span class="number">6</span>]</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure></p>
+<p>结果却没有报错。<br>并且实际上，字符串和<code>numpy</code>数组也具有类似的特性。</p>
+<ol>
+<li></li>
+</ol>
 
       
       <!-- 添加版权声明 -->
       
       
-        <div class="declare" hidden="hidden"></div>
+        <div class="declare">
+          <strong>本文作者：</strong>
+          
+            德布罗意
+          
+          <br>
+          <strong>本文链接：</strong>
+          http://taoyi92.github.io/tutorial/Python3中鲜为人知的特性（积累中）/
+          <br>
+          <strong>版权声明：</strong>
+          本作品采用
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+          进行许可。转载请注明出处！
+          
+            <br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+          
+        </div>
       
       <!-- 添加完成 -->
       
@@ -227,7 +305,33 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Python3</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">语言特性</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/tutorial//" class="article-tag-list-link color4">tutorial</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -277,7 +381,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://taoyi92.github.io/404.html" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://taoyi92.github.io/tutorial/Python3中鲜为人知的特性（积累中）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -289,6 +393,16 @@ var _hmt = _hmt || [];
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/tutorial/「服务器运维系列」之「IP地址修改」/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">「服务器运维记录系列」之「当机器换了机房之后」</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -302,6 +416,19 @@ var _hmt = _hmt || [];
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -323,7 +450,7 @@ var _hmt = _hmt || [];
 <script src="//ihtcboy.com/script/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://taoyi92.github.io/404.html",
+  id: "http://taoyi92.github.io/tutorial/Python3中鲜为人知的特性（积累中）/",
   owner: 'TAOYi92',
   repo: 'taoyi92.github.io',
   oauth: {
@@ -391,7 +518,7 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
