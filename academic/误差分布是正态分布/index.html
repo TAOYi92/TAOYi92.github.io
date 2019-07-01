@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="误差分布是正态分布的高斯证明方法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-26T07:51:48.539Z">
+<meta property="og:updated_time" content="2019-07-01T09:52:21.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="误差分布是正态分布">
 <meta name="twitter:description" content="误差分布是正态分布的高斯证明方法">
@@ -251,8 +251,8 @@ var _hmt = _hmt || [];
   \sum_{i=1}^{n}g(x_{i}-\bar{x}) = 0 \quad (\star) 
 \end{align}</script><p>为了确定$g(x)$的具体形式（进而得到$f(x)$的形式），我们需要探索上面方程的性质。对诸$x_{j}$分别求导可得：</p>
 <script type="math/tex; mode=display">\begin{align} 
-  0 = \frac{\partial}{\partial x_{j}}\sum_{i=1}^{n}g(x_{i}-\bar{x}) = (1-\frac{1}{n})g^{'}(x_{j}-\bar{x}) + \sum_{i \neq j}(-\frac{1}{n})g^{'}(x_{i}-\bar{x}), \quad j = 1,\cdots,n 
-\end{align}</script><p>这是一个关于$g^{‘}(x_{j}-\bar{x}), j=1,\cdots,n$为的$n$元线性方程组，其中任意两个方程（标记为$j_1, j_2$）相减可得</p>
+  0 = \frac{\partial}{\partial x_{j}}\sum_{i=1}^{n}g(x_{i}-\bar{x}) = (1-\frac{1}{n})g' (x_{j}-\bar{x}) + \sum_{i \neq j}(-\frac{1}{n})g^{'}(x_{i}-\bar{x}), \quad j = 1,\cdots,n 
+\end{align}</script><p>这是一个关于$g’ (x_{j}-\bar{x}), j=1,\cdots,n$为的$n$元线性方程组，其中任意两个方程（标记为$j_1, j_2$）相减可得</p>
 <script type="math/tex; mode=display">\begin{equation} 
   g^{'}(x_{j_1}-\bar{x}) = g^{'}(x_{j_2}-\bar{x}),\quad \forall j_1 \neq j_2 
 \end{equation}</script><p>因此该线性方程组的解向量为<script type="math/tex">\vec{g} = c(1, 1, \cdots, 1)^{T}</script>，$c$为任意常数。注意到$x_{j}, j=1,\cdots,n$其实是任意一组实验的结果，也就是说当$y_{j} \equiv x_{j}- \bar{x}$取任意值的时候都满足</p>
