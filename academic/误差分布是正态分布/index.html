@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="误差分布是正态分布的高斯证明方法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T09:52:21.236Z">
+<meta property="og:updated_time" content="2019-07-01T11:54:47.706Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="误差分布是正态分布">
 <meta name="twitter:description" content="误差分布是正态分布的高斯证明方法">
@@ -242,8 +242,8 @@ var _hmt = _hmt || [];
 \end{align}</script><p>对数似然函数及其对$x$的导数分别为</p>
 <script type="math/tex; mode=display">\begin{align} 
   \ln{L(x)} &= \sum_{i=1}^{n}\ln{f(x_{i}-x)} \\ 
-  \frac{\text{d}\ln{L(x)}}{\text{d}x} &= -\sum_{i=1}^{n}\frac{f^{'}(x_{i}-x)}{f(x_{i}-x)} 
-\end{align}</script><p>记$g(y)=\cfrac{f^{‘}(y)}{f(y)}$（为了减小歧义，这里的变元记为$y(=\Delta x)$而不是$x$），最大化似然函数给出的方程为</p>
+  \frac{\text{d}\ln{L(x)}}{\text{d}x} &= -\sum_{i=1}^{n}\frac{f' (x_{i}-x)}{f(x_{i}-x)} 
+\end{align}</script><p>记$g(y)=\cfrac{f’ (y)}{f(y)}$（为了减小歧义，这里的变元记为$y(=\Delta x)$而不是$x$），最大化似然函数给出的方程为</p>
 <script type="math/tex; mode=display">\begin{align} 
   -\cfrac{\text{d}\ln{L(x)}}{\text{d}x} = \sum_{i=1}^{n}g(x_{i}-x) \triangleq 0 
 \end{align}</script><p>由于我们合理地认为平均值$\bar{x}$是$X$真值的有效估计量，因此$x = \bar{x}$是上述方程的解，即</p>
@@ -251,13 +251,13 @@ var _hmt = _hmt || [];
   \sum_{i=1}^{n}g(x_{i}-\bar{x}) = 0 \quad (\star) 
 \end{align}</script><p>为了确定$g(x)$的具体形式（进而得到$f(x)$的形式），我们需要探索上面方程的性质。对诸$x_{j}$分别求导可得：</p>
 <script type="math/tex; mode=display">\begin{align} 
-  0 = \frac{\partial}{\partial x_{j}}\sum_{i=1}^{n}g(x_{i}-\bar{x}) = (1-\frac{1}{n})g' (x_{j}-\bar{x}) + \sum_{i \neq j}(-\frac{1}{n})g^{'}(x_{i}-\bar{x}), \quad j = 1,\cdots,n 
+  0 = \frac{\partial}{\partial x_{j}}\sum_{i=1}^{n}g(x_{i}-\bar{x}) = (1-\frac{1}{n})g' (x_{j}-\bar{x}) + \sum_{i \neq j}(-\frac{1}{n})g' (x_{i}-\bar{x}), \quad j = 1,\cdots,n 
 \end{align}</script><p>这是一个关于$g’ (x_{j}-\bar{x}), j=1,\cdots,n$为的$n$元线性方程组，其中任意两个方程（标记为$j_1, j_2$）相减可得</p>
 <script type="math/tex; mode=display">\begin{equation} 
-  g^{'}(x_{j_1}-\bar{x}) = g^{'}(x_{j_2}-\bar{x}),\quad \forall j_1 \neq j_2 
+  g' (x_{j_1}-\bar{x}) = g' (x_{j_2}-\bar{x}),\quad \forall j_1 \neq j_2 
 \end{equation}</script><p>因此该线性方程组的解向量为<script type="math/tex">\vec{g} = c(1, 1, \cdots, 1)^{T}</script>，$c$为任意常数。注意到$x_{j}, j=1,\cdots,n$其实是任意一组实验的结果，也就是说当$y_{j} \equiv x_{j}- \bar{x}$取任意值的时候都满足</p>
 <script type="math/tex; mode=display">\begin{equation} 
-  g^{'}(y_{j}) \equiv g^{'}(x_{j}-\bar{x}) = c, \quad \forall y_{j} 
+  g' (y_{j}) \equiv g' (x_{j}-\bar{x}) = c, \quad \forall y_{j} 
 \end{equation}</script><p>于是我们有</p>
 <script type="math/tex; mode=display">\begin{equation} 
   g(y) = cy+b 
@@ -265,7 +265,7 @@ var _hmt = _hmt || [];
 <script type="math/tex; mode=display">\begin{align} 
   \sum_{i=1}^{n}g(x_{i}-\bar{x}) = \sum_{i=1}^{n}[c(x_{i} - \bar{x})+b] = nb = 0 \quad \Rightarrow \quad b=0 
 \end{align}</script><script type="math/tex; mode=display">\begin{align} 
-  \therefore \quad g(y) = \frac{f^{'}(y)}{f(y)} = cy \quad \Rightarrow \quad f(y) = \frac{1}{K}\text{e}^{\frac{1}{2}cy^{2}} 
+  \therefore \quad g(y) = \frac{f' (y)}{f(y)} = cy \quad \Rightarrow \quad f(y) = \frac{1}{K}\text{e}^{\frac{1}{2}cy^{2}} 
 \end{align}</script><p>概率密度函数的归一性要求（也自然是收敛的）</p>
 <script type="math/tex; mode=display">\begin{align} 
   \int_{-\infty}^{+\infty}f(y)\text{d}y = 1 \quad \Rightarrow \quad c = -\frac{1}{\sigma^{2}} < 0,\ \ K = \sqrt{2\pi}\sigma 
