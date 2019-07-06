@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://taoyi92.github.io">
-  <title>泛函微分 | Yi&#39;s Blog</title>
+  <title>I want to learn | Yi&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="泛函微分及拉格朗日方程的推导">
-<meta name="keywords" content="数学基础,泛函分析,变分法">
+  <meta name="description" content="I want to learn">
 <meta property="og:type" content="article">
-<meta property="og:title" content="泛函微分">
-<meta property="og:url" content="http://taoyi92.github.io/academic/泛函微分/index.html">
+<meta property="og:title" content="I want to learn">
+<meta property="og:url" content="http://taoyi92.github.io/uncategorized/I-want-to-learn/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
-<meta property="og:description" content="泛函微分及拉格朗日方程的推导">
+<meta property="og:description" content="I want to learn">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-02T12:11:47.637Z">
+<meta property="og:updated_time" content="2019-07-06T05:52:14.003Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泛函微分">
-<meta name="twitter:description" content="泛函微分及拉格朗日方程的推导">
+<meta name="twitter:title" content="I want to learn">
+<meta name="twitter:description" content="I want to learn">
   
     <link rel="alternative" href="/atom.xml" title="Yi&#39;s Blog" type="application/atom+xml">
   
@@ -181,20 +180,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-泛函微分" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-I-want-to-learn" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      泛函微分
+      I want to learn
     </h1>
   
 
         
-        <a href="/academic/泛函微分/" class="archive-article-date">
-  	<time datetime="2019-07-02T11:46:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-02</time>
+        <a href="/uncategorized/I-want-to-learn/" class="archive-article-date">
+  	<time datetime="2019-07-06T04:30:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
 </a>
         <!-- 添加字数统计-->
         
@@ -203,7 +202,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1k字</span>
+        <span class="post-count">12字</span>
       </span>
     </span>
 
@@ -212,7 +211,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">1分</span>
       </span>
     </span>
 </div>
@@ -232,78 +231,11 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>凝聚态场论数学基础</p>
+<p>拓展技能树</p>
 </blockquote>
 <a id="more"></a>
-<p>泛函的宗量是函数。与函数的研究类似，我们在研究泛函时也是对泛函的(微小)变化时的行为、泛函驻点感兴趣。泛函的驻点的含义是：在变换$f \rightarrow f+h$下（$h$是无穷小增量函数），泛函保持不变。一个泛函$F$称为可微的，若</p>
-<script type="math/tex; mode=display">\begin{align} F[f + \varepsilon g] - F[f] = \varepsilon\cdot \text{D}F_{f}[g] + \mathcal{O}(\varepsilon^2) \end{align}</script><p>其中，<strong>$\text{D}F_{f}$是线性泛函</strong>（满足$\text{D}F_{f}[g_{1}+g_{2}] = \text{D}F_{f}[g_{1}] + \text{D}F_{f}[g_{2}]$），$\varepsilon$是无穷小参数，$g$是任意函数。<strong>定义泛函$F$的驻点在$f$，当且仅当$\text{D}F_{f} = 0$。</strong></p>
-<p>为了更好地理解泛函$F[f]$的总量$f$，将它视为$N$维矢量$\vec{f}=\{f_{n} \equiv f(x_{n}), n=1,\cdots,N\}$在$N\rightarrow\infty$的极限（$x_n$是一组线性无关矢量，或一组<strong>基</strong>）。于是$F(\vec{f})$是一个定义在$N$维空间上的函数，在连续极限下，$\vec{f}\rightarrow f$演变为函数，同时$F(\vec{f})\rightarrow F[f]$演变为泛函。下表对于离散和取连续极限两种情形作了一个对比总结：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">离散情形</th>
-<th style="text-align:center">连续极限（$N\rightarrow\infty$）情形</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">空间维数</td>
-<td style="text-align:center">有限$N$维</td>
-<td style="text-align:center">无限维</td>
-</tr>
-<tr>
-<td style="text-align:center">单位基</td>
-<td style="text-align:center">$\vec{e}_{n}$，只有第$n$分量为$1$，其余为0</td>
-<td style="text-align:center">$\delta_{x}$，其中$\delta_{x}(x’) \equiv \delta(x-x’)$</td>
-</tr>
-<tr>
-<td style="text-align:center">内积</td>
-<td style="text-align:center"><script type="math/tex">\begin{align}\langle \vec{f},\vec{g} \rangle \equiv \sum_{n=1}^{N} f_{n} g_{n}\end{align}</script></td>
-<td style="text-align:center"><script type="math/tex">\begin{align}\langle f, g \rangle \equiv \int f(x) g(x)\text{d}x\end{align}</script></td>
-</tr>
-<tr>
-<td style="text-align:center">宗量</td>
-<td style="text-align:center">$\vec{f} = \{f_{n} \equiv f(x_{n}), n=1,\cdots,N\}$</td>
-<td style="text-align:center">$f$</td>
-</tr>
-<tr>
-<td style="text-align:center">宗量投影分量</td>
-<td style="text-align:center"><script type="math/tex">\begin{align}f_{n} = \langle \vec{f},\vec{e}_n \rangle = \sum_{m=1}^{N}f_{m}(\vec{e}_{n})_{m}\end{align}</script>，$(\vec{e}_{n})_{m} = \delta_{nm}$</td>
-<td style="text-align:center"><script type="math/tex">\begin{align}f(x) = \langle f, \delta_x \rangle = \int f(x')\delta_{x}(x')\text{d}x'\end{align}</script></td>
-</tr>
-<tr>
-<td style="text-align:center">函子</td>
-<td style="text-align:center">$F(\vec{f})$</td>
-<td style="text-align:center">$F[f]$</td>
-</tr>
-<tr>
-<td style="text-align:center">偏微分</td>
-<td style="text-align:center"><script type="math/tex">\begin{align}\partial_{f_n}F(\vec{f}) \equiv \lim_{\varepsilon\rightarrow 0} \frac{F(\vec{f}+\varepsilon\vec{e}_{n}) - F(\vec{f})}{\varepsilon}\end{align}</script></td>
-<td style="text-align:center"><script type="math/tex">\begin{align} \frac{\delta F[f]}{\delta f(x)} \equiv \lim_{\varepsilon\rightarrow 0}\frac{F[f+\varepsilon\delta_{x}] - F[f]}{\varepsilon} \end{align}</script></td>
-</tr>
-<tr>
-<td style="text-align:center">全微分</td>
-<td style="text-align:center"><script type="math/tex">\begin{align}\text{d}F_{\vec{f}}(\vec{g}) \equiv \langle\nabla F_{\vec{f}},\vec{g} \rangle = \sum_{n=1}^{N} \partial_{f_{n}}F(\vec{f})g_{n}\end{align}</script></td>
-<td style="text-align:center"><script type="math/tex">\begin{align} \text{D}F_{f}[g] = \int \frac{\delta F[f]}{\delta f(x)}g(x) \text{d}x \end{align}</script></td>
-</tr>
-<tr>
-<td style="text-align:center">(变)微分</td>
-<td style="text-align:center"><script type="math/tex">\begin{align}F(\vec{f}+\varepsilon\vec{g})-F(\vec{f}) = \varepsilon\cdot\text{d}F_{\vec{f}}(\vec{g}) + \mathcal{O}(\varepsilon^2)\end{align}</script></td>
-<td style="text-align:center"><script type="math/tex">\begin{align}F[f + \varepsilon g] - F[f] = \varepsilon\cdot \text{D}F_{f}[g] + \mathcal{O}(\varepsilon^2)\end{align}</script></td>
-</tr>
-<tr>
-<td style="text-align:center">链式法则</td>
-<td style="text-align:center"><script type="math/tex">\begin{align} \partial_{f_n}F(\vec{g}(\vec{f})) = \sum_{m=1}^{N}\partial_{g_m}F(\vec{g})\Big\vert_{\vec{g}=\vec{g}(\vec{f})}\partial_{f_n}g_{m}(f_m) \end{align}</script></td>
-<td style="text-align:center"><script type="math/tex">\begin{align} \frac{\delta F[g[f]]}{\delta f(x)} = \int \frac{\delta F[g]}{\delta g(y)}\Bigg\vert_{g=g[f]}\frac{\delta g(y)[f]}{\delta f(x)} \text{d}y \end{align}</script></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>这里的记号$g[f]$是一个对$\vec{g}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}$（即$\vec{g}$是$\mathbb{R}^{m}$-值函数）的连续化推广，其分量$g(y)[f]$本身也是泛函。利用以上的推广，也可以写出泛函$F[f]$在$f=0$处的Taylor展开（这里的$0$含义是恒零函数）：</p>
-<script type="math/tex; mode=display">\begin{align} F[f] = F[0] + \int \frac{\delta F[f]}{\delta f(x_1)}\Big|_{f=0}f(x_1)\text{d}x_1 + \frac{1}{2} \int\frac{\delta^2 F[f]}{\delta f(x_2) \delta f(x_1)}\Big|_{f=0}f(x_1)f(x_2)\text{d}x_{1}\text{d}x_2 + \cdots \end{align}</script><p>其中的二重泛函微商是二重偏微分的推广，由定义可得</p>
-<script type="math/tex; mode=display">\begin{align} \frac{\delta^2 F[f]}{\delta f(x_2) \delta f(x_1)} &\equiv \frac{\delta}{\delta f(x_2)}\Big(\frac{\delta F[f]}{\delta f(x_1)}\Big) = \frac{\delta}{\delta f(x_2)}\Big(\lim_{\varepsilon_1\rightarrow 0}\frac{1}{\varepsilon_1}(F[f+\varepsilon_1\delta_{x_1}]-F[f])\Big) \\ &= \lim_{\varepsilon_2\rightarrow 0}\frac{1}{\varepsilon_2}\Big[\lim_{\varepsilon_1\rightarrow 0}\frac{1}{\varepsilon_1}(F[f+\varepsilon_2\delta_{x_2}+\varepsilon_1\delta_{x_1}]-F[f+\varepsilon_2\delta_{x_2}]) - \lim_{\varepsilon_1\rightarrow 0}\frac{1}{\varepsilon_1}(F[f+\varepsilon_1\delta_{x_1}]-F[f]) \Big] \\ &= \lim_{\varepsilon_{1,2}\rightarrow 0}\frac{1}{\varepsilon_1\varepsilon_2}(F[f+\varepsilon_1\delta_{x_1}+\varepsilon_2\delta_{x_2}] - F[f+\varepsilon_1\delta_{x_1}] - F[f+\varepsilon_2\delta_{x_2}] + F[f])\end{align}</script>
+<p>[ ] PHP<br>[ ] Vue.js<br>[ ] 数电模电</p>
+
       
       <!-- 添加版权声明 -->
       
@@ -315,7 +247,7 @@ var _hmt = _hmt || [];
           
           <br>
           <strong>本文链接：</strong>
-          http://taoyi92.github.io/academic/泛函微分/
+          http://taoyi92.github.io/uncategorized/I-want-to-learn/
           <br>
           <strong>版权声明：</strong>
           本作品采用
@@ -364,37 +296,7 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">泛函分析</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">变分法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/academic//" class="article-tag-list-link color4">academic</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -444,7 +346,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://taoyi92.github.io/academic/泛函微分/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://taoyi92.github.io/uncategorized/I-want-to-learn/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -458,18 +360,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/uncategorized/I-want-to-learn/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          I want to learn
-        
-      </div>
-    </a>
   
-  
-    <a href="/academic/误差分布是正态分布/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">误差分布是正态分布</div>
+    <a href="/academic/泛函微分/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">泛函微分</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -522,7 +415,7 @@ var _hmt = _hmt || [];
 <script src="//ihtcboy.com/script/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://taoyi92.github.io/academic/泛函微分/",
+  id: "http://taoyi92.github.io/uncategorized/I-want-to-learn/",
   owner: 'TAOYi92',
   repo: 'taoyi92.github.io',
   oauth: {
