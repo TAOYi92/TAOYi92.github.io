@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="关于WIMP的理论模型推导">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-15T07:46:50.868Z">
+<meta property="og:updated_time" content="2019-08-17T10:13:00.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WIMP">
 <meta name="twitter:description" content="关于WIMP的理论模型推导">
@@ -317,19 +317,9 @@ U(\omega, T)\text{d}\omega = \Big( \hbar\omega\cdot \text{d}n(\omega, T) = \frac
 \end{align}</script>从而(这里$\beta=\cfrac{1}{T}$) <script type="math/tex; mode=display">\begin{align}
 \rho &= -\frac{1}{V}\frac{\partial}{\partial\beta}\ln{\Xi} = \frac{\pi^2}{15}T^4 \\ 
 P &= - \frac{1}{\beta}\frac{\partial}{\partial V}\ln{\Xi} = \frac{\pi^2}{45}T^4
-\end{align}</script>比较以上两式立得 $\rho = 3P$。<br>$\Big[$推导过程中用到了如下积分事实：<script type="math/tex; mode=display">\begin{align}
-I(n) = \int_0^\infty\frac{x^n\text{d}x}{e^x-1} &= \sum_{i=1}^\infty\frac{1}{i^n}\int_0^\infty y^{n-1}e^{-y}\text{d}y = \zeta(n)\Gamma(n), \\ 
-\therefore \quad I(3) &= \zeta(3)\Gamma(3) = \frac{\pi^4}{15} \\ 
--\int_0^{\infty}x^2\ln{(1-e^{-x})}\text{d}x &= -( [\frac{x^3}{3}\ln{(1-e^{-x})}]_0^{\infty} - \frac{1}{3}\int_0^\infty\frac{x^3\text{d}x}{e^x-1}) \\ 
-&= \frac{1}{3}\int_0^\infty\frac{x^3\text{d}x}{e^x-1}=\frac{1}{3}I(3)=\frac{\pi^4}{45}
-\end{align}</script>$I(n) = \zeta(n)\Gamma(n)$是数学分析中的一个经典结果，其中$\zeta(z)$是Riemann $\zeta$函数。$\Big]$</li>
-<li><span id="appendix_5">上面一条附录给出了零质量Boson的计算结果，这里将Fermion的情况一并总结出来（与Boson唯一的区别是将分布函数$f(\vec{p})$替换成Fermion的）：</span><script type="math/tex; mode=display">\begin{align}
-\text{For Boson: }\quad & n=g\frac{\xi(3)}{\pi^2}T^3, \quad \rho=g\frac{\pi^2}{30}T^4, \quad s=g\frac{2\pi^2}{45}T^3 \\ 
-\text{For Fermion: }\quad & n=g\frac{3}{4}\frac{\xi(3)}{\pi^2}T^3, \quad \rho=g\frac{7}{8}\frac{\pi^2}{30}T^4, \quad s=g\frac{7}{8}\frac{2\pi^2}{45}T^3
-\end{align}</script></li>
-<li><span id="appendix_6">(1) $E_\chi = \sqrt{m_\chi^2+p_\chi^2} \simeq m_\chi + \cfrac{\vec{p}_\chi^2}{m_\chi}$ </span><br>(2) 如果不采取近似，那么（正号为Fermion，符号为Boson） <script type="math/tex; mode=display">\begin{align}
-n_\chi^0 = \int\frac{\text{d}^3\vec{p}}{(2\pi)^3}f(\vec{p}) = \frac{4\pi g_*}{(2\pi)^3}\int_0^\infty \frac{p^2\text{d}p}{e^{\dfrac{E-\mu}{T}}\pm1} = \frac{g_*}{2\pi^2}\int_0^\infty \frac{p^2\text{d}p}{e^{\dfrac{\sqrt{m^2+p^2}-\mu}{T}}\pm1}
-\end{align}</script>将是一个比较难处理的积分，好在这时的情况是非相对论的，可以采用Maxwell-Boltzmann分布。</li>
+\end{align}</script>比较以上两式立得 $\rho = 3P$。<br>$\Big[$推导过程中用到了如下积分事实：<br>\begin{align}<br>I(n) = \int_0^\infty\frac{x^n\text{d}x}{e^x-1} &amp;= \sum_{i=1}^\infty\frac{1}{i^n}\int_0^\infty y^{n-1}e^{-y}\text{d}y = \zeta(n)\Gamma(n), \ <br>\therefore \quad I(3) &amp;= \zeta(3)\Gamma(3) = \frac{\pi^4}{15} \ <br>-\int_0^{\infty}x^2\ln{(1-e^{-x})}\text{d}x &amp;= -( [\frac{x^3}{3}\ln{(1-e^{-x})}]_0^{\infty} - \frac{1}{3}\int_0^\infty\frac{x^3\text{d}x}{e^x-1}) \ <br>&amp;= \frac{1}{3}\int_0^\infty\frac{x^3\text{d}x}{e^x-1}=\frac{1}{3}I(3)=\frac{\pi^4}{45}<br>\end{align}<br>$I(n) = \zeta(n)\Gamma(n)$是数学分析中的一个经典结果，其中$\zeta(z)$是Riemann $\zeta$函数。$\Big]$</li>
+<li><span id="appendix_5">上面一条附录给出了零质量Boson的计算结果，这里将Fermion的情况一并总结出来（与Boson唯一的区别是将分布函数$f(\vec{p})$替换成Fermion的）：</span><br>\begin{align}<br>\text{For Boson: }\quad &amp; n=g\frac{\xi(3)}{\pi^2}T^3, \quad \rho=g\frac{\pi^2}{30}T^4, \quad s=g\frac{2\pi^2}{45}T^3 \ <br>\text{For Fermion: }\quad &amp; n=g\frac{3}{4}\frac{\xi(3)}{\pi^2}T^3, \quad \rho=g\frac{7}{8}\frac{\pi^2}{30}T^4, \quad s=g\frac{7}{8}\frac{2\pi^2}{45}T^3<br>\end{align}</li>
+<li><span id="appendix_6">(1) $E_\chi = \sqrt{m_\chi^2+p_\chi^2} \simeq m_\chi + \cfrac{\vec{p}_\chi^2}{m_\chi}$ </span><br>(2) 如果不采取近似，那么（正号为Fermion，符号为Boson）<br>\begin{align}<br>n_\chi^0 = \int\frac{\text{d}^3\vec{p}}{(2\pi)^3}f(\vec{p}) = \frac{4\pi g_<em>}{(2\pi)^3}\int_0^\infty \frac{p^2\text{d}p}{e^{\dfrac{E-\mu}{T}}\pm1} = \frac{g_</em>}{2\pi^2}\int_0^\infty \frac{p^2\text{d}p}{e^{\dfrac{\sqrt{m^2+p^2}-\mu}{T}}\pm1}<br>\end{align}<br>将是一个比较难处理的积分，好在这时的情况是非相对论的，可以采用Maxwell-Boltzmann分布。</li>
 <li><span id="appendix_7">设物态方程具有形式$P=w\rho$，对于热物质(相对论性物质，如辐射<a href="#appendix_4">$^4$</a>)$w=\cfrac{1}{3}$。一方面，由<a href="https://www.jianshu.com/p/2d78574ac8f6" target="_blank" rel="noopener">Friedmann方程</a>导出式，</span><script type="math/tex; mode=display">\begin{align}
 \dot{\rho} = -\frac{3\dot{a}}{a}(\rho+P) = -\frac{4\dot{a}}{a} \quad \Rightarrow \quad \rho \propto a^{-3(1+w)} = a^{-4}
 \end{align}</script>另一方面，我们从黑体辐射公式又知道 <script type="math/tex; mode=display">\begin{align}
