@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="Condensed Matter Field Theory (A. Altland and B. Simons) 第一章笔记">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-17T05:34:35.491Z">
+<meta property="og:updated_time" content="2019-09-17T05:46:55.578Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMFT_Note01_从粒子到场">
 <meta name="twitter:description" content="Condensed Matter Field Theory (A. Altland and B. Simons) 第一章笔记">
@@ -341,16 +341,9 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 </div>
-<hr>
-<pre><code>  这里的记号$g[f]$是一个对$\vec{g}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}$（即$\vec{g}$是$\mathbb{R}^{m}$-值函数）的连续化推广，其分量$g(y)[f]$本身也是泛函。利用以上的推广，也可以写出泛函$F[f]$在$f=0$处的Taylor展开（这里的$0$含义是恒零函数）：
-
-  $$\begin{align} F[f] = F[0] + \int \frac{\delta F[f]}{\delta f(x_1)}\Bigg\vert_{f=0}f(x_1)\text{d}x_1 + \frac{1}{2} \int\frac{\delta^2 F[f]}{\delta f(x_2) \delta f(x_1)}\Bigg\vert_{f=0}f(x_1)f(x_2)\text{d}x_{1}\text{d}x_2 + \cdots \end{align}$$
-
-  其中的二重泛函微商是二重偏微分的推广，由定义可得
-
-  $$\begin{align} \frac{\delta^2 F[f]}{\delta f(x_2) \delta f(x_1)} &amp;\equiv \frac{\delta}{\delta f(x_2)}\Big(\frac{\delta F[f]}{\delta f(x_1)}\Big) = \frac{\delta}{\delta f(x_2)}\Big(\lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_1\delta_{x_1}]-F[f])\Big) \\ &amp;= \lim_{\epsilon_2\rightarrow 0}\frac{1}{\epsilon_2}\Big[\lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_2\delta_{x_2}+\epsilon_1\delta_{x_1}]-F[f+\epsilon_2\delta_{x_2}]) - \lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_1\delta_{x_1}]-F[f]) \Big] \\ &amp;= \lim_{\epsilon_{1,2}\rightarrow 0}\frac{1}{\epsilon_1\epsilon_2}(F[f+\epsilon_1\delta_{x_1}+\epsilon_2\delta_{x_2}] - F[f+\epsilon_1\delta_{x_1}] - F[f+\epsilon_2\delta_{x_2}] + F[f])\end{align}$$
-
-- 场论中的作用量泛函通常为$$\begin{align} S[\phi] = \int_{M} \mathcal{L}(\phi^{i},\partial_{\mu}\phi^{i}) \text{d}^{m}x \end{align}$$，这里我们设基流形$M$由$m$维坐标矢量$\mathbb{x} = {\{x_{\mu}\}}$参数化（通常实际应用中$m=d+1$，$\mathbb{x} = (x_0,x_1,\cdots,x_d)$包含一个类时分量$x_0 = t$和$d$个类空分量$x_k, k=1,\cdots,d$）。通常假设场流形拥有$n$维，场的**坐标**$\phi=\{\phi^{i}\}, i=1,\cdots,n$。$S[\phi]$的全部(局域)信息都储存在$\mathcal{L}$函数中，然而一般的泛函不具有这样的性质。由于这样的性质，$S$的泛函微商和$\mathcal{L}$的普通导数的关系：
+<p>这里的记号$g[f]$是一个对$\vec{g}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}$（即$\vec{g}$是$\mathbb{R}^{m}$-值函数）的连续化推广，其分量$g(y)[f]$本身也是泛函。利用以上的推广，也可以写出泛函$F[f]$在$f=0$处的Taylor展开（这里的$0$含义是恒零函数）：</p>
+<script type="math/tex; mode=display">\begin{align} F[f] = F[0] + \int \frac{\delta F[f]}{\delta f(x_1)}\Bigg\vert_{f=0}f(x_1)\text{d}x_1 + \frac{1}{2} \int\frac{\delta^2 F[f]}{\delta f(x_2) \delta f(x_1)}\Bigg\vert_{f=0}f(x_1)f(x_2)\text{d}x_{1}\text{d}x_2 + \cdots \end{align}</script><p>其中的二重泛函微商是二重偏微分的推广，由定义可得</p>
+<script type="math/tex; mode=display">\begin{align} \frac{\delta^2 F[f]}{\delta f(x_2) \delta f(x_1)} &\equiv \frac{\delta}{\delta f(x_2)}\Big(\frac{\delta F[f]}{\delta f(x_1)}\Big) = \frac{\delta}{\delta f(x_2)}\Big(\lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_1\delta_{x_1}]-F[f])\Big) \\ &= \lim_{\epsilon_2\rightarrow 0}\frac{1}{\epsilon_2}\Big[\lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_2\delta_{x_2}+\epsilon_1\delta_{x_1}]-F[f+\epsilon_2\delta_{x_2}]) - \lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_1\delta_{x_1}]-F[f]) \Big] \\ &= \lim_{\epsilon_{1,2}\rightarrow 0}\frac{1}{\epsilon_1\epsilon_2}(F[f+\epsilon_1\delta_{x_1}+\epsilon_2\delta_{x_2}] - F[f+\epsilon_1\delta_{x_1}] - F[f+\epsilon_2\delta_{x_2}] + F[f])\end{align}</script><pre><code>- 场论中的作用量泛函通常为$$\begin{align} S[\phi] = \int_{M} \mathcal{L}(\phi^{i},\partial_{\mu}\phi^{i}) \text{d}^{m}x \end{align}$$，这里我们设基流形$M$由$m$维坐标矢量$\mathbb{x} = {\{x_{\mu}\}}$参数化（通常实际应用中$m=d+1$，$\mathbb{x} = (x_0,x_1,\cdots,x_d)$包含一个类时分量$x_0 = t$和$d$个类空分量$x_k, k=1,\cdots,d$）。通常假设场流形拥有$n$维，场的**坐标**$\phi=\{\phi^{i}\}, i=1,\cdots,n$。$S[\phi]$的全部(局域)信息都储存在$\mathcal{L}$函数中，然而一般的泛函不具有这样的性质。由于这样的性质，$S$的泛函微商和$\mathcal{L}$的普通导数的关系：
 
   $$\begin{align} S[\phi+\epsilon\theta] -S[\phi] &amp;= \int_{M} [\mathcal{L}(\phi+\epsilon\theta, \partial_{\mu}\phi+\epsilon\partial_{\mu}\theta) - \mathcal{L}(\phi, \partial_{\mu}\phi)]\text{d}^{m}\mathbb{x} \\ &amp;= \int_{M} \epsilon\Big[\frac{\partial\mathcal{L}}{\partial\phi^{i}}\theta^{i} + \frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{i})}\partial_{\mu}\theta^{i} \Big]\text{d}^{m}\mathbb{x} + \mathcal{O}(\epsilon^2) \\ &amp;= \int_{M} \epsilon\Big[\frac{\partial\mathcal{L}}{\partial\phi^{i}} - \partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{i})} \Big]\theta^{i}\text{d}^{m}\mathbb{x} + \mathcal{O}(\epsilon^2) \end{align}$$
 
