@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="Condensed Matter Field Theory (A. Altland and B. Simons) 第一章笔记">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-17T02:48:09.616Z">
+<meta property="og:updated_time" content="2019-09-17T03:22:05.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMFT_Note01_从粒子到场">
 <meta name="twitter:description" content="Condensed Matter Field Theory (A. Altland and B. Simons) 第一章笔记">
@@ -274,26 +274,108 @@ var _hmt = _hmt || [];
 <li><p>【数学工具】泛函微分：泛函的宗量是函数。与函数的研究类似，我们在研究泛函时也是对泛函的(微小)变化时的行为、泛函驻点感兴趣。泛函的驻点的含义是：在变换$f \rightarrow f+h$下（$h$是无穷小增量函数），泛函保持不变。一个泛函$F$称为可微的，若</p>
 <script type="math/tex; mode=display">\begin{align} F[f + \epsilon g] - F[f] = \epsilon\cdot \text{D}F_{f}[g] + \mathcal{O}(\epsilon^2) \end{align}</script><p>其中，<strong>$\text{D}F_{f}$是线性泛函</strong>（满足$\text{D}F_{f}[g_{1}+g_{2}] = \text{D}F_{f}[g_{1}] + \text{D}F_{f}[g_{2}]$），$\epsilon$是无穷小参数，$g$是任意函数。<strong>定义泛函$F$的驻点在$f$，当且仅当$\text{D}F_{f} = 0$。</strong></p>
 <p>为了更好地理解泛函$F[f]$的总量$f$，将它视为$N$维矢量$\vec{f}=\{f_{n} \equiv f(x_{n}), n=1,\cdots,N\}$在$N\rightarrow\infty$的极限（$x_n$是一组线性无关矢量，或一组<strong>基</strong>）。于是$F(\vec{f})$是一个定义在$N$维空间上的函数，在连续极限下，$\vec{f}\rightarrow f$演变为函数，同时$F(\vec{f})\rightarrow F[f]$演变为泛函。下表对于离散和取连续极限两种情形作了一个对比总结：</p>
-<p>|              |                           离散情形                           |             连续极限（$N\rightarrow\infty$）情形             |<br>| :—————: | :—————————————————————————————: | :—————————————————————————————: |<br>|   空间维数   |                          有限$N$维                           |                            无限维                            |<br>|    单位基    |         $\vec{e}_{n}$，只有第$n$分量为$1$，其余为$0$         |    $\delta_{x}$，其中$\delta_{x}(x’) \equiv \delta(x-x’)$    |<br>|     内积     | <script type="math/tex">\begin{align}\langle \vec{f},\vec{g} \rangle \equiv \sum_{n=1}^{N} f_{n} g_{n}\end{align}</script> | <script type="math/tex">\begin{align}\langle f, g \rangle \equiv \int f(x) g(x)\text{d}x\end{align}</script> |<br>|     宗量     |     $\vec{f} = \{f_{n} \equiv f(x_{n}), n=1,\cdots,N\}$      |                             $f$                              |<br>| 宗量投影分量 | <script type="math/tex">\begin{align}f_{n} = \langle \vec{f},\vec{e}_n \rangle = \sum_{m=1}^{N}f_{m}(\vec{e}_{n})_{m}\end{align}</script>，$(\vec{e}_{n})_{m} = \delta_{nm}$ | <script type="math/tex">\begin{align}f(x) = \langle f, \delta_x \rangle = \int f(x')\delta_{x}(x')\text{d}x'\end{align}</script> |<br>|     函子     |                         $F(\vec{f})$                         |                            $F[f]$                            |<br>|    偏微分    | <script type="math/tex">\begin{align}\partial_{f_n}F(\vec{f}) \equiv \lim_{\epsilon\rightarrow 0} \frac{F(\vec{f}+\epsilon\vec{e}_{n}) - F(\vec{f})}{\epsilon}\end{align}</script> | <script type="math/tex">\begin{align} \frac{\delta F[f]}{\delta f(x)} \equiv \lim_{\epsilon\rightarrow 0}\frac{F[f+\epsilon\delta_{x}] - F[f]}{\epsilon} \end{align}</script> |<br>|    全微分    | <script type="math/tex">\begin{align}\text{d}F_{\vec{f}}(\vec{g}) \equiv \langle\nabla F_{\vec{f}},\vec{g} \rangle = \sum_{n=1}^{N} \partial_{f_{n}}F(\vec{f})g_{n}\end{align}</script> | <script type="math/tex">\begin{align} \text{D}F_{f}[g] = \int \frac{\delta F[f]}{\delta f(x)}g(x) \text{d}x \end{align}</script> |<br>|   (变)微分   | <script type="math/tex">\begin{align}F(\vec{f}+\epsilon\vec{g})-F(\vec{f}) = \epsilon\cdot\text{d}F_{\vec{f}}(\vec{g}) + \mathcal{O}(\epsilon^2)\end{align}</script> | <script type="math/tex">\begin{align}F[f + \epsilon g] - F[f] = \epsilon\cdot \text{D}F_{f}[g] + \mathcal{O}(\epsilon^2)\end{align}</script> |<br>|   链式法则   | <script type="math/tex">\begin{align} \partial_{f_n}F(\vec{g}(\vec{f})) = \sum_{m=1}^{N}\partial_{g_m}F(\vec{g})\Big\vert_{\vec{g}=\vec{g}(\vec{f})}\partial_{f_n}g_{m}(f_m) \end{align}</script> | <script type="math/tex">\begin{align} \frac{\delta F[g[f]]}{\delta f(x)} = \int \frac{\delta F[g]}{\delta g(y)}\Bigg\vert_{g=g[f]}\frac{\delta g(y)[f]}{\delta f(x)} \text{d}y \end{align}</script> |</p>
-<p>这里的记号$g[f]$是一个对$\vec{g}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}$（即$\vec{g}$是$\mathbb{R}^{m}$-值函数）的连续化推广，其分量$g(y)[f]$本身也是泛函。利用以上的推广，也可以写出泛函$F[f]$在$f=0$处的Taylor展开（这里的$0$含义是恒零函数）：</p>
-<script type="math/tex; mode=display">\begin{align} F[f] = F[0] + \int \frac{\delta F[f]}{\delta f(x_1)}\Bigg\vert_{f=0}f(x_1)\text{d}x_1 + \frac{1}{2} \int\frac{\delta^2 F[f]}{\delta f(x_2) \delta f(x_1)}\Bigg\vert_{f=0}f(x_1)f(x_2)\text{d}x_{1}\text{d}x_2 + \cdots \end{align}</script><p>其中的二重泛函微商是二重偏微分的推广，由定义可得</p>
-<script type="math/tex; mode=display">\begin{align} \frac{\delta^2 F[f]}{\delta f(x_2) \delta f(x_1)} &\equiv \frac{\delta}{\delta f(x_2)}\Big(\frac{\delta F[f]}{\delta f(x_1)}\Big) = \frac{\delta}{\delta f(x_2)}\Big(\lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_1\delta_{x_1}]-F[f])\Big) \\ &= \lim_{\epsilon_2\rightarrow 0}\frac{1}{\epsilon_2}\Big[\lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_2\delta_{x_2}+\epsilon_1\delta_{x_1}]-F[f+\epsilon_2\delta_{x_2}]) - \lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_1\delta_{x_1}]-F[f]) \Big] \\ &= \lim_{\epsilon_{1,2}\rightarrow 0}\frac{1}{\epsilon_1\epsilon_2}(F[f+\epsilon_1\delta_{x_1}+\epsilon_2\delta_{x_2}] - F[f+\epsilon_1\delta_{x_1}] - F[f+\epsilon_2\delta_{x_2}] + F[f])\end{align}</script></li>
-<li><p>场论中的作用量泛函通常为<script type="math/tex">\begin{align} S[\phi] = \int_{M} \mathcal{L}(\phi^{i},\partial_{\mu}\phi^{i}) \text{d}^{m}x \end{align}</script>，这里我们设基流形$M$由$m$维坐标矢量$\mathbb{x} = {\{x_{\mu}\}}$参数化（通常实际应用中$m=d+1$，$\mathbb{x} = (x_0,x_1,\cdots,x_d)$包含一个类时分量$x_0 = t$和$d$个类空分量$x_k, k=1,\cdots,d$）。通常假设场流形拥有$n$维，场的<strong>坐标</strong>$\phi=\{\phi^{i}\}, i=1,\cdots,n$。$S[\phi]$的全部(局域)信息都储存在$\mathcal{L}$函数中，然而一般的泛函不具有这样的性质。由于这样的性质，$S$的泛函微商和$\mathcal{L}$的普通导数的关系：</p>
-<script type="math/tex; mode=display">\begin{align} S[\phi+\epsilon\theta] -S[\phi] &= \int_{M} [\mathcal{L}(\phi+\epsilon\theta, \partial_{\mu}\phi+\epsilon\partial_{\mu}\theta) - \mathcal{L}(\phi, \partial_{\mu}\phi)]\text{d}^{m}\mathbb{x} \\ &= \int_{M} \epsilon\Big[\frac{\partial\mathcal{L}}{\partial\phi^{i}}\theta^{i} + \frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{i})}\partial_{\mu}\theta^{i} \Big]\text{d}^{m}\mathbb{x} + \mathcal{O}(\epsilon^2) \\ &= \int_{M} \epsilon\Big[\frac{\partial\mathcal{L}}{\partial\phi^{i}} - \partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{i})} \Big]\theta^{i}\text{d}^{m}\mathbb{x} + \mathcal{O}(\epsilon^2) \end{align}</script><p>这里已经假设基流形在边界处的场变分为$0$，即$\theta\vert_{\partial M} = 0$。对比泛函微商的定义，得到：</p>
-<script type="math/tex; mode=display">\begin{align} \frac{\delta S[\phi]}{\delta\phi^{i}(\mathbb{x})} = \frac{\partial\mathcal{L}}{\partial\phi^{i}(\mathbb{x})} - \partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{i}(\mathbb{x}))} \end{align}</script><p>因此，<strong>泛函$S[\phi]$的稳定点</strong>等价于以下条件（称为<strong>场论的Euler-Lagrange方程</strong>）：</p>
-<script type="math/tex; mode=display">\begin{align} \forall \mathbb{x},i : \frac{\partial\mathcal{L}}{\partial\phi^{i}(\mathbb{x})} - \partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{i}(\mathbb{x}))} = 0 \end{align}</script><p>(i) $d=0, x_0 = t$：$n$维空间点粒子的运动方程（$\phi(t) = \vec{r}(t)$）所对应的Euler-Lagrange方程<script type="math/tex">\begin{align}\frac{\partial\mathcal{L}}{\partial\vec{r}(t)} - \frac{\text{d}}{\text{d}t}\Big(\frac{\partial\mathcal{L}}{\partial\dot{\vec{r}}(t)}\Big) = 0\end{align}</script>。</p>
-<p>(ii) $d = 1, (x_0, x_1) = (t, x)$：$n$维空间的一维质点链位移的$\phi$的Euler-Lagrange方程<script type="math/tex">\begin{align}\frac{\partial\mathcal{L}}{\partial\phi(t,x)} - \frac{\partial}{\partial t}\Big(\frac{\partial\mathcal{L}}{\partial\dot{\phi}(t,x)}\Big) - \frac{\partial}{\partial x}\Big(\frac{\partial\mathcal{L}}{\partial_{x}\phi(t,x)}\Big) = 0\end{align}</script>。</p>
 </li>
-<li><p>在哈密顿形式下，我们通过$\mathcal{L}$定义关于$\phi$（在场点$\mathbb{x}$处）的正则动量$\pi^{i}$【注意与圆周率$\pi$的区分】</p>
-<script type="math/tex; mode=display">\begin{align} \pi^{i}(x_{k};k=1,\cdots,d)\equiv\frac{\partial\mathcal{L}(\phi^{i},\partial_{k}\phi^{i}; i=1,\cdots,n)}{\partial\dot{\phi^{i}}(x_{k};k=1,\cdots,d)} \end{align}</script><p>由Legendre变换得到哈密顿密度$\mathcal{H}$:</p>
-<script type="math/tex; mode=display">\begin{align} \mathcal{H}(\phi^{i},\partial_{k}\phi^{i},\pi^{i}) = \big(\pi\dot{\phi}-\mathcal{L}(\phi,\partial_{k}\phi,\dot{\phi})\big)\Big\vert_{\dot{\phi}=\dot{\phi}(\phi,\pi)} \end{align}</script></li>
 </ul>
-<blockquote>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">离散情形</th>
+<th style="text-align:center">连续极限（$N\rightarrow\infty$）情形</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">空间维数</td>
+<td style="text-align:center">有限$N$维</td>
+<td style="text-align:center">无限维</td>
+</tr>
+<tr>
+<td style="text-align:center">单位基</td>
+<td style="text-align:center">$\vec{e}_{n}$，只有第$n$分量为$1$，其余为$0$</td>
+<td style="text-align:center">$\delta_{x}$，其中$\delta_{x}(x’) \equiv \delta(x-x’)$</td>
+</tr>
+<tr>
+<td style="text-align:center">内积</td>
+<td style="text-align:center"><script type="math/tex">\begin{align}\langle \vec{f},\vec{g} \rangle \equiv \sum_{n=1}^{N} f_{n} g_{n}\end{align}</script></td>
+<td style="text-align:center"><script type="math/tex">\begin{align}\langle f, g \rangle \equiv \int f(x) g(x)\text{d}x\end{align}</script></td>
+</tr>
+<tr>
+<td style="text-align:center">宗量</td>
+<td style="text-align:center">$\vec{f} = \{f_{n} \equiv f(x_{n}), n=1,\cdots,N\}$</td>
+<td style="text-align:center">$f$</td>
+</tr>
+<tr>
+<td style="text-align:center">宗量投影分量</td>
+<td style="text-align:center"><script type="math/tex">\begin{align}f_{n} = \langle \vec{f},\vec{e}_n \rangle = \sum_{m=1}^{N}f_{m}(\vec{e}_{n})_{m}\end{align}</script>，$(\vec{e}_{n})_{m} = \delta_{nm}$</td>
+<td style="text-align:center"><script type="math/tex">\begin{align}f(x) = \langle f, \delta_x \rangle = \int f(x')\delta_{x}(x')\text{d}x'\end{align}</script></td>
+</tr>
+<tr>
+<td style="text-align:center">函子</td>
+<td style="text-align:center">$F(\vec{f})$</td>
+<td style="text-align:center">$F[f]$</td>
+</tr>
+<tr>
+<td style="text-align:center">偏微分</td>
+<td style="text-align:center"><script type="math/tex">\begin{align}\partial_{f_n}F(\vec{f}) \equiv \lim_{\epsilon\rightarrow 0} \frac{F(\vec{f}+\epsilon\vec{e}_{n}) - F(\vec{f})}{\epsilon}\end{align}</script></td>
+<td style="text-align:center"><script type="math/tex">\begin{align} \frac{\delta F[f]}{\delta f(x)} \equiv \lim_{\epsilon\rightarrow 0}\frac{F[f+\epsilon\delta_{x}] - F[f]}{\epsilon} \end{align}</script></td>
+</tr>
+<tr>
+<td style="text-align:center">全微分</td>
+<td style="text-align:center"><script type="math/tex">\begin{align}\text{d}F_{\vec{f}}(\vec{g}) \equiv \langle\nabla F_{\vec{f}},\vec{g} \rangle = \sum_{n=1}^{N} \partial_{f_{n}}F(\vec{f})g_{n}\end{align}</script></td>
+<td style="text-align:center"><script type="math/tex">\begin{align} \text{D}F_{f}[g] = \int \frac{\delta F[f]}{\delta f(x)}g(x) \text{d}x \end{align}</script></td>
+</tr>
+<tr>
+<td style="text-align:center">(变)微分</td>
+<td style="text-align:center"><script type="math/tex">\begin{align}F(\vec{f}+\epsilon\vec{g})-F(\vec{f}) = \epsilon\cdot\text{d}F_{\vec{f}}(\vec{g}) + \mathcal{O}(\epsilon^2)\end{align}</script></td>
+<td style="text-align:center"><script type="math/tex">\begin{align}F[f + \epsilon g] - F[f] = \epsilon\cdot \text{D}F_{f}[g] + \mathcal{O}(\epsilon^2)\end{align}</script></td>
+</tr>
+<tr>
+<td style="text-align:center">链式法则</td>
+<td style="text-align:center"><script type="math/tex">\begin{align} \partial_{f_n}F(\vec{g}(\vec{f})) = \sum_{m=1}^{N}\partial_{g_m}F(\vec{g})\Big\vert_{\vec{g}=\vec{g}(\vec{f})}\partial_{f_n}g_{m}(f_m) \end{align}</script></td>
+<td style="text-align:center"><script type="math/tex">\begin{align} \frac{\delta F[g[f]]}{\delta f(x)} = \int \frac{\delta F[g]}{\delta g(y)}\Bigg\vert_{g=g[f]}\frac{\delta g(y)[f]}{\delta f(x)} \text{d}y \end{align}</script></td>
+</tr>
+</tbody>
+</table>
+</div>
+<pre><code>  这里的记号$g[f]$是一个对$\vec{g}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}$（即$\vec{g}$是$\mathbb{R}^{m}$-值函数）的连续化推广，其分量$g(y)[f]$本身也是泛函。利用以上的推广，也可以写出泛函$F[f]$在$f=0$处的Taylor展开（这里的$0$含义是恒零函数）：
+
+  $$\begin{align} F[f] = F[0] + \int \frac{\delta F[f]}{\delta f(x_1)}\Bigg\vert_{f=0}f(x_1)\text{d}x_1 + \frac{1}{2} \int\frac{\delta^2 F[f]}{\delta f(x_2) \delta f(x_1)}\Bigg\vert_{f=0}f(x_1)f(x_2)\text{d}x_{1}\text{d}x_2 + \cdots \end{align}$$
+
+  其中的二重泛函微商是二重偏微分的推广，由定义可得
+
+  $$\begin{align} \frac{\delta^2 F[f]}{\delta f(x_2) \delta f(x_1)} &amp;\equiv \frac{\delta}{\delta f(x_2)}\Big(\frac{\delta F[f]}{\delta f(x_1)}\Big) = \frac{\delta}{\delta f(x_2)}\Big(\lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_1\delta_{x_1}]-F[f])\Big) \\ &amp;= \lim_{\epsilon_2\rightarrow 0}\frac{1}{\epsilon_2}\Big[\lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_2\delta_{x_2}+\epsilon_1\delta_{x_1}]-F[f+\epsilon_2\delta_{x_2}]) - \lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_1\delta_{x_1}]-F[f]) \Big] \\ &amp;= \lim_{\epsilon_{1,2}\rightarrow 0}\frac{1}{\epsilon_1\epsilon_2}(F[f+\epsilon_1\delta_{x_1}+\epsilon_2\delta_{x_2}] - F[f+\epsilon_1\delta_{x_1}] - F[f+\epsilon_2\delta_{x_2}] + F[f])\end{align}$$
+
+- 场论中的作用量泛函通常为$$\begin{align} S[\phi] = \int_{M} \mathcal{L}(\phi^{i},\partial_{\mu}\phi^{i}) \text{d}^{m}x \end{align}$$，这里我们设基流形$M$由$m$维坐标矢量$\mathbb{x} = {\{x_{\mu}\}}$参数化（通常实际应用中$m=d+1$，$\mathbb{x} = (x_0,x_1,\cdots,x_d)$包含一个类时分量$x_0 = t$和$d$个类空分量$x_k, k=1,\cdots,d$）。通常假设场流形拥有$n$维，场的**坐标**$\phi=\{\phi^{i}\}, i=1,\cdots,n$。$S[\phi]$的全部(局域)信息都储存在$\mathcal{L}$函数中，然而一般的泛函不具有这样的性质。由于这样的性质，$S$的泛函微商和$\mathcal{L}$的普通导数的关系：
+
+  $$\begin{align} S[\phi+\epsilon\theta] -S[\phi] &amp;= \int_{M} [\mathcal{L}(\phi+\epsilon\theta, \partial_{\mu}\phi+\epsilon\partial_{\mu}\theta) - \mathcal{L}(\phi, \partial_{\mu}\phi)]\text{d}^{m}\mathbb{x} \\ &amp;= \int_{M} \epsilon\Big[\frac{\partial\mathcal{L}}{\partial\phi^{i}}\theta^{i} + \frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{i})}\partial_{\mu}\theta^{i} \Big]\text{d}^{m}\mathbb{x} + \mathcal{O}(\epsilon^2) \\ &amp;= \int_{M} \epsilon\Big[\frac{\partial\mathcal{L}}{\partial\phi^{i}} - \partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{i})} \Big]\theta^{i}\text{d}^{m}\mathbb{x} + \mathcal{O}(\epsilon^2) \end{align}$$
+
+  这里已经假设基流形在边界处的场变分为$0$，即$\theta\vert_{\partial M} = 0$。对比泛函微商的定义，得到：
+
+  $$\begin{align} \frac{\delta S[\phi]}{\delta\phi^{i}(\mathbb{x})} = \frac{\partial\mathcal{L}}{\partial\phi^{i}(\mathbb{x})} - \partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{i}(\mathbb{x}))} \end{align}$$
+
+  因此，**泛函$S[\phi]$的稳定点**等价于以下条件（称为**场论的Euler-Lagrange方程**）：
+
+  $$\begin{align} \forall \mathbb{x},i : \frac{\partial\mathcal{L}}{\partial\phi^{i}(\mathbb{x})} - \partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{i}(\mathbb{x}))} = 0 \end{align}$$
+
+  (i) $d=0, x_0 = t$：$n$维空间点粒子的运动方程（$\phi(t) = \vec{r}(t)$）所对应的Euler-Lagrange方程$$\begin{align}\frac{\partial\mathcal{L}}{\partial\vec{r}(t)} - \frac{\text{d}}{\text{d}t}\Big(\frac{\partial\mathcal{L}}{\partial\dot{\vec{r}}(t)}\Big) = 0\end{align}$$。
+
+  (ii) $d = 1, (x_0, x_1) = (t, x)$：$n$维空间的一维质点链位移的$\phi$的Euler-Lagrange方程$$\begin{align}\frac{\partial\mathcal{L}}{\partial\phi(t,x)} - \frac{\partial}{\partial t}\Big(\frac{\partial\mathcal{L}}{\partial\dot{\phi}(t,x)}\Big) - \frac{\partial}{\partial x}\Big(\frac{\partial\mathcal{L}}{\partial_{x}\phi(t,x)}\Big) = 0\end{align}$$。
+
+- 在哈密顿形式下，我们通过$\mathcal{L}$定义关于$\phi$（在场点$\mathbb{x}$处）的正则动量$\pi^{i}$【注意与圆周率$\pi$的区分】
+
+  $$\begin{align} \pi^{i}(x_{k};k=1,\cdots,d)\equiv\frac{\partial\mathcal{L}(\phi^{i},\partial_{k}\phi^{i}; i=1,\cdots,n)}{\partial\dot{\phi^{i}}(x_{k};k=1,\cdots,d)} \end{align}$$
+
+  由Legendre变换得到哈密顿密度$\mathcal{H}$:
+
+  $$\begin{align} \mathcal{H}(\phi^{i},\partial_{k}\phi^{i},\pi^{i}) = \big(\pi\dot{\phi}-\mathcal{L}(\phi,\partial_{k}\phi,\dot{\phi})\big)\Big\vert_{\dot{\phi}=\dot{\phi}(\phi,\pi)} \end{align}$$
+</code></pre><blockquote>
 <p>这里上下标比较多，统一整理：$i=1,\cdots,n（标记场流形坐标自由度）$； $m=d+1$；$\mu=0,1,\cdots,d（标记基流形时空维度）$；$k=1,\cdots,d（标记基流形类空维度）$。</p>
 <p>下面「模型一」中的$I=1,\cdots,N\rightarrow\infty（标记场流形点自由度）$这里已经被连续化，因此这里不再出现。</p>
 </blockquote>
-</li>
-</ul>
 <ul>
 <li><p>【补充1】<strong>场</strong>是一个由给定流形（基流形$M$）向目标流形（场流形$T$）的光滑映射</p>
 <script type="math/tex; mode=display">\begin{align} \phi:\qquad M \quad &\rightarrow \quad T \\ z \quad &\mapsto \quad \phi(z) \end{align}</script><p>凝聚态领域中，最广泛的应用形式是$M (\subset \mathcal{R}\times\mathcal{T}) \rightarrow T$，$M$为时空区间乘积，$T$是一个类空(?)流形。</p>
