@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://taoyi92.github.io">
+  <link rel="dns-prefetch" href="https://taoyi92.github.io">
   <title>Fano因子 | Yi&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Fano因子的理论模型">
 <meta name="keywords" content="physics,detector physics,theory,Poisson process">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fano因子">
-<meta property="og:url" content="http://taoyi92.github.io/academic/Fano因子/index.html">
+<meta property="og:url" content="https://taoyi92.github.io/academic/Fano因子/index.html">
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="Fano因子的理论模型">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-03T03:52:30.103Z">
+<meta property="og:updated_time" content="2020-07-12T07:29:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fano因子">
 <meta name="twitter:description" content="Fano因子的理论模型">
@@ -241,7 +241,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>在电离探测器中，对于给定的能量损失，载荷子对（电子-离子对）的产生是一种随机过程。载荷子对数若按Poisson统计涨落应为$\sqrt{n}$，而实际上由于受能量守恒定律的约束，这个涨落会不同于$\sqrt{n}$，并且依赖于物质种类，记为$\sqrt{F} (F &lt; n)$。本文根据已有文献的思路整理了这一结论的证明。</p>
+<p>在电离探测器中，对于给定的能量损失，载荷子对（电子-离子对）的产生是一种随机过程。载荷子对数若按Poisson统计涨落应为$\sqrt{n}$，而实际上由于受能量守恒定律的约束，这个涨落会不同于$\sqrt{n}$，并且依赖于物质种类，记为$\sqrt{F}\ (F &lt; n)$。本文根据已有文献的思路整理了这一结论的证明。</p>
 </blockquote>
 <a id="more"></a>
 <p><strong>证明：</strong></p>
@@ -259,13 +259,13 @@ R_{\text{Poisson}} = 2.35\times \frac{W\times\sqrt{\bar{n}}}{W\times\bar{n}} = 2
 \end{align}</script>满足<script type="math/tex; mode=display">\begin{align} 
 \sum^{N}_{i=1}\bar{m_i} = \bar{n},\quad \sum^{N}_{i=1} E_i = E 
 \end{align}</script></li>
-<li>设我们共进行了$L$次理想实验，第$k$次实验中产生的电子-离子对总数为$n_k$对，相应地，能量分$N_k$次相互作用传递给探测器介质，第$i$个径迹段（第$i$次相互作用）中产生的电离数为$m_{ik}$个，于是：<script type="math/tex; mode=display">\begin{align}
+<li>设我们共进行了$L$次理想实验，第$k$次实验中产生的电子-离子对总数为$n<em>k$对，相应地，能量分$N_k$次相互作用传递给探测器介质，第$i$个径迹段（第$i$次相互作用）中产生的电离数为$m</em>{ik}$个，于是：<script type="math/tex; mode=display">\begin{align}
 \sigma^{2}(n) &= \overline{(n-\bar{n})^2} = \frac{1}{L}\sum_{k=1}^{L}(n_k - \bar{n})^2 = \frac{1}{L}\sum_{k=1}^{L} (\sum_{i=1}^{N_k}m_{ik}-\frac{E}{W})^2 \qquad \\ 
 &= \frac{1}{L}\sum_{k=1}^{L} (\sum_{i=1}^{N_k}m_{ik}-\frac{1}{W}\sum_{i=1}^{N_k}E_{ik})^2 = \frac{1}{L}\sum_{k=1}^{L}[\sum_{i=1}^{N_k}(m_{ik} - \frac{E_{ik}}{W})]^2
-\end{align}</script>引入符号$\nu_{ik} = m_{ik} - \cfrac{E_{ik}}{W}$，则<script type="math/tex; mode=display">\begin{align} 
+\end{align}</script>引入符号$\nu<em>{ik} = m</em>{ik} - \cfrac{E_{ik}}{W}$，则<script type="math/tex; mode=display">\begin{align} 
 \sigma^{2}(n) &= \frac{1}{L}\sum_{k=1}^{L}(\sum_{i=1}^{N_k}\nu_{ik})^2 = \frac{1}{L}(\sum_{k=1}^{L}\sum_{i=1}^{N_k}\nu^{2}_{ik} + \sum_{k}^{L}\sum_{i\neq j}^{N_k}\nu_{ik}\nu_{jk}) \\ 
 &= \frac{1}{L}(\sum_{k=1}^{L}\sum_{i=1}^{N_k}\nu^{2}_{ik} + \sum_{k=1}^{L}\sum_{i=1}^{N_k}\nu_{ik}(\sum_{j=1}^{N_k}\nu_{jk} - \nu_{ik}))
-\end{align}</script>这里我们记平均值$\bar{\nu}_{k} = \cfrac{1}{N_k}\sum_{j=1}^{N_k}\nu_{jk}$，上式化为（这里将右端最后一项$\nu_{ik}$用$\bar{\nu}_k$近似，假定$N_k$与$\bar{\nu}_k$不相关联，且当$N_k$足够大时$\bar{\nu}_k=\bar{\nu}$）：<script type="math/tex; mode=display">\begin{align} 
+\end{align}</script>这里我们记平均值$\bar{\nu}<em>{k} = \cfrac{1}{N_k}\sum</em>{j=1}^{N<em>k}\nu</em>{jk}$，上式化为（这里将右端最后一项$\nu_{ik}$用$\bar{\nu}_k$近似，假定$N_k$与$\bar{\nu}_k$不相关联，且当$N_k$足够大时$\bar{\nu}_k=\bar{\nu}$）：<script type="math/tex; mode=display">\begin{align} 
 \sigma^{2}(n) =& \frac{1}{L}(\sum_{k=1}^{L}N_{k}\overline{\nu_{k}^2} + \sum_{k=1}^{L}N_{k}\bar{\nu}_{k}(N_{k}{\nu}_{k}-{\nu}_{k})) \\ 
 =& \overline{N}\overline{\nu^2} + (\overline{N^2} - \overline{N}) \bar{\nu}^2
 \end{align}</script>注意到$\bar{\nu}=\overline{m_i-\frac{E_i}{W}}=\overline{m_i} - \frac{E_i}{W}=0$，因此只有第一项有贡献。由理想实验自洽性，$\overline{N}=\frac{\bar{n}}{\bar{m}_i}$，所以<script type="math/tex; mode=display">\begin{align} 
@@ -293,7 +293,7 @@ R_{Fano} = \sqrt{F} \cdot R_{\text{Poisson}} = 2.35 \times \sqrt{\frac{F}{\bar{n
           
           <br>
           <strong>本文链接：</strong>
-          http://taoyi92.github.io/academic/Fano因子/
+          https://taoyi92.github.io/academic/Fano因子/
           <br>
           <strong>版权声明：</strong>
           本作品采用
@@ -301,7 +301,7 @@ R_{Fano} = \sqrt{F} \cdot R_{\text{Poisson}} = 2.35 \times \sqrt{\frac{F}{\bar{n
           进行许可。转载请注明出处！
           
             <br>
-            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a>
           
         </div>
       
@@ -426,7 +426,7 @@ R_{Fano} = \sqrt{F} \cdot R_{\text{Poisson}} = 2.35 \times \sqrt{\frac{F}{\bar{n
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://taoyi92.github.io/academic/Fano因子/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://taoyi92.github.io/academic/Fano因子/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -499,7 +499,7 @@ R_{Fano} = \sqrt{F} \cdot R_{\text{Poisson}} = 2.35 \times \sqrt{\frac{F}{\bar{n
 <script src="//ihtcboy.com/script/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://taoyi92.github.io/academic/Fano因子/",
+  id: "https://taoyi92.github.io/academic/Fano因子/",
   owner: 'TAOYi92',
   repo: 'taoyi92.github.io',
   oauth: {
@@ -661,14 +661,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">凝聚态场论</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CentOS7</a>
               </li>
              
@@ -709,15 +701,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">particle physics</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">dark matter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web server</a>
+                <a href="javascript:void(0)" class="js-tag color5">TEST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,6 +710,22 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">python3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">字符编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件读取</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -753,18 +753,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">python3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">字符编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件读取</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linux运维</a>
               </li>
              
@@ -781,22 +769,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gunicorn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">WeRobot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">systemd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">公众号</a>
               </li>
              
@@ -805,23 +777,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">particle physics</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">terminology</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GDA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MLE</a>
+                <a href="javascript:void(0)" class="js-tag color2">dark matter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -855,13 +819,53 @@ MathJax.Hub.Queue(function() {
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">正态分布</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gunicorn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">WeRobot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">systemd</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">machine learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MLE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">凝聚态场论</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:
@@ -1012,7 +1016,6 @@ MathJax.Hub.Queue(function() {
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

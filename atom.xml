@@ -1,119 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Yi&#39;s Blog</title>
+  <title>{{ config.title }}</title>
   
   
-  <link href="/atom.xml" rel="self"/>
+  <link href="{{ feed_url | uriencode }}" rel="self"/>
   
-  <link href="http://taoyi92.github.io/"/>
-  <updated>2019-09-18T09:33:58.990Z</updated>
-  <id>http://taoyi92.github.io/</id>
+  <link href="{{ url | uriencode }}"/>
+  <updated>{{ posts.first().updated.toISOString() }}</updated>
+  <id>{{ url }}</id>
   
   <author>
-    <name>德布罗意</name>
+    <name>{{ config.author }}</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>CMFT_Note01_从粒子到场</title>
-    <link href="http://taoyi92.github.io/academic/CMFT-Note01-%E4%BB%8E%E7%B2%92%E5%AD%90%E5%88%B0%E5%9C%BA/"/>
-    <id>http://taoyi92.github.io/academic/CMFT-Note01-从粒子到场/</id>
-    <published>2019-09-17T02:42:34.000Z</published>
-    <updated>2019-09-18T09:33:58.990Z</updated>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
-    <content type="html"><![CDATA[<h1 id="第一章-从粒子到场"><a href="#第一章-从粒子到场" class="headerlink" title="第一章 从粒子到场"></a>第一章 从粒子到场</h1><h2 id="General"><a href="#General" class="headerlink" title="General"></a>General</h2><h3 id="Prototype-Hamiltonian"><a href="#Prototype-Hamiltonian" class="headerlink" title="Prototype Hamiltonian"></a>Prototype Hamiltonian</h3><p>多粒子哈密顿量的最简单形式（没有考虑粒子自旋、无序性、晶格结构等）：$H = H_{\text{e}} + H_{\text{i}} + H_{\text{ei}}$</p><script type="math/tex; mode=display">\begin{align} \text{价电子动力学:}\quad H_{\text{e}} &= \sum_{i}\frac{\vec{p}_{i}^2}{2m} + \sum_{i<j}V_{\text{ee}}(\vec{r}_{i}-\vec{r}_{j}) \\ \text{离子核动力学:}\quad H_{\text{i}} &= \sum_{I}\frac{\vec{P}_{I}^2}{2M} + \sum_{I<J}V_{\text{ii}}(\vec{R}_{I}-\vec{R}_{J}) \\ \text{电子离子相互作用:}\quad H_{\text{ei}} &= \sum_{iI}V_{\text{ei}}(\vec{R}_{I}-\vec{r}_{i}) \end{align}</script><h3 id="凝聚态系统的通用基本原理"><a href="#凝聚态系统的通用基本原理" class="headerlink" title="凝聚态系统的通用基本原理"></a>凝聚态系统的通用基本原理</h3><ol><li>结构的<strong>可还原性（可化归）</strong>：$H_{\text{e}}$、$H_{\text{i}}$和$H_{\text{ei}}$彼此之间在特定问题中可视为独立的。(还原论思想)</li><li>凝聚态物理中通常只关心一些<strong>低能态动力学</strong>。一方面是由于日常生活中我们所关注的能态范围，另一方面，低温下不同的微观细节通常有相同的集体行为。</li><li>绝大多数体系的<strong>自由度是阿伏伽德罗常数$N_{A}$的量级（$\mathcal{O}(10^{23})$）</strong>。好处：我们可以使用统计方法和概念，而统计误差有微乎其微。</li><li>凝聚态系统通常拥有<strong>内禀的对称性</strong>。研究步骤：<strong>对称性$\rightarrow$守恒律$\rightarrow$低能激发</strong>。</li></ol><h3 id="两种公式化方案：“拉格朗日形式-Lagrangian-Formulation-”和“哈密顿形式-Hamiltonian-Formulation-”。"><a href="#两种公式化方案：“拉格朗日形式-Lagrangian-Formulation-”和“哈密顿形式-Hamiltonian-Formulation-”。" class="headerlink" title="两种公式化方案：“拉格朗日形式(Lagrangian Formulation)”和“哈密顿形式(Hamiltonian Formulation)”。"></a>两种公式化方案：“拉格朗日形式(Lagrangian Formulation)”和“哈密顿形式(Hamiltonian Formulation)”。</h3><h4 id="拉格朗日形式"><a href="#拉格朗日形式" class="headerlink" title="拉格朗日形式"></a>拉格朗日形式</h4><p>哈密顿量在<strong>将微观模型化归为低能有效理论</strong>时通常不是一个方便的出发点，而更有效的做法是从作用量出发。<strong>拉格朗日作用量</strong>（简称<strong>作用量</strong>，理论力学里面称为哈密顿作用量(?)）定义为$S=\int_{0}^{t_0}L(x,\dot{x})\text{d}t$，$L$是<strong>拉格朗日量</strong>。为了得到具体的物理信息，我们需要导出<strong>运动方程</strong>。</p><blockquote><p>可能不太严谨的地方：这里的$\dot{z}$总是表示$\cfrac{\partial z}{\partial t}$。</p></blockquote><h4 id="哈密顿形式"><a href="#哈密顿形式" class="headerlink" title="哈密顿形式"></a>哈密顿形式</h4><p>研究激发态能量。点粒子的共轭动量为$p\equiv\partial_{\dot{x}}L$。并且有Legendre变换关系：$H(p,x) = \sum p\dot{x}-L(x,\dot{x})\vert_{\dot{x}=\dot{x}(p,x)}$</p><p>为了导出场论的<strong>运动方程</strong>，首先要将哈密顿原理推广至无穷维情形。</p><h5 id="经典-哈密顿原理-Hamilton’s-extremal-principle"><a href="#经典-哈密顿原理-Hamilton’s-extremal-principle" class="headerlink" title="(经典)哈密顿原理(Hamilton’s extremal principle)"></a>(经典)<strong>哈密顿原理(Hamilton’s extremal principle)</strong></h5><ul><li>实际的物理构型$x(t)$总是使作用量取极值，即等时变分$\delta S[x]=0$。这意味着，对于任意光滑曲线$t \mapsto y(t)$，<script type="math/tex; mode=display">\begin{align} \lim_{\epsilon\rightarrow0}\frac{S[x+\epsilon y] - S[x]}{\epsilon} = 0 \end{align}</script>由此出发，<script type="math/tex; mode=display">\begin{align} 0 = \delta S[x] &= \delta\int L(x,\dot{x})\text{d}t = \int \delta L(x,\dot{x})\text{d}t \\ &= \int \Big( \frac{\partial L}{\partial\dot{x}}\delta\dot{x} + \frac{\partial L}{\partial x}\delta x \Big)\text{d}t \\ &= \int \Big[\frac{\text{d}}{\text{d}t}\Big( \frac{\partial L}{\partial\dot{x}}\delta x \Big) - \frac{\text{d}}{\text{d}t}\Big( \frac{\partial L}{\partial\dot{x}}\Big)\delta x + \frac{\partial L}{\partial x}\delta x \Big] \text{d}t \\ &= -\int \Big[- \frac{\text{d}}{\text{d}t}\Big( \frac{\partial L}{\partial\dot{x}}\Big) + \frac{\partial L}{\partial x} \Big]\delta x \text{d}t \end{align}</script>上式最后一步用到了等时变分全微分积分为$0$（一维情况的积分上下限就是一维区间的边界，即$x\big\vert_{\partial t} = 0$）。由于$\delta x$的任意性，因此得到$x$所满足的拉格朗日运动方程（<strong>Lagrange方程</strong>）<script type="math/tex; mode=display">\begin{align} \frac{\text{d}}{\text{d}t}\Big( \frac{\partial L}{\partial\dot{x}}\Big) - \frac{\partial L}{\partial x} = 0 \end{align}</script></li></ul><h5 id="【数学工具】泛函微分"><a href="#【数学工具】泛函微分" class="headerlink" title="【数学工具】泛函微分"></a>【数学工具】泛函微分</h5><ul><li><p>泛函的宗量是函数。与函数的研究类似，我们在研究泛函时也是对泛函的(微小)变化时的行为、泛函驻点感兴趣。泛函的驻点的含义是：在变换$f \rightarrow f+h$下（$h$是无穷小增量函数），泛函保持不变。一个泛函$F$称为可微的，若</p><script type="math/tex; mode=display">\begin{align} F[f + \epsilon g] - F[f] = \epsilon\cdot \text{D}F_{f}[g] + \mathcal{O}(\epsilon^2) \end{align}</script><p>其中，<strong>$\text{D}F_{f}$是线性泛函</strong>（满足$\text{D}F_{f}[g_{1}+g_{2}] = \text{D}F_{f}[g_{1}] + \text{D}F_{f}[g_{2}]$），$\epsilon$是无穷小参数，$g$是任意函数。<strong>定义泛函$F$的驻点在$f$，当且仅当$\text{D}F_{f} = 0$。</strong></p></li><li><p>为了更好地理解泛函$F[f]$的总量$f$，将它视为$N$维矢量$\vec{f}=\{f_{n} \equiv f(x_{n}), n=1,\cdots,N\}$在$N\rightarrow\infty$的极限（$x_n$是一组线性无关矢量，或一组<strong>基</strong>）。于是$F(\vec{f})$是一个定义在$N$维空间上的函数，在连续极限下，$\vec{f}\rightarrow f$演变为函数，同时$F(\vec{f})\rightarrow F[f]$演变为泛函。下表对于离散和取连续极限两种情形作了一个对比总结：</p></li></ul><div class="table-container"><table><thead><tr><th style="text-align:center"></th><th style="text-align:center">离散情形</th><th style="text-align:center">连续极限（$N\rightarrow\infty$）情形</th></tr></thead><tbody><tr><td style="text-align:center">空间维数</td><td style="text-align:center">有限$N$维</td><td style="text-align:center">无限维</td></tr><tr><td style="text-align:center">单位基</td><td style="text-align:center">$\vec{e}_{n}$，只有第$n$分量为$1$，其余为$0$</td><td style="text-align:center">$\delta_{x}$，其中$\delta_{x}(x’) \equiv \delta(x-x’)$</td></tr><tr><td style="text-align:center">内积</td><td style="text-align:center"><script type="math/tex">\begin{align}\langle \vec{f},\vec{g} \rangle \equiv \sum_{n=1}^{N} f_{n} g_{n}\end{align}</script></td><td style="text-align:center"><script type="math/tex">\begin{align}\langle f, g \rangle \equiv \int f(x) g(x)\text{d}x\end{align}</script></td></tr><tr><td style="text-align:center">宗量</td><td style="text-align:center">$\vec{f} = \{f_{n} \equiv f(x_{n}), n=1,\cdots,N\}$</td><td style="text-align:center">$f$</td></tr><tr><td style="text-align:center">宗量投影分量</td><td style="text-align:center"><script type="math/tex">\begin{align}f_{n} = \langle \vec{f},\vec{e}_n \rangle = \sum_{m=1}^{N}f_{m}(\vec{e}_{n})_{m}\end{align}</script>，$(\vec{e}_{n})_{m} = \delta_{nm}$</td><td style="text-align:center"><script type="math/tex">\begin{align}f(x) = \langle f, \delta_x \rangle = \int f(x')\delta_{x}(x')\text{d}x'\end{align}</script></td></tr><tr><td style="text-align:center">函子</td><td style="text-align:center">$F(\vec{f})$</td><td style="text-align:center">$F[f]$</td></tr><tr><td style="text-align:center">偏微分</td><td style="text-align:center"><script type="math/tex">\begin{align}\partial_{f_n}F(\vec{f}) \equiv \lim_{\epsilon\rightarrow 0} \frac{F(\vec{f}+\epsilon\vec{e}_{n}) - F(\vec{f})}{\epsilon}\end{align}</script></td><td style="text-align:center"><script type="math/tex">\begin{align} \frac{\delta F[f]}{\delta f(x)} \equiv \lim_{\epsilon\rightarrow 0}\frac{F[f+\epsilon\delta_{x}] - F[f]}{\epsilon} \end{align}</script></td></tr><tr><td style="text-align:center">全微分</td><td style="text-align:center"><script type="math/tex">\begin{align}\text{d}F_{\vec{f}}(\vec{g}) \equiv \langle\nabla F_{\vec{f}},\vec{g} \rangle = \sum_{n=1}^{N} \partial_{f_{n}}F(\vec{f})g_{n}\end{align}</script></td><td style="text-align:center"><script type="math/tex">\begin{align} \text{D}F_{f}[g] = \int \frac{\delta F[f]}{\delta f(x)}g(x) \text{d}x \end{align}</script></td></tr><tr><td style="text-align:center">(变)微分</td><td style="text-align:center"><script type="math/tex">\begin{align}F(\vec{f}+\epsilon\vec{g})-F(\vec{f}) = \epsilon\cdot\text{d}F_{\vec{f}}(\vec{g}) + \mathcal{O}(\epsilon^2)\end{align}</script></td><td style="text-align:center"><script type="math/tex">\begin{align}F[f + \epsilon g] - F[f] = \epsilon\cdot \text{D}F_{f}[g] + \mathcal{O}(\epsilon^2)\end{align}</script></td></tr><tr><td style="text-align:center">链式法则</td><td style="text-align:center"><script type="math/tex">\begin{align} \partial_{f_n}F(\vec{g}(\vec{f})) = \sum_{m=1}^{N}\partial_{g_m}F(\vec{g})\Big\vert_{\vec{g}=\vec{g}(\vec{f})}\partial_{f_n}g_{m}(f_m) \end{align}</script></td><td style="text-align:center"><script type="math/tex">\begin{align} \frac{\delta F[g[f]]}{\delta f(x)} = \int \frac{\delta F[g]}{\delta g(y)}\Bigg\vert_{g=g[f]}\frac{\delta g(y)[f]}{\delta f(x)} \text{d}y \end{align}</script></td></tr></tbody></table></div><ul><li>这里的记号$g[f]$是一个对$\vec{g}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}$（即$\vec{g}$是$\mathbb{R}^{m}$-值函数）的连续化推广，其分量$g(y)[f]$本身也是泛函。利用以上的推广，也可以写出泛函$F[f]$在$f=0$处的Taylor展开（这里的$0$含义是恒零函数）：<script type="math/tex; mode=display">\begin{align} F[f] = F[0] + \int \frac{\delta F[f]}{\delta f(x_1)}\Bigg\vert_{f=0}f(x_1)\text{d}x_1 + \frac{1}{2} \int\frac{\delta^2 F[f]}{\delta f(x_2) \delta f(x_1)}\Bigg\vert_{f=0}f(x_1)f(x_2)\text{d}x_{1}\text{d}x_2 + \cdots \end{align}</script>其中的二重泛函微商是二重偏微分的推广，由定义可得<script type="math/tex; mode=display">\begin{align} \frac{\delta^2 F[f]}{\delta f(x_2) \delta f(x_1)} &\equiv \frac{\delta}{\delta f(x_2)}\Big(\frac{\delta F[f]}{\delta f(x_1)}\Big) = \frac{\delta}{\delta f(x_2)}\Big(\lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_1\delta_{x_1}]-F[f])\Big) \\ &= \lim_{\epsilon_2\rightarrow 0}\frac{1}{\epsilon_2}\Big[\lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_2\delta_{x_2}+\epsilon_1\delta_{x_1}]-F[f+\epsilon_2\delta_{x_2}]) - \lim_{\epsilon_1\rightarrow 0}\frac{1}{\epsilon_1}(F[f+\epsilon_1\delta_{x_1}]-F[f]) \Big] \\ &= \lim_{\epsilon_{1,2}\rightarrow 0}\frac{1}{\epsilon_1\epsilon_2}(F[f+\epsilon_1\delta_{x_1}+\epsilon_2\delta_{x_2}] - F[f+\epsilon_1\delta_{x_1}] - F[f+\epsilon_2\delta_{x_2}] + F[f])\end{align}</script></li></ul><h5 id="场论的Euler-Lagrange方程"><a href="#场论的Euler-Lagrange方程" class="headerlink" title="场论的Euler-Lagrange方程"></a>场论的Euler-Lagrange方程</h5><ul><li>场论中的作用量泛函通常为<script type="math/tex">\begin{align} S[\phi] = \int_{M} \mathcal{L}(\phi^{i},\partial_{\mu}\phi^{i}) \text{d}^{m}x \end{align}</script>，这里我们设基流形$M$由$m$维坐标矢量$\mathbb{x} = {\{x_{\mu}\}}$参数化（通常实际应用中$m=d+1$，$\mathbb{x} = (x_0,x_1,\cdots,x_d)$包含一个类时分量$x_0 = t$和$d$个类空分量$x_k, k=1,\cdots,d$）。通常假设场流形拥有$n$维，场的<strong>坐标</strong>$\phi=\{\phi^{i}\}, i=1,\cdots,n$。$S[\phi]$的全部(局域)信息都储存在$\mathcal{L}$函数中，然而一般的泛函不具有这样的性质。由于这样的性质，$S$的泛函微商和$\mathcal{L}$的普通导数的关系：<script type="math/tex; mode=display">\begin{align} S[\phi+\epsilon\theta] -S[\phi] &= \int_{M} [\mathcal{L}(\phi+\epsilon\theta, \partial_{\mu}\phi+\epsilon\partial_{\mu}\theta) - \mathcal{L}(\phi, \partial_{\mu}\phi)]\text{d}^{m}\mathbb{x} \\ &= \int_{M} \epsilon\Big[\frac{\partial\mathcal{L}}{\partial\phi^{i}}\theta^{i} + \frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{i})}\partial_{\mu}\theta^{i} \Big]\text{d}^{m}\mathbb{x} + \mathcal{O}(\epsilon^2) \\ &= \int_{M} \epsilon\Big[\frac{\partial\mathcal{L}}{\partial\phi^{i}} - \partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{i})} \Big]\theta^{i}\text{d}^{m}\mathbb{x} + \mathcal{O}(\epsilon^2) \end{align}</script>这里已经假设基流形在边界处的场变分为$0$，即$\theta\vert_{\partial M} = 0$。对比泛函微商的定义，得到：<script type="math/tex; mode=display">\begin{align} \frac{\delta S[\phi]}{\delta\phi^{i}(\mathbb{x})} = \frac{\partial\mathcal{L}}{\partial\phi^{i}(\mathbb{x})} - \partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{i}(\mathbb{x}))} \end{align}</script>因此，<strong>泛函$S[\phi]$的稳定点</strong>等价于以下条件（称为<strong>场论的Euler-Lagrange方程</strong>）：<script type="math/tex; mode=display">\begin{align} \forall \mathbb{x},i : \frac{\partial\mathcal{L}}{\partial\phi^{i}(\mathbb{x})} - \partial_{\mu}\frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi^{i}(\mathbb{x}))} = 0 \end{align}</script>(i) $d=0, x_0 = t$：$n$维空间点粒子的运动方程（$\phi(t) = \vec{r}(t)$）所对应的Euler-Lagrange方程<script type="math/tex">\begin{align}\frac{\partial\mathcal{L}}{\partial\vec{r}(t)} - \frac{\text{d}}{\text{d}t}\Big(\frac{\partial\mathcal{L}}{\partial\dot{\vec{r}}(t)}\Big) = 0\end{align}</script>。<br>(ii) $d = 1, (x_0, x_1) = (t, x)$：$n$维空间的一维质点链位移的$\phi$的Euler-Lagrange方程<script type="math/tex">\begin{align}\frac{\partial\mathcal{L}}{\partial\phi(t,x)} - \frac{\partial}{\partial t}\Big(\frac{\partial\mathcal{L}}{\partial\dot{\phi}(t,x)}\Big) - \frac{\partial}{\partial x}\Big(\frac{\partial\mathcal{L}}{\partial_{x}\phi(t,x)}\Big) = 0\end{align}</script>。</li></ul><h5 id="正则动量与Legendre变换"><a href="#正则动量与Legendre变换" class="headerlink" title="正则动量与Legendre变换"></a>正则动量与Legendre变换</h5><ul><li>在哈密顿形式下，我们通过$\mathcal{L}$定义关于$\phi$（在场点$\mathbb{x}$处）的正则动量$\pi^{i}$【注意与圆周率$\pi$的区分】<script type="math/tex; mode=display">\begin{align} \pi^{i}(x_{k};k=1,\cdots,d)\equiv\frac{\partial\mathcal{L}(\phi^{i},\partial_{k}\phi^{i}; i=1,\cdots,n)}{\partial\dot{\phi^{i}}(x_{k};k=1,\cdots,d)} \end{align}</script></li><li><p>由Legendre变换得到哈密顿密度$\mathcal{H}$:</p><script type="math/tex; mode=display">\begin{align} \mathcal{H}(\phi^{i},\partial_{k}\phi^{i},\pi^{i}) = \big(\pi\dot{\phi}-\mathcal{L}(\phi,\partial_{k}\phi,\dot{\phi})\big)\Big\vert_{\dot{\phi}=\dot{\phi}(\phi,\pi)} \end{align}</script><blockquote><p>这里上下标比较多，统一整理：$i=1,\cdots,n（标记场流形坐标自由度）$； $m=d+1$；$\mu=0,1,\cdots,d（标记基流形时空维度）$；$k=1,\cdots,d（标记基流形类空维度）$。</p><p>下面「模型一」中的$I=1,\cdots,N\rightarrow\infty（标记场流形点自由度）$这里已经被连续化，因此这里不再出现。</p></blockquote></li></ul><h4 id="【补充1】"><a href="#【补充1】" class="headerlink" title="【补充1】"></a>【补充1】</h4><ul><li><p><strong>场</strong>是一个由给定流形（基流形$M$）向目标流形（场流形$T$）的光滑映射</p><script type="math/tex; mode=display">\begin{align} \phi:\qquad M \quad &\rightarrow \quad T \\ z \quad &\mapsto \quad \phi(z) \end{align}</script><p>凝聚态领域中，最广泛的应用形式是$M (\subset \mathcal{R}\times\mathcal{T}) \rightarrow T$，$M$为时空区间乘积，$T$是一个类空(?)流形。</p></li><li><p>在应用场论中，场不是作为最终结果，而是泛函的输入，泛函也是一种映射$S: \phi\mapsto S[\phi] \in \mathbb{R}$。$S[\phi]$决定了一个场论。凝聚态场论通常是离散映射的极限，有时候考虑离散图景是很有帮助的，这时泛函就化为了有限维微积分。</p></li></ul><h4 id="【补充2】"><a href="#【补充2】" class="headerlink" title="【补充2】"></a>【补充2】</h4><ul><li><strong>Lorentz不变性</strong>的含义是：对于给定的(逆变)$4$-矢量$X_{\mu}$，若线性坐标变换$X_{\mu} \rightarrow X_{\mu}’ \equiv T_{\mu\nu}X_{\nu}$使度规$g=\{g^{\mu\nu}\}=\text{diag}\{1,-1,-1,-1\}$保持不变（$T^{T}gT=g$），则称这个线性变换是一个Lorentz变换。协变矢量$X^{\mu} = g^{\mu\nu}X_{\nu}$，Lorentz不变性表示为：$X^{\mu}X_{\mu} = X’^{\mu}X’_{\mu}$，其中等号左右两端表示坐标变换前后。</li></ul><h2 id="模型一：经典谐振子链：声子"><a href="#模型一：经典谐振子链：声子" class="headerlink" title="模型一：经典谐振子链：声子"></a>模型一：经典谐振子链：声子</h2><h3 id="研究对象：离子核的动力学"><a href="#研究对象：离子核的动力学" class="headerlink" title="研究对象：离子核的动力学"></a>研究对象：离子核的动力学</h3><h3 id="模型限制："><a href="#模型限制：" class="headerlink" title="模型限制："></a>模型限制：</h3><ul><li>经典力学范畴（忽略量子效应）</li><li>$\text{dim}= 1 + 1$，$N \gg 1$</li><li>离子间距（晶格常数）$a$，$|R_{I}(t)-\bar{R}_{I}| \ll a$</li><li>$H_{\text{e}}= H_{\text{ei}} = 0$</li></ul><h3 id="模型讨论："><a href="#模型讨论：" class="headerlink" title="模型讨论："></a>模型讨论：</h3><ul><li><p>零温下，所有离子排成一列，坐标为$R_{I} \equiv \bar{R_{I}} = Ia$，$R_{I}$是坐标变量，此时恰恒等于它的平衡态位置坐标$\bar{R_{I}}$。</p></li><li><p>极低温下，势能$V_{\text{ii}}$近似为二次形式（微振动），哈密顿量变成（$k_s$是劲度系数）</p><script type="math/tex; mode=display">\begin{align} H = H_{\text{ii}} = \sum_{I=1}^{N}\Big[\frac{P_{I}^{2}}{2M} + \frac{k_s}{2}(R_{I+1} - R_{I} -a)^{2}\Big] \end{align}</script><p>这时的哈密顿量实际上描述$N$个由弹簧弹性连接的质点。在这个体系中$(R,\dot{R}) \equiv \{R_{I},\dot{R}_{I}\}$，拉格朗日量为</p><script type="math/tex; mode=display">\begin{align} L = T - U = \sum_{I=1}^{N}\Big[\frac{M\dot{R}^{2}_{I}}{2} - \frac{k_s}{2}(R_{I+1} - R_{I} -a)^{2} \Big] \end{align}</script><p>我们感兴趣的是$N \gg 1$的多体系统，因此可以<strong>忽略边界条件</strong>，或者<strong>考虑周期性边界条件</strong>（这等价于原子链变成一个大的“环”）。考虑到此时晶格振动很弱（<strong>长程序保持</strong>），因此模型中离子偏移平衡态位置很小（$|R_{I}(t)-\bar{R}_{I}| \ll a$）的假设是合理的。晶体的完整性也被保持。</p><p>记$\phi_{I}(t) = R_{I}(t)-\bar{R}_{I}, (周期性边界条件：\phi_{N+1}=\phi_1)$，</p><script type="math/tex; mode=display">\begin{align} L = \sum_{I=1}^{N}\Big[\frac{M}{2}\dot{\phi}^{2}_{I} - \frac{k_s}{2}(\phi_{I+1} - \phi_{I})^{2} \Big] \end{align}</script></li><li><p>通常，由于我们研究的尺度相比原子尺度来讲是宏观的，我们可以对离散晶格模型取<strong>连续极限</strong>，也就是用有效的连续自由度来描述体系。连续的系统一般更容易形式化，比如可以方便做Taylor展开。</p><p>在目前的谐振子链模型中，由于我们已经假设了条件$|\phi_{I}(t)| \ll a$，现在（取连续极限）引入连续自由度$\phi(x,t)$（量纲为$[L]^{\frac{1}{2}}$）：</p><script type="math/tex; mode=display">\begin{align} \phi_{I}(t) \rightarrow a^{\frac{1}{2}}\phi(x,t)\Big|_{x=Ia}, \quad \phi_{I+1}(t) - \phi_{I}(t) \rightarrow a^{\frac{3}{2}}\partial_{x}\phi(x,t)\Big|_{x=Ia}, \quad \sum_{I=1}^{N} \rightarrow \frac{1}{a}\int_{0}^{l \equiv Na}\text{d}x \end{align}</script><p>拉格朗日量化为（$\phi \equiv \phi(x,t)$，$m \equiv M$，拉格朗日量密度记为$\mathcal{L}\sim[E]\cdot[L]^{-1}$）：</p><script type="math/tex; mode=display">\begin{align} L[\phi] =\int_{0}^{l}\mathcal{L}(\phi,\partial_{x}\phi,\dot{\phi})\text{d}x ,\quad \mathcal{L}(\phi,\partial_{x}\phi,\dot{\phi}) = \frac{m}{2}\dot{\phi}^{2} - \frac{k_{s}a^{2}}{2}(\partial_{x}\phi)^{2} \end{align}</script><p>经典作用量为：</p><script type="math/tex; mode=display">\begin{align} S[\phi] = \int L[\phi]\text{d}t = \int\text{d}t \int_{0}^{l}\mathcal{L}(\phi,\partial_{x}\phi,\dot{\phi})\text{d}x \end{align}</script><p>至此我们抛弃了$N$点粒子描述，而改用了一个有连续自由度的<strong>(经典)场</strong>，此时的拉格朗日量和作用量都是$\phi$的泛函。用几何的语言来讲，$\phi$的基流形$M = [0,L]\times[0,t]\subset\mathbb{R}^{2}$（时空区间乘积），场流形$T = \mathbb{R}$。</p></li><li><p>由于<script type="math/tex">\begin{align} \frac{\partial\mathcal{L}}{\partial\phi(t,x)} = 0, \frac{\partial}{\partial t}\Big(\frac{\partial\mathcal{L}}{\partial\dot{\phi}(t,x)}\Big) = m\ddot{\phi}^{2}, \frac{\partial}{\partial x}\Big(\frac{\partial\mathcal{L}}{\partial_{x}\phi(t,x)}\Big) = -k_{s}a^{2}\partial^{2}_{x}\phi \end{align}</script>，一维质点链的运动方程为：</p><script type="math/tex; mode=display">\begin{align} (m\partial_{t}^{2} - k_{s}a^{2}\partial_{x}^{2})\phi = 0 \end{align}</script><p>这是一个<strong>波动方程</strong>，行波解的一般形式为$\phi_{+}(x-vt)+\phi_{-}(x+vt)$，其中$v=a\sqrt{k_s/m}$，$\phi_{\pm}$是具有所给出形式（向前或向后传播）的任意光滑函数。由此推出此模型的基本低能<strong>元激发</strong>是晶格振动以<strong>声波</strong>的形式传播。</p></li><li><p>模型性质：（平凡的）<strong>无耗散、无色散</strong>。考虑加上这些改进就可以给出一般的晶格振动的经典场论。是一种集体激发（元激发包含了大量的微观自由度）。</p><blockquote><p>注意：不是所有的凝聚态体系的激发模式都是集体激发，例如相互作用电子气就是与原始微观系统$1：1$对应的微观激发——带电准粒子，而相应的集体激发模式是长波的等离激元。</p></blockquote></li><li><p>一维谐振子链动力学的哈密顿形式</p><ul><li>正则动量：<script type="math/tex">\begin{align} \pi(x,t)\equiv\frac{\partial\mathcal{L}(\phi,\partial_{x}\phi,\dot{\phi})}{\partial\dot{\phi}(x,t)}=m\dot{\phi}(x,t) \end{align}</script></li><li>哈密顿量密度：<script type="math/tex">\begin{align} \mathcal{H}(\phi,\partial_{x}\phi,\pi) = \big(\pi\dot{\phi}-\mathcal{L}(\phi,\partial_{x}\phi,\dot{\phi})\big)\big\vert_{\dot{\phi}=\dot{\phi}(\phi,\pi)} = m\dot{\phi}^{2} - \big(\frac{m}{2}\dot{\phi}^{2} - \frac{k_{s}a^{2}}{2}(\partial_{x}\phi)^{2}\big) = \frac{\pi^2}{2m} + \frac{k_{s}a^{2}}{2}(\partial_{x}\phi)^{2} \end{align}</script></li><li>哈密顿量：<script type="math/tex">\begin{align} H[\pi,\phi] = \int_{0}^{l}\mathcal{H}(\phi,\partial_{x}\phi,\pi)\text{d}x =  \int\Big(\frac{\pi^2}{2m} + \frac{k_{s}a^{2}}{2}(\partial_{x}\phi)^{2}\Big)\text{d}x \end{align}</script></li></ul></li><li><p>取一个特解$\phi(x,t)=\phi_{+}(x-vt)$为例，则$\pi(x,t)=-mv\partial_{x}\phi_{+}(x-vt)$，从而</p><script type="math/tex; mode=display">\begin{align} H[\pi,\phi] = (\frac{1}{2}mv^2 +\frac{1}{2}k_{s}a^2)\int_{0}^{l}[\partial_{x}\phi_{+}(x-vt)]^2 \text{d}x = k_{s}a^2 \int_{0}^{l}[\partial_{x}\phi_{+}(x)]^2 \text{d}x \end{align}</script><p>我们看到哈密顿量是正定的、不含时的。注意到，当我们取无穷小的激发极限$\partial_{x}\phi_{+}\rightarrow0$，能量消失了，这体现了体系的对称性，即当所有离子同时平移时哈密顿量不变（对应离散情形$\phi_{I} \rightarrow \phi_{I} + \delta,  \delta=const.$），整体的平移不改变体系的内能。体系的基态$R_{I}=Ia\Rightarrow\phi_{I}=0$，我们说平移对称性是<strong>自发破缺</strong>的（即固体必须决定自己向哪个方向静止）。对称性的自发破缺不意味着对称性消失，相反，从预置的基态发生无限波长偏移已经接近全局(宏观上固体的很大一部分)平移，使得消耗的能量几乎为$0$。</p></li><li><p>从微观简谐哈密顿量出发，我们可以推导<strong>比热</strong>。热力学能量密度（内能密度）：</p><p><script type="math/tex">\begin{align} u = \frac{1}{l}\frac{\int e^{-\beta H}H\text{d}\Gamma}{\int e^{-\beta H}\text{d}\Gamma} = -\frac{1}{l}\partial_{\beta}\ln{\int e^{-\beta H}\text{d}\Gamma} = -\frac{1}{l}\partial_{\beta}\ln{\mathcal{Z}} \end{align}</script>，其中$\beta=(\frac{1}{k_{B}T}=)\frac{1}{T}$，$\mathcal{Z}\equiv\int e^{-\beta H}\text{d}\Gamma$是Boltzmann配分函数，$\text{d}\Gamma=\prod_{I=1}^{N}\text{d}R_{I}\text{d}P_{I}$是相空间体积元。从而比热为$c\equiv\partial_{T}u$。</p><p>对积分变量做尺度变换：$R_{I}\rightarrow\beta^{-1/2}X_{I}, P_{I}\rightarrow\beta^{-1/2}Y_{I}$，指数$\beta H(R,P)\rightarrow H(X,Y)$现在与温度无关了（因为$H(R,P)$对$R$和$P$的依赖都是二次的），积分测度相应变换为$\text{d}\Gamma\rightarrow\beta^{-N}\prod_{I=1}^{N}\text{d}X_{I}\text{d}Y_{I}\equiv\beta^{-N}\text{d}\Gamma’$。记$\rho\equiv N/l$表示原子密度（1维体积为$l$），$K\equiv\int e^{-H(X,Y)}\text{d}\Gamma’$（也与温度无关）。能量密度化为：</p><p><script type="math/tex">\begin{align} u = -\frac{1}{l}\partial_{\beta}\ln{(\beta^{-N}K)} = -\frac{1}{l}\frac{-N\beta^{-N-1}K}{\beta^{-N}K} = \frac{N}{l\beta} = \rho T \end{align}</script>，</p><p>于是比热$c=\rho$，与材料性质参数$M,k_{s}$无关，与$N$自由度<strong>能量均分定理</strong>的结果一致（$U=NT$）。由于我们现在讨论的是“经典”谐振子链模型，因而没有涉及任何的量子效应，故在低温下与实验结果是不符的。</p></li></ul><h2 id="模型二：自由传播的电磁波"><a href="#模型二：自由传播的电磁波" class="headerlink" title="模型二：自由传播的电磁波"></a>模型二：自由传播的电磁波</h2><h3 id="研究对象：真空电动力学"><a href="#研究对象：真空电动力学" class="headerlink" title="研究对象：真空电动力学"></a>研究对象：真空电动力学</h3><h3 id="模型限制：-1"><a href="#模型限制：-1" class="headerlink" title="模型限制："></a>模型限制：</h3><ul><li>经典电动力学范畴（忽略量子效应）</li><li>$\text{dim}= 3 + 1$，连续场</li><li>非均匀，真空（$\vec{E} = \vec{D}, \vec{B} = \vec{H}$）</li><li></li></ul><h3 id="模型讨论：-1"><a href="#模型讨论：-1" class="headerlink" title="模型讨论："></a>模型讨论：</h3><ul><li><p>这里我们倒着来看看从作用量出发的理论构建情况。</p></li><li><p>Maxwell方程组：</p><script type="math/tex; mode=display">\begin{align} 非均匀方程(由变分原理得到的运动方程)：&\quad \nabla\cdot\vec{E} = \rho, \quad \nabla\times\vec{B} - \partial_{t}\vec{E} = \vec{j}, \\ 均匀方程(对\vec{E}和\vec{B}的第一性原理的约束)： &\quad \nabla\times\vec{E} + \partial_{t}\vec{B} = \vec{0}, \quad \nabla\cdot\vec{B} = \vec{0}, \end{align}</script></li><li><p>电磁4-势$A_{\mu} = (\phi,-\vec{A})$，场在规范变换$A_{\mu} \rightarrow A_{\mu} + \partial_{\mu}\Gamma$保持不变，其中$\Gamma$是任意函数。$\vec{E}$和$\vec{B}$被$A_{\mu}$唯一决定：$\vec{E} = -\nabla\phi-\partial_{t}\vec{A}$，$\vec{B} = \nabla\times\vec{A}$。</p></li><li><p>电磁场张量$F_{\mu\nu} = \partial_{\mu}A_{\nu} - \partial_{\nu}A_{\mu}$（反对称，也称电磁张量），其中$x_{\mu} = (t,-\vec{x})$并且$\partial_{\mu} = (\partial_{t},\nabla)$。</p><script type="math/tex; mode=display">F = \{F_{\mu\nu}\} = \begin{bmatrix} 0 & E_1 & E_2 & E_3 \\ -E_1 & 0 & -B_3 & B_2 \\ -E_2 & B_3 & 0 & -B_1 \\ -E_3 & -B_2 & B_1 & 0 \end{bmatrix}</script><p>利用场张量，我们得到第一性原理约束的另一表达形式：$\partial_{\lambda}F_{\mu\nu} + \partial_{\mu}F_{\nu\lambda} + \partial_{\nu}F_{\lambda\mu} = 0$</p></li><li><p>构建作用量$S[A]$：</p><ul><li><p>方案一：认为Maxwell方程组是基本的，试图通过变分原理从作用量给出Maxwell方程组。</p></li><li><p>方案二：从对称性出发。电磁理论需要满足<strong>Lorentz不变性</strong>、<strong>规范不变性</strong>、形式简单的基本假设。最高至$A$的二阶(微分)项的选择为：</p><script type="math/tex; mode=display">\begin{align} S[A] = \int (c_1 F_{\mu\nu} F^{\mu\nu} + c_2 A_{\mu}j^{\mu}) \text{d}^{4}x \end{align}, \quad 其中\text{d}^{4}x = \prod_{\mu}\text{d}x_{\mu} = \text{d}t\text{d}x_1\text{d}x_2\text{d}x_3</script></li></ul></li></ul>]]></content>
+    <content type="html"><![CDATA[{{ post.content | noControlChars | safe }}]]></content>
     
     <summary type="html">
     
-      Condensed Matter Field Theory (A. Altland and B. Simons) 第一章笔记
+      {{ post.description }}
     
     </summary>
     
-      <category term="academic" scheme="http://taoyi92.github.io/categories/academic/"/>
+      <category term="{{ category.name }}" scheme="{{ (url + category.path) | uriencode }}"/>
     
     
-      <category term="凝聚态场论" scheme="http://taoyi92.github.io/tags/%E5%87%9D%E8%81%9A%E6%80%81%E5%9C%BA%E8%AE%BA/"/>
+      <category term="{{ tag.name }}" scheme="{{ (url + tag.path) | uriencode }}"/>
     
-      <category term="笔记" scheme="http://taoyi92.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="{{ tag.name }}" scheme="{{ (url + tag.path) | uriencode }}"/>
     
   </entry>
   
   <entry>
-    <title>「暗物质千问系列」之「暗物质的间接探测项目都有哪些？」</title>
-    <link href="http://taoyi92.github.io/uncategorized/%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E5%8D%83%E9%97%AE%E7%B3%BB%E5%88%97%E3%80%8D%E4%B9%8B%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E7%9A%84%E9%97%B4%E6%8E%A5%E6%8E%A2%E6%B5%8B%E9%A1%B9%E7%9B%AE%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E3%80%8D/"/>
-    <id>http://taoyi92.github.io/uncategorized/「暗物质千问系列」之「暗物质的间接探测项目都有哪些？」/</id>
-    <published>2019-08-02T03:25:26.000Z</published>
-    <updated>2019-08-02T03:25:26.119Z</updated>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
+    
+    <content type="html"><![CDATA[{{ post.content | noControlChars | safe }}]]></content>
     
     <summary type="html">
     
-      「暗物质千问系列」之「暗物质的间接探测项目都有哪些？」
+      {{ post.description }}
     
     </summary>
     
+      <category term="{{ category.name }}" scheme="{{ (url + category.path) | uriencode }}"/>
+    
+    
+      <category term="{{ tag.name }}" scheme="{{ (url + tag.path) | uriencode }}"/>
     
   </entry>
   
   <entry>
-    <title>「暗物质千问系列」之「暗物质的直接探测项目都有哪些？」</title>
-    <link href="http://taoyi92.github.io/uncategorized/%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E5%8D%83%E9%97%AE%E7%B3%BB%E5%88%97%E3%80%8D%E4%B9%8B%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E7%9A%84%E7%9B%B4%E6%8E%A5%E6%8E%A2%E6%B5%8B%E9%A1%B9%E7%9B%AE%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E3%80%8D/"/>
-    <id>http://taoyi92.github.io/uncategorized/「暗物质千问系列」之「暗物质的直接探测项目都有哪些？」/</id>
-    <published>2019-08-02T03:25:18.000Z</published>
-    <updated>2019-08-02T03:25:18.763Z</updated>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
+    
+    <content type="html"><![CDATA[{{ post.content | noControlChars | safe }}]]></content>
     
     <summary type="html">
     
-      「暗物质千问系列」之「暗物质的直接探测项目都有哪些？」
+      {{ post.description }}
     
     </summary>
     
+      <category term="{{ category.name }}" scheme="{{ (url + category.path) | uriencode }}"/>
+    
+    
+      <category term="{{ tag.name }}" scheme="{{ (url + tag.path) | uriencode }}"/>
+    
+      <category term="{{ tag.name }}" scheme="{{ (url + tag.path) | uriencode }}"/>
     
   </entry>
   
   <entry>
-    <title>「暗物质千问系列」之「暗物质的可能候选者是怎样分类的？」</title>
-    <link href="http://taoyi92.github.io/uncategorized/%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E5%8D%83%E9%97%AE%E7%B3%BB%E5%88%97%E3%80%8D%E4%B9%8B%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E7%9A%84%E5%8F%AF%E8%83%BD%E5%80%99%E9%80%89%E8%80%85%E6%98%AF%E6%80%8E%E6%A0%B7%E5%88%86%E7%B1%BB%E7%9A%84%EF%BC%9F%E3%80%8D/"/>
-    <id>http://taoyi92.github.io/uncategorized/「暗物质千问系列」之「暗物质的可能候选者是怎样分类的？」/</id>
-    <published>2019-08-02T03:24:28.000Z</published>
-    <updated>2019-08-02T03:24:28.706Z</updated>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
     <summary type="html">
     
-      「暗物质千问系列」之「暗物质的可能候选者是怎样分类的？」
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>「暗物质千问系列」之「银河系内的暗物质的整体运动形式是怎样的？」</title>
-    <link href="http://taoyi92.github.io/uncategorized/%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E5%8D%83%E9%97%AE%E7%B3%BB%E5%88%97%E3%80%8D%E4%B9%8B%E3%80%8C%E9%93%B6%E6%B2%B3%E7%B3%BB%E5%86%85%E7%9A%84%E6%9A%97%E7%89%A9%E8%B4%A8%E7%9A%84%E6%95%B4%E4%BD%93%E8%BF%90%E5%8A%A8%E5%BD%A2%E5%BC%8F%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F%E3%80%8D/"/>
-    <id>http://taoyi92.github.io/uncategorized/「暗物质千问系列」之「银河系内的暗物质的整体运动形式是怎样的？」/</id>
-    <published>2019-08-02T03:23:17.000Z</published>
-    <updated>2019-08-02T03:23:17.057Z</updated>
-    
-    <summary type="html">
-    
-      「暗物质千问系列」之「银河系内的暗物质的整体运动形式是怎样的？」
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>「暗物质千问系列」之「如何确定暗物质的太阳系邻域速度分布？」</title>
-    <link href="http://taoyi92.github.io/uncategorized/%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E5%8D%83%E9%97%AE%E7%B3%BB%E5%88%97%E3%80%8D%E4%B9%8B%E3%80%8C%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E6%9A%97%E7%89%A9%E8%B4%A8%E7%9A%84%E5%A4%AA%E9%98%B3%E7%B3%BB%E9%82%BB%E5%9F%9F%E9%80%9F%E5%BA%A6%E5%88%86%E5%B8%83%EF%BC%9F%E3%80%8D/"/>
-    <id>http://taoyi92.github.io/uncategorized/「暗物质千问系列」之「如何确定暗物质的太阳系邻域速度分布？」/</id>
-    <published>2019-08-02T02:56:43.000Z</published>
-    <updated>2019-08-02T02:56:43.921Z</updated>
-    
-    <summary type="html">
-    
-      「暗物质千问系列」之「如何确定暗物质的太阳系邻域速度分布？」
+      {{ post.description }}
     
     </summary>
     
@@ -121,15 +103,15 @@
   </entry>
   
   <entry>
-    <title>「暗物质千问系列」之「如何确定暗物质的太阳系邻域密度？」</title>
-    <link href="http://taoyi92.github.io/uncategorized/%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E5%8D%83%E9%97%AE%E7%B3%BB%E5%88%97%E3%80%8D%E4%B9%8B%E3%80%8C%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E6%9A%97%E7%89%A9%E8%B4%A8%E7%9A%84%E5%A4%AA%E9%98%B3%E7%B3%BB%E9%82%BB%E5%9F%9F%E5%AF%86%E5%BA%A6%EF%BC%9F%E3%80%8D/"/>
-    <id>http://taoyi92.github.io/uncategorized/「暗物质千问系列」之「如何确定暗物质的太阳系邻域密度？」/</id>
-    <published>2019-08-02T02:56:24.000Z</published>
-    <updated>2019-08-02T02:56:24.360Z</updated>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
     <summary type="html">
     
-      「暗物质千问系列」之「如何确定暗物质的太阳系邻域密度？」
+      {{ post.description }}
     
     </summary>
     
@@ -137,15 +119,15 @@
   </entry>
   
   <entry>
-    <title>「暗物质千问系列」之「我们在地球上如何确定哪些事件源自暗物质？」</title>
-    <link href="http://taoyi92.github.io/uncategorized/%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E5%8D%83%E9%97%AE%E7%B3%BB%E5%88%97%E3%80%8D%E4%B9%8B%E3%80%8C%E6%88%91%E4%BB%AC%E5%9C%A8%E5%9C%B0%E7%90%83%E4%B8%8A%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E5%93%AA%E4%BA%9B%E4%BA%8B%E4%BB%B6%E6%BA%90%E8%87%AA%E6%9A%97%E7%89%A9%E8%B4%A8%EF%BC%9F%E3%80%8D/"/>
-    <id>http://taoyi92.github.io/uncategorized/「暗物质千问系列」之「我们在地球上如何确定哪些事件源自暗物质？」/</id>
-    <published>2019-08-01T07:42:50.000Z</published>
-    <updated>2019-08-01T07:42:50.793Z</updated>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
     <summary type="html">
     
-      「暗物质千问系列」之「我们在地球上如何确定哪些事件源自暗物质？」
+      {{ post.description }}
     
     </summary>
     
@@ -153,15 +135,15 @@
   </entry>
   
   <entry>
-    <title>「暗物质千问系列」之「探测器中的暗物质事例率都与什么因素相关？」</title>
-    <link href="http://taoyi92.github.io/uncategorized/%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E5%8D%83%E9%97%AE%E7%B3%BB%E5%88%97%E3%80%8D%E4%B9%8B%E3%80%8C%E6%8E%A2%E6%B5%8B%E5%99%A8%E4%B8%AD%E7%9A%84%E6%9A%97%E7%89%A9%E8%B4%A8%E4%BA%8B%E4%BE%8B%E7%8E%87%E9%83%BD%E4%B8%8E%E4%BB%80%E4%B9%88%E5%9B%A0%E7%B4%A0%E7%9B%B8%E5%85%B3%EF%BC%9F%E3%80%8D/"/>
-    <id>http://taoyi92.github.io/uncategorized/「暗物质千问系列」之「探测器中的暗物质事例率都与什么因素相关？」/</id>
-    <published>2019-08-01T07:41:04.000Z</published>
-    <updated>2019-08-01T07:41:04.889Z</updated>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
     <summary type="html">
     
-      「暗物质千问系列」之「探测器中的暗物质事例率都与什么因素相关？」
+      {{ post.description }}
     
     </summary>
     
@@ -169,15 +151,15 @@
   </entry>
   
   <entry>
-    <title>「暗物质千问系列」之「暗物质粒子具有哪些性质？」</title>
-    <link href="http://taoyi92.github.io/uncategorized/%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E5%8D%83%E9%97%AE%E7%B3%BB%E5%88%97%E3%80%8D%E4%B9%8B%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E7%B2%92%E5%AD%90%E5%85%B7%E6%9C%89%E5%93%AA%E4%BA%9B%E6%80%A7%E8%B4%A8%EF%BC%9F%E3%80%8D/"/>
-    <id>http://taoyi92.github.io/uncategorized/「暗物质千问系列」之「暗物质粒子具有哪些性质？」/</id>
-    <published>2019-08-01T07:39:53.000Z</published>
-    <updated>2019-08-01T07:39:53.360Z</updated>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
     <summary type="html">
     
-      「暗物质千问系列」之「暗物质粒子具有哪些性质？」
+      {{ post.description }}
     
     </summary>
     
@@ -185,15 +167,15 @@
   </entry>
   
   <entry>
-    <title>「暗物质千问系列」之「如何探测暗物质？」</title>
-    <link href="http://taoyi92.github.io/uncategorized/%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E5%8D%83%E9%97%AE%E7%B3%BB%E5%88%97%E3%80%8D%E4%B9%8B%E3%80%8C%E5%A6%82%E4%BD%95%E6%8E%A2%E6%B5%8B%E6%9A%97%E7%89%A9%E8%B4%A8%EF%BC%9F%E3%80%8D/"/>
-    <id>http://taoyi92.github.io/uncategorized/「暗物质千问系列」之「如何探测暗物质？」/</id>
-    <published>2019-08-01T07:38:51.000Z</published>
-    <updated>2019-08-01T07:38:51.128Z</updated>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
     <summary type="html">
     
-      「暗物质千问系列」之「如何探测暗物质？」
+      {{ post.description }}
     
     </summary>
     
@@ -201,15 +183,15 @@
   </entry>
   
   <entry>
-    <title>「暗物质千问系列」之「为什么组成暗物质的不是标准模型粒子？」</title>
-    <link href="http://taoyi92.github.io/uncategorized/%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E5%8D%83%E9%97%AE%E7%B3%BB%E5%88%97%E3%80%8D%E4%B9%8B%E3%80%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E7%BB%84%E6%88%90%E6%9A%97%E7%89%A9%E8%B4%A8%E7%9A%84%E4%B8%8D%E6%98%AF%E6%A0%87%E5%87%86%E6%A8%A1%E5%9E%8B%E7%B2%92%E5%AD%90%EF%BC%9F%E3%80%8D/"/>
-    <id>http://taoyi92.github.io/uncategorized/「暗物质千问系列」之「为什么组成暗物质的不是标准模型粒子？」/</id>
-    <published>2019-08-01T07:38:16.000Z</published>
-    <updated>2019-08-01T07:38:17.013Z</updated>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
     <summary type="html">
     
-      「暗物质千问系列」之「为什么组成暗物质的不是标准模型粒子？」
+      {{ post.description }}
     
     </summary>
     
@@ -217,15 +199,15 @@
   </entry>
   
   <entry>
-    <title>「暗物质千问系列」之「暗物质存在的证据都有哪些？」</title>
-    <link href="http://taoyi92.github.io/uncategorized/%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E5%8D%83%E9%97%AE%E7%B3%BB%E5%88%97%E3%80%8D%E4%B9%8B%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E5%AD%98%E5%9C%A8%E7%9A%84%E8%AF%81%E6%8D%AE%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E3%80%8D/"/>
-    <id>http://taoyi92.github.io/uncategorized/「暗物质千问系列」之「暗物质存在的证据都有哪些？」/</id>
-    <published>2019-08-01T07:37:41.000Z</published>
-    <updated>2019-08-01T07:37:41.433Z</updated>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
     <summary type="html">
     
-      「暗物质千问系列」之「暗物质存在的证据都有哪些？」
+      {{ post.description }}
     
     </summary>
     
@@ -233,15 +215,15 @@
   </entry>
   
   <entry>
-    <title>「暗物质千问系列」之「是谁最先提出暗物质的概念？」</title>
-    <link href="http://taoyi92.github.io/uncategorized/%E3%80%8C%E6%9A%97%E7%89%A9%E8%B4%A8%E5%8D%83%E9%97%AE%E7%B3%BB%E5%88%97%E3%80%8D%E4%B9%8B%E3%80%8C%E6%98%AF%E8%B0%81%E6%9C%80%E5%85%88%E6%8F%90%E5%87%BA%E6%9A%97%E7%89%A9%E8%B4%A8%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%9F%E3%80%8D/"/>
-    <id>http://taoyi92.github.io/uncategorized/「暗物质千问系列」之「是谁最先提出暗物质的概念？」/</id>
-    <published>2019-08-01T07:37:11.000Z</published>
-    <updated>2019-08-01T07:37:11.042Z</updated>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
     <summary type="html">
     
-      「暗物质千问系列」之「是谁最先提出暗物质的概念？」
+      {{ post.description }}
     
     </summary>
     
@@ -249,41 +231,15 @@
   </entry>
   
   <entry>
-    <title>奕声音「计算器」功能使用说明</title>
-    <link href="http://taoyi92.github.io/tutorial/%E5%A5%95%E5%A3%B0%E9%9F%B3%E3%80%8C%E8%AE%A1%E7%AE%97%E5%99%A8%E3%80%8D%E5%8A%9F%E8%83%BD%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/"/>
-    <id>http://taoyi92.github.io/tutorial/奕声音「计算器」功能使用说明/</id>
-    <published>2019-07-10T06:03:28.000Z</published>
-    <updated>2019-07-10T06:26:24.181Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>包括“常规计算”和“符号推导”两部分</p></blockquote><a id="more"></a><p>本使用说明以示例为主要内容。</p><p>为了及时返回运算结果（微信官方设置的限制为$5$秒内），请不要使你的表达式超过$90$个字符。</p><h2 id="常规计算"><a href="#常规计算" class="headerlink" title="常规计算"></a>常规计算</h2><p>使用常规计算功能的用户命令格式为<code>c &lt;表达式&gt;</code></p><h3 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h3><h5 id="四则运算"><a href="#四则运算" class="headerlink" title="四则运算"></a>四则运算</h5><p>示例1：求$1+2-3\times 4 \div 5$。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c <span class="number">1</span>+<span class="number">2</span><span class="number">-3</span>*<span class="number">4</span>/<span class="number">5</span>                        <span class="comment"># 返回 0.6</span></span><br></pre></td></tr></table></figure></p><h5 id="幂次、开方"><a href="#幂次、开方" class="headerlink" title="幂次、开方"></a>幂次、开方</h5><p>示例2：求$3^5$，$\sqrt{81}$。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c <span class="number">3</span>**<span class="number">5</span> 或 c pow(<span class="number">3</span>, <span class="number">5</span>)              <span class="comment"># 返回 243</span></span><br><span class="line">c sqrt(<span class="number">81</span>) 或 c pow(<span class="number">81</span>, <span class="number">0.5</span>)       <span class="comment"># 返回 9.0</span></span><br></pre></td></tr></table></figure></p><h3 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h3><p>示例3：求矩阵<script type="math/tex">\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}</script>的逆矩阵。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c linalg.inv([[<span class="number">1</span>,<span class="number">2</span>], [<span class="number">3</span>,<span class="number">4</span>]])       <span class="comment"># 返回 [[-2.   1. ] </span></span><br><span class="line">                                   <span class="comment">#       [ 1.5 -0.5]]</span></span><br></pre></td></tr></table></figure></p><p>示例4：求矩阵<script type="math/tex">\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}</script>的转置矩阵。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c transpose([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])         <span class="comment"># 返回 [[1 3]</span></span><br><span class="line">或 c array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]]).T        <span class="comment">#       [2 4]]</span></span><br></pre></td></tr></table></figure></p><p>示例5：求矩阵<script type="math/tex">\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}</script>的行列式。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c linalg.det([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])        <span class="comment"># 返回 -2.0</span></span><br></pre></td></tr></table></figure></p><h3 id="特殊函数"><a href="#特殊函数" class="headerlink" title="特殊函数"></a>特殊函数</h3><p>示例6：求$\Gamma(5)$，<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c gamma(<span class="number">5</span>)                         <span class="comment"># 返回 24.0</span></span><br></pre></td></tr></table></figure></p><p>其他支持的函数列表：</p><h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><h5 id="最值"><a href="#最值" class="headerlink" title="最值"></a>最值</h5><p>示例7：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c max(<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>)                   <span class="comment"># 返回 5</span></span><br><span class="line">c min(<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>)                   <span class="comment"># 返回 1</span></span><br></pre></td></tr></table></figure></p><h5 id="均值、方差"><a href="#均值、方差" class="headerlink" title="均值、方差"></a>均值、方差</h5><p>示例8：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c mean([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>])            <span class="comment"># 返回 4.0</span></span><br><span class="line">c std([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>])             <span class="comment"># 返回 2.0</span></span><br></pre></td></tr></table></figure></p><h2 id="符号推导"><a href="#符号推导" class="headerlink" title="符号推导"></a>符号推导</h2><p>使用符号推导功能的用户命令格式为<code>c sym &lt;表达式&gt;</code></p><p>特殊符号：</p><ul><li><code>x</code>，<code>y</code>，<code>z</code>，<code>t</code>为可以使用的变元符号</li><li><code>k</code>，<code>m</code>，<code>n</code>为可以使用的整数符号</li><li><code>f</code>，<code>g</code>为可以使用的函数符号</li><li><code>oo</code>表示无穷大$\infty$</li><li><code>E</code>表示自然底数，<code>I</code>表示虚数单位</li><li><code>Eq(lhs,rhs)</code>是一个方程表达式，<code>lhs</code>和<code>rhs</code>分别表示方程等号的左右两边</li></ul><h3 id="微积分"><a href="#微积分" class="headerlink" title="微积分"></a>微积分</h3><h5 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h5><p>示例1：求极限<script type="math/tex">\begin{align}\lim_{x\rightarrow\infty}{(1+\frac{1}{x})^x}\end{align}</script>，<script type="math/tex">\begin{align}\lim_{x\rightarrow 0^{-}}\frac{1}{x}\end{align}</script>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c sym limit((<span class="number">1</span>+<span class="number">1</span>/x)**x, x, oo)      <span class="comment"># 返回 E</span></span><br><span class="line">c sym limit(<span class="number">1</span>/x, x, <span class="number">0</span>, <span class="string">'-'</span>)         <span class="comment"># 返回 -oo</span></span><br></pre></td></tr></table></figure></p><h5 id="级数展开"><a href="#级数展开" class="headerlink" title="级数展开"></a>级数展开</h5><p>示例2：写出$\sin{2x}$在$x=0$处的Taylor级数展开（至$x^4$阶，默认是至$x^6$阶）。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c sym sin(<span class="number">2</span>*x).series(x)            <span class="comment"># 返回 2*x - 4*x**3/3 + 4*x**5/15 + O(x**6)</span></span><br><span class="line">c sym sin(<span class="number">2</span>*x).series(x,<span class="number">0</span>,<span class="number">4</span>)        <span class="comment"># 返回 2*x - 4*x**3/3 + O(x**4)</span></span><br></pre></td></tr></table></figure></p><p>示例3：写出$e^x$在$x=1$处的级数展开（至$x^3$阶）。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c sym exp(x).series(x,<span class="number">1</span>,<span class="number">3</span>)          <span class="comment"># 返回 E + E*(x-1) + E*(x-1)**2/2 + O((x-1)**3, (x,1))</span></span><br><span class="line">c sym exp(x).series(x,<span class="number">1</span>,<span class="number">3</span>).removeO()  <span class="comment"># 返回 E + E*(x-1) + E*(x-1)**2/2</span></span><br></pre></td></tr></table></figure></p><h5 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h5><p>示例4：求函数$f(x) = e^{-x^2}$的导函数。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c sym diff(exp(-x**<span class="number">2</span>))              <span class="comment"># 返回 -2*x*exp(-x**2)</span></span><br></pre></td></tr></table></figure></p><h5 id="不定积分"><a href="#不定积分" class="headerlink" title="不定积分"></a>不定积分</h5><p>示例5：求不定积分<script type="math/tex">\begin{align} \int\frac{\text{d}x}{1+x^2} \end{align}</script>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c sym integrate(<span class="number">1</span>/(<span class="number">1</span>+x**<span class="number">2</span>))         <span class="comment"># 返回 atan(x)</span></span><br></pre></td></tr></table></figure></p><h5 id="定积分"><a href="#定积分" class="headerlink" title="定积分"></a>定积分</h5><p>示例6：求二重定积分<script type="math/tex">\begin{align} \int_{-\infty}^{\infty}\text{d}x\int_{-\infty}^{\infty} e^{-x^2-y^2} \text{d}y \end{align}</script>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c sym integrate(exp(-x**<span class="number">2</span>-y**<span class="number">2</span>), (x,-oo,oo), (y,-oo,oo))  <span class="comment"># 返回 pi</span></span><br></pre></td></tr></table></figure></p><h3 id="解方程-组"><a href="#解方程-组" class="headerlink" title="解方程(组)"></a>解方程(组)</h3><h5 id="代数方程"><a href="#代数方程" class="headerlink" title="代数方程"></a>代数方程</h5><p>示例7：求方程$x^2 = 1$的解。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c sym solve(Eq(x**<span class="number">2</span>, <span class="number">1</span>), x)          <span class="comment"># 返回 [-1， 1]</span></span><br></pre></td></tr></table></figure></p><p>示例8：求二元一次方程组<script type="math/tex">\begin{cases} x+y = 1 \\ x-y = 3 \end{cases}</script>的解。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c sym solve([x+y<span class="number">-1</span>, x-y<span class="number">-3</span>], [x, y])  <span class="comment"># 返回 &#123;x: 2, y: -1&#125;</span></span><br></pre></td></tr></table></figure></p><h5 id="微分方程"><a href="#微分方程" class="headerlink" title="微分方程"></a>微分方程</h5><p>示例9：求解微分方程（ODE）$f’’(x) - 2f’(x) + f(x) = \sin{x}$。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c sym dsolve(Eq(f(x).diff(x, x) - <span class="number">2</span>*f(x).diff(x) + f(x), sin(x)), f(x))  <span class="comment"># 返回 Eq(f(x), (C1 + C2*x)*exp(x) + cos(x)/2)</span></span><br></pre></td></tr></table></figure></p>]]></content>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
     <summary type="html">
     
-      奕声音「计算器」功能使用说明
-    
-    </summary>
-    
-      <category term="tutorial" scheme="http://taoyi92.github.io/categories/tutorial/"/>
-    
-    
-      <category term="公众号" scheme="http://taoyi92.github.io/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
-    
-      <category term="计算器" scheme="http://taoyi92.github.io/tags/%E8%AE%A1%E7%AE%97%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>I want to learn</title>
-    <link href="http://taoyi92.github.io/uncategorized/I-want-to-learn/"/>
-    <id>http://taoyi92.github.io/uncategorized/I-want-to-learn/</id>
-    <published>2019-07-06T04:30:07.000Z</published>
-    <updated>2019-07-06T05:52:14.003Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>拓展技能树</p></blockquote><a id="more"></a><p>[ ] PHP<br>[ ] Vue.js<br>[ ] 数电模电</p>]]></content>
-    
-    <summary type="html">
-    
-      I want to learn
+      {{ post.description }}
     
     </summary>
     
@@ -291,102 +247,144 @@
   </entry>
   
   <entry>
-    <title>泛函微分</title>
-    <link href="http://taoyi92.github.io/academic/%E6%B3%9B%E5%87%BD%E5%BE%AE%E5%88%86/"/>
-    <id>http://taoyi92.github.io/academic/泛函微分/</id>
-    <published>2019-07-02T11:46:33.000Z</published>
-    <updated>2019-07-02T12:11:47.637Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>凝聚态场论数学基础</p></blockquote><a id="more"></a><p>泛函的宗量是函数。与函数的研究类似，我们在研究泛函时也是对泛函的(微小)变化时的行为、泛函驻点感兴趣。泛函的驻点的含义是：在变换$f \rightarrow f+h$下（$h$是无穷小增量函数），泛函保持不变。一个泛函$F$称为可微的，若</p><script type="math/tex; mode=display">\begin{align} F[f + \varepsilon g] - F[f] = \varepsilon\cdot \text{D}F_{f}[g] + \mathcal{O}(\varepsilon^2) \end{align}</script><p>其中，<strong>$\text{D}F_{f}$是线性泛函</strong>（满足$\text{D}F_{f}[g_{1}+g_{2}] = \text{D}F_{f}[g_{1}] + \text{D}F_{f}[g_{2}]$），$\varepsilon$是无穷小参数，$g$是任意函数。<strong>定义泛函$F$的驻点在$f$，当且仅当$\text{D}F_{f} = 0$。</strong></p><p>为了更好地理解泛函$F[f]$的总量$f$，将它视为$N$维矢量$\vec{f}=\{f_{n} \equiv f(x_{n}), n=1,\cdots,N\}$在$N\rightarrow\infty$的极限（$x_n$是一组线性无关矢量，或一组<strong>基</strong>）。于是$F(\vec{f})$是一个定义在$N$维空间上的函数，在连续极限下，$\vec{f}\rightarrow f$演变为函数，同时$F(\vec{f})\rightarrow F[f]$演变为泛函。下表对于离散和取连续极限两种情形作了一个对比总结：</p><div class="table-container"><table><thead><tr><th style="text-align:center"></th><th style="text-align:center">离散情形</th><th style="text-align:center">连续极限（$N\rightarrow\infty$）情形</th></tr></thead><tbody><tr><td style="text-align:center">空间维数</td><td style="text-align:center">有限$N$维</td><td style="text-align:center">无限维</td></tr><tr><td style="text-align:center">单位基</td><td style="text-align:center">$\vec{e}_{n}$，只有第$n$分量为$1$，其余为0</td><td style="text-align:center">$\delta_{x}$，其中$\delta_{x}(x’) \equiv \delta(x-x’)$</td></tr><tr><td style="text-align:center">内积</td><td style="text-align:center"><script type="math/tex">\begin{align}\langle \vec{f},\vec{g} \rangle \equiv \sum_{n=1}^{N} f_{n} g_{n}\end{align}</script></td><td style="text-align:center"><script type="math/tex">\begin{align}\langle f, g \rangle \equiv \int f(x) g(x)\text{d}x\end{align}</script></td></tr><tr><td style="text-align:center">宗量</td><td style="text-align:center">$\vec{f} = \{f_{n} \equiv f(x_{n}), n=1,\cdots,N\}$</td><td style="text-align:center">$f$</td></tr><tr><td style="text-align:center">宗量投影分量</td><td style="text-align:center"><script type="math/tex">\begin{align}f_{n} = \langle \vec{f},\vec{e}_n \rangle = \sum_{m=1}^{N}f_{m}(\vec{e}_{n})_{m}\end{align}</script>，$(\vec{e}_{n})_{m} = \delta_{nm}$</td><td style="text-align:center"><script type="math/tex">\begin{align}f(x) = \langle f, \delta_x \rangle = \int f(x')\delta_{x}(x')\text{d}x'\end{align}</script></td></tr><tr><td style="text-align:center">函子</td><td style="text-align:center">$F(\vec{f})$</td><td style="text-align:center">$F[f]$</td></tr><tr><td style="text-align:center">偏微分</td><td style="text-align:center"><script type="math/tex">\begin{align}\partial_{f_n}F(\vec{f}) \equiv \lim_{\varepsilon\rightarrow 0} \frac{F(\vec{f}+\varepsilon\vec{e}_{n}) - F(\vec{f})}{\varepsilon}\end{align}</script></td><td style="text-align:center"><script type="math/tex">\begin{align} \frac{\delta F[f]}{\delta f(x)} \equiv \lim_{\varepsilon\rightarrow 0}\frac{F[f+\varepsilon\delta_{x}] - F[f]}{\varepsilon} \end{align}</script></td></tr><tr><td style="text-align:center">全微分</td><td style="text-align:center"><script type="math/tex">\begin{align}\text{d}F_{\vec{f}}(\vec{g}) \equiv \langle\nabla F_{\vec{f}},\vec{g} \rangle = \sum_{n=1}^{N} \partial_{f_{n}}F(\vec{f})g_{n}\end{align}</script></td><td style="text-align:center"><script type="math/tex">\begin{align} \text{D}F_{f}[g] = \int \frac{\delta F[f]}{\delta f(x)}g(x) \text{d}x \end{align}</script></td></tr><tr><td style="text-align:center">(变)微分</td><td style="text-align:center"><script type="math/tex">\begin{align}F(\vec{f}+\varepsilon\vec{g})-F(\vec{f}) = \varepsilon\cdot\text{d}F_{\vec{f}}(\vec{g}) + \mathcal{O}(\varepsilon^2)\end{align}</script></td><td style="text-align:center"><script type="math/tex">\begin{align}F[f + \varepsilon g] - F[f] = \varepsilon\cdot \text{D}F_{f}[g] + \mathcal{O}(\varepsilon^2)\end{align}</script></td></tr><tr><td style="text-align:center">链式法则</td><td style="text-align:center"><script type="math/tex">\begin{align} \partial_{f_n}F(\vec{g}(\vec{f})) = \sum_{m=1}^{N}\partial_{g_m}F(\vec{g})\Big\vert_{\vec{g}=\vec{g}(\vec{f})}\partial_{f_n}g_{m}(f_m) \end{align}</script></td><td style="text-align:center"><script type="math/tex">\begin{align} \frac{\delta F[g[f]]}{\delta f(x)} = \int \frac{\delta F[g]}{\delta g(y)}\Bigg\vert_{g=g[f]}\frac{\delta g(y)[f]}{\delta f(x)} \text{d}y \end{align}</script></td></tr></tbody></table></div><p>这里的记号$g[f]$是一个对$\vec{g}:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}$（即$\vec{g}$是$\mathbb{R}^{m}$-值函数）的连续化推广，其分量$g(y)[f]$本身也是泛函。利用以上的推广，也可以写出泛函$F[f]$在$f=0$处的Taylor展开（这里的$0$含义是恒零函数）：</p><script type="math/tex; mode=display">\begin{align} F[f] = F[0] + \int \frac{\delta F[f]}{\delta f(x_1)}\Big|_{f=0}f(x_1)\text{d}x_1 + \frac{1}{2} \int\frac{\delta^2 F[f]}{\delta f(x_2) \delta f(x_1)}\Big|_{f=0}f(x_1)f(x_2)\text{d}x_{1}\text{d}x_2 + \cdots \end{align}</script><p>其中的二重泛函微商是二重偏微分的推广，由定义可得</p><script type="math/tex; mode=display">\begin{align} \frac{\delta^2 F[f]}{\delta f(x_2) \delta f(x_1)} &\equiv \frac{\delta}{\delta f(x_2)}\Big(\frac{\delta F[f]}{\delta f(x_1)}\Big) = \frac{\delta}{\delta f(x_2)}\Big(\lim_{\varepsilon_1\rightarrow 0}\frac{1}{\varepsilon_1}(F[f+\varepsilon_1\delta_{x_1}]-F[f])\Big) \\ &= \lim_{\varepsilon_2\rightarrow 0}\frac{1}{\varepsilon_2}\Big[\lim_{\varepsilon_1\rightarrow 0}\frac{1}{\varepsilon_1}(F[f+\varepsilon_2\delta_{x_2}+\varepsilon_1\delta_{x_1}]-F[f+\varepsilon_2\delta_{x_2}]) - \lim_{\varepsilon_1\rightarrow 0}\frac{1}{\varepsilon_1}(F[f+\varepsilon_1\delta_{x_1}]-F[f]) \Big] \\ &= \lim_{\varepsilon_{1,2}\rightarrow 0}\frac{1}{\varepsilon_1\varepsilon_2}(F[f+\varepsilon_1\delta_{x_1}+\varepsilon_2\delta_{x_2}] - F[f+\varepsilon_1\delta_{x_1}] - F[f+\varepsilon_2\delta_{x_2}] + F[f])\end{align}</script>]]></content>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
     <summary type="html">
     
-      泛函微分及拉格朗日方程的推导
+      {{ post.description }}
     
     </summary>
     
-      <category term="academic" scheme="http://taoyi92.github.io/categories/academic/"/>
-    
-    
-      <category term="数学基础" scheme="http://taoyi92.github.io/tags/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/"/>
-    
-      <category term="泛函分析" scheme="http://taoyi92.github.io/tags/%E6%B3%9B%E5%87%BD%E5%88%86%E6%9E%90/"/>
-    
-      <category term="变分法" scheme="http://taoyi92.github.io/tags/%E5%8F%98%E5%88%86%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>误差分布是正态分布</title>
-    <link href="http://taoyi92.github.io/academic/%E8%AF%AF%E5%B7%AE%E5%88%86%E5%B8%83%E6%98%AF%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83/"/>
-    <id>http://taoyi92.github.io/academic/误差分布是正态分布/</id>
-    <published>2019-06-24T07:19:55.000Z</published>
-    <updated>2019-07-01T11:54:47.706Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>高斯当年的证明方式</p></blockquote><a id="more"></a><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>对于某个随机变量$X$，设现在有$n$个独立的实验观测值$x_{i}, i=1,\cdots,n$，记所有观测值的平均值为$\bar{x} = \cfrac{1}{n}\sum_{i=1}^{n}x_{i}$，并先验的认为$\bar{x}$是$X$真值的有效估计量（基于等概率假设），由此可以推导出$X$的误差满足正态分布$N(0, \sigma^2)$。</p><h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>某个实测值$x_{o}$和真值$x$之间的误差为$\Delta x_{o} = x_{o} - x$，设$X$的归一化误差分布函数为$f(\Delta x)$，则我们可以写出关于$x$的似然函数</p><script type="math/tex; mode=display">\begin{align}   L(x) = \prod_{i=1}^{n}f(\Delta x_{i}) = \prod_{i=1}^{n}f(x_{i}-x) \end{align}</script><p>对数似然函数及其对$x$的导数分别为</p><script type="math/tex; mode=display">\begin{align}   \ln{L(x)} &= \sum_{i=1}^{n}\ln{f(x_{i}-x)} \\   \frac{\text{d}\ln{L(x)}}{\text{d}x} &= -\sum_{i=1}^{n}\frac{f' (x_{i}-x)}{f(x_{i}-x)} \end{align}</script><p>记$g(y)=\cfrac{f’ (y)}{f(y)}$（为了减小歧义，这里的变元记为$y(=\Delta x)$而不是$x$），最大化似然函数给出的方程为</p><script type="math/tex; mode=display">\begin{align}   -\cfrac{\text{d}\ln{L(x)}}{\text{d}x} = \sum_{i=1}^{n}g(x_{i}-x) \triangleq 0 \end{align}</script><p>由于我们合理地认为平均值$\bar{x}$是$X$真值的有效估计量，因此$x = \bar{x}$是上述方程的解，即</p><script type="math/tex; mode=display">\begin{align}   \sum_{i=1}^{n}g(x_{i}-\bar{x}) = 0 \quad (\star) \end{align}</script><p>为了确定$g(x)$的具体形式（进而得到$f(x)$的形式），我们需要探索上面方程的性质。对诸$x_{j}$分别求导可得：</p><script type="math/tex; mode=display">\begin{align}   0 = \frac{\partial}{\partial x_{j}}\sum_{i=1}^{n}g(x_{i}-\bar{x}) = (1-\frac{1}{n})g' (x_{j}-\bar{x}) + \sum_{i \neq j}(-\frac{1}{n})g' (x_{i}-\bar{x}), \quad j = 1,\cdots,n \end{align}</script><p>这是一个关于$g’ (x_{j}-\bar{x}), j=1,\cdots,n$为的$n$元线性方程组，其中任意两个方程（标记为$j_1, j_2$）相减可得</p><script type="math/tex; mode=display">\begin{equation}   g' (x_{j_1}-\bar{x}) = g' (x_{j_2}-\bar{x}),\quad \forall j_1 \neq j_2 \end{equation}</script><p>因此该线性方程组的解向量为<script type="math/tex">\vec{g} = c(1, 1, \cdots, 1)^{T}</script>，$c$为任意常数。注意到$x_{j}, j=1,\cdots,n$其实是任意一组实验的结果，也就是说当$y_{j} \equiv x_{j}- \bar{x}$取任意值的时候都满足</p><script type="math/tex; mode=display">\begin{equation}   g' (y_{j}) \equiv g' (x_{j}-\bar{x}) = c, \quad \forall y_{j} \end{equation}</script><p>于是我们有</p><script type="math/tex; mode=display">\begin{equation}   g(y) = cy+b \end{equation}</script><p>带入$(\star)$式，注意到$\sum_{i=1}^{n} x_{i} = n\bar{x}$，得</p><script type="math/tex; mode=display">\begin{align}   \sum_{i=1}^{n}g(x_{i}-\bar{x}) = \sum_{i=1}^{n}[c(x_{i} - \bar{x})+b] = nb = 0 \quad \Rightarrow \quad b=0 \end{align}</script><script type="math/tex; mode=display">\begin{align}   \therefore \quad g(y) = \frac{f' (y)}{f(y)} = cy \quad \Rightarrow \quad f(y) = \frac{1}{K}\text{e}^{\frac{1}{2}cy^{2}} \end{align}</script><p>概率密度函数的归一性要求（也自然是收敛的）</p><script type="math/tex; mode=display">\begin{align}   \int_{-\infty}^{+\infty}f(y)\text{d}y = 1 \quad \Rightarrow \quad c = -\frac{1}{\sigma^{2}} < 0,\ \ K = \sqrt{2\pi}\sigma \end{align}</script><p>因此最终</p><script type="math/tex; mode=display">\begin{align}   f(\Delta x) = \frac{1}{\sqrt{2\pi}\sigma}\text{e}^{-\frac{1}{2}\frac{(\Delta x)^{2}}{\sigma^{2}}} \end{align}</script><p>与中心极限定理给出的随机变量$X$服从正态分布（为了不混淆，这里记为$F(x)$）</p><script type="math/tex; mode=display">\begin{align}   F(x) = \frac{1}{\sqrt{2\pi}\sigma}\text{e}^{-\frac{1}{2}\frac{(x-\mu)^{2}}{\sigma^{2}}} \end{align}</script><p>是一致的。</p><h2 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h2><p>Q1. 既然中心极限定理在$n \rightarrow \infty$时才给出正态分布，那么这个条件在上述证明推导中体现在哪里？<br>A1. 就体现在“先验的认为$\bar{x}$是$X$真值的有效估计量”这句话中，因为只有在实验次数足够多的情况下，这句话才是正确的。</p><p>Q2. $\mu$和$\bar{x}$好像不是一回事？<br>A2. 没错，因此上面最后说的“一致性”实际上是频率学派的一种观点，$\mu = E(X)$是$X$的期望，而$\bar{x}$是观测值的平均值，只有在“频率即概率”的含义下，这才是成立的。中心极限定理保证了大$n$情况下$\bar{x}$是$\mu$的有效估计量，即$\hat{\mu} = \bar{x}$。</p><p>Q3. 为什么是关于$x$的似然函数？似然函数不是应该关于未知参数吗？<br>A3. 真值$x$就是这个问题里面的位置参数，我们的似然函数实际上是以下概率：</p><script type="math/tex; mode=display">\begin{align} L(x) = P(X_1 = x_1, \cdots, X_n = x_n ; x) \end{align}</script><p>描述真值为$x$时，我们$n$次试验观测到的值分别为$x_1 , \cdots , x_n$的概率。在这个问题的处理过程中，尽管我们最终目的是得到$f(y)$的具体形式，但是一开始我们假装这一形式是知道的，然后采用传统的极大似人估计手段按部就班推导，直到需要求怎样的$x$使得似然函数最大化这一步骤时，我们先验的知道解就是$x = \bar{x}$，于是我们先前作似然估计是要解关于参数的代数方程，而现在则是要解关于分布形式的函数方程。</p><p>Q4. 这个证明方法是谁给出的？<br>A4. 大名鼎鼎的高斯。</p>]]></content>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
     <summary type="html">
     
-      误差分布是正态分布的高斯证明方法
+      {{ post.description }}
     
     </summary>
     
-      <category term="academic" scheme="http://taoyi92.github.io/categories/academic/"/>
-    
-    
-      <category term="statistics" scheme="http://taoyi92.github.io/tags/statistics/"/>
-    
-      <category term="likelihood" scheme="http://taoyi92.github.io/tags/likelihood/"/>
-    
-      <category term="正态分布" scheme="http://taoyi92.github.io/tags/%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83/"/>
     
   </entry>
   
   <entry>
-    <title>网络工具入口整合</title>
-    <link href="http://taoyi92.github.io/others/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E6%95%B4%E5%90%88/"/>
-    <id>http://taoyi92.github.io/others/网络工具整合/</id>
-    <published>2019-06-21T08:34:45.000Z</published>
-    <updated>2019-07-11T07:15:29.351Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>工具方便找</p></blockquote><a id="more"></a><h1 id="工具向"><a href="#工具向" class="headerlink" title="工具向"></a>工具向</h1><h2 id="工具箱"><a href="#工具箱" class="headerlink" title="工具箱"></a>工具箱</h2><ul><li><a href="https://miku.tools/" target="_blank" rel="noopener">MikuTools</a></li><li><a href="http://tool.liumingye.cn/" target="_blank" rel="noopener">刘明野的工具箱</a></li></ul><h2 id="网络学校"><a href="#网络学校" class="headerlink" title="网络学校"></a>网络学校</h2><ul><li><a href="https://udacity.com/" target="_blank" rel="noopener">优达学城</a></li><li><a href="https://www.51zxw.net/" target="_blank" rel="noopener">我要自学网</a></li><li><a href="https://www.bilibili.com/v/technology/speech_course/#/" target="_blank" rel="noopener">B站·演讲·公开课</a></li><li><a href="https://open.163.com/" target="_blank" rel="noopener">网易公开课</a></li><li><a href="https://www.icourse163.org/" target="_blank" rel="noopener">中国大学MOOC</a></li><li><a href="http://www.xuetangx.com/" target="_blank" rel="noopener">学堂在线</a></li><li><a href="https://study.163.com/" target="_blank" rel="noopener">网易云课堂</a></li><li><a href="https://www.imooc.com/" target="_blank" rel="noopener">慕课网</a> </li></ul><h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><h3 id="制作"><a href="#制作" class="headerlink" title="制作"></a>制作</h3><h4 id="icon制作"><a href="#icon制作" class="headerlink" title="icon制作"></a>icon制作</h4><ul><li><a href="http://www.bitbug.net/" target="_blank" rel="noopener">比特虫</a></li></ul><h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><h4 id="纪录片"><a href="#纪录片" class="headerlink" title="纪录片"></a>纪录片</h4><ul><li><a href="http://www.jlpcn.net/" target="_blank" rel="noopener">纪录片天地</a></li></ul><h4 id="演讲"><a href="#演讲" class="headerlink" title="演讲"></a>演讲</h4><ul><li><a href="https://www.ted.com/#/" target="_blank" rel="noopener">TED</a></li><li><a href="https://www.yxgapp.com/" target="_blank" rel="noopener">译学馆</a></li><li><a href="https://yixi.tv/" target="_blank" rel="noopener">一席</a></li></ul><h3 id="在线播放-解析"><a href="#在线播放-解析" class="headerlink" title="在线播放(解析)"></a>在线播放(解析)</h3><ul><li><a href="https://vip.huotuyouxi.com/" target="_blank" rel="noopener">火兔视频</a></li></ul><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><h2 id="音乐"><a href="#音乐" class="headerlink" title="音乐"></a>音乐</h2><h3 id="播放下载"><a href="#播放下载" class="headerlink" title="播放下载"></a>播放下载</h3><ul><li><a href="http://music.zhuolin.wang/" target="_blank" rel="noopener">VIP付费音乐解析下载</a></li><li><a href="http://www.gequdaquan.net/gqss/" target="_blank" rel="noopener">歌曲大全-音乐聚合搜索引擎</a></li><li><a href="http://music.sonimei.cn/" target="_blank" rel="noopener">全网音乐免费下载工具</a></li></ul><h2 id="文件传送"><a href="#文件传送" class="headerlink" title="文件传送"></a>文件传送</h2><ul><li><a href="https://wetransfer.com/" target="_blank" rel="noopener">WeTransfer</a></li></ul><h2 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h2><h3 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h3><ul><li>[]</li></ul><h2 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h2><h3 id="学术翻译"><a href="#学术翻译" class="headerlink" title="学术翻译"></a>学术翻译</h3><ul><li><a href="http://dict.cnki.net/" target="_blank" rel="noopener">CNKI翻译助手</a></li><li><a href="http://www.termonline.cn/index.htm" target="_blank" rel="noopener">术语在线</a></li></ul><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="生成短链接"><a href="#生成短链接" class="headerlink" title="生成短链接"></a>生成短链接</h3><ul><li><a href="http://h5ip.cn/" target="_blank" rel="noopener">短网址生成平台</a></li></ul><h1 id="资源向"><a href="#资源向" class="headerlink" title="资源向"></a>资源向</h1><h2 id="学习-资源"><a href="#学习-资源" class="headerlink" title="学习(资源)"></a>学习(资源)</h2><h3 id="Anything"><a href="#Anything" class="headerlink" title="Anything"></a>Anything</h3><ul><li><a href="https://learn-anything.xyz/" target="_blank" rel="noopener">Learn-Anything</a> (学习路线)</li><li><a href="http://slideplayer.com/" target="_blank" rel="noopener">SlidePlayer</a>（PPT资源）</li><li><a href="http://gen.lib.rus.ec/" target="_blank" rel="noopener">Library Genesis</a>（电子书）</li><li><a href="https://www.douban.com/group/topic/13784047/" target="_blank" rel="noopener">全球免费开放的电子图书馆</a></li><li><a href="https://www.slader.com/" target="_blank" rel="noopener">Slader</a>（课后习题解）</li></ul><h3 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h3><h4 id="汇总入口"><a href="#汇总入口" class="headerlink" title="汇总入口"></a>汇总入口</h4><ul><li><a href="http://1nami.com/site/168.html" target="_blank" rel="noopener">1纳米学习</a></li></ul><h4 id="综合教程"><a href="#综合教程" class="headerlink" title="综合教程"></a>综合教程</h4><h4 id="课程（免费）"><a href="#课程（免费）" class="headerlink" title="课程（免费）"></a>课程（免费）</h4><ul><li>[]</li></ul><h4 id="课程（付费）"><a href="#课程（付费）" class="headerlink" title="课程（付费）"></a>课程（付费）</h4><ul><li><a href="http://www.jikexueyuan.com/" target="_blank" rel="noopener">极客学院</a></li><li><a href="http://www.doyoudo.com/" target="_blank" rel="noopener">doyoudo</a></li></ul><h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><h5 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h5><ul><li><a href="https://leetcode.com/problemset/all/" target="_blank" rel="noopener">LeetCode</a>  <a href="https://leetcode-cn.com/problemset/all/" target="_blank" rel="noopener">力扣</a></li><li><a href="https://www.nowcoder.com/" target="_blank" rel="noopener">牛客网</a></li><li><a href="http://acm.hdu.edu.cn/listproblem.php?vol=1" target="_blank" rel="noopener">杭电OJ</a></li><li><a href="http://poj.org/problemlist" target="_blank" rel="noopener">北大OJ</a></li><li><a href="https://vjudge.net/" target="_blank" rel="noopener">Virtual Judge</a></li><li><a href="https://www.lintcode.com/problem/" target="_blank" rel="noopener">LintCode</a></li></ul><h4 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h4><h5 id="全栈"><a href="#全栈" class="headerlink" title="全栈"></a>全栈</h5><h5 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h5><h5 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h5><h4 id="运维"><a href="#运维" class="headerlink" title="运维"></a>运维</h4><h5 id="SHELL"><a href="#SHELL" class="headerlink" title="SHELL"></a>SHELL</h5><ul><li><a href="https://github.com/jiajunhua/jlevy-the-art-of-command-line/blob/master/README-zh.md" target="_blank" rel="noopener">命令行的艺术</a></li></ul><h4 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h4><h4 id="嵌入式"><a href="#嵌入式" class="headerlink" title="嵌入式"></a>嵌入式</h4><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><h3 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h3><h4 id="科普"><a href="#科普" class="headerlink" title="科普"></a>科普</h4><ul><li><a href="http://space.bilibili.com/88461692" target="_blank" rel="noopener">3Blue1Brown</a></li></ul><h4 id="课程"><a href="#课程" class="headerlink" title="课程"></a>课程</h4><h4 id="特殊函数"><a href="#特殊函数" class="headerlink" title="特殊函数"></a>特殊函数</h4><ul><li><a href="https://dlmf.nist.gov/" target="_blank" rel="noopener">NIST DLMF</a></li></ul><h3 id="物理"><a href="#物理" class="headerlink" title="物理"></a>物理</h3><h4 id="科普-1"><a href="#科普-1" class="headerlink" title="科普"></a>科普</h4><ul><li><a href="http://space.bilibili.com/223146252/" target="_blank" rel="noopener">妈咪说MommyTalk</a></li></ul><h4 id="课程-1"><a href="#课程-1" class="headerlink" title="课程"></a>课程</h4>]]></content>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
     <summary type="html">
     
-      网络工具整合,链接跳转
+      {{ post.description }}
     
     </summary>
     
-      <category term="others" scheme="http://taoyi92.github.io/categories/others/"/>
-    
-    
-      <category term="collections" scheme="http://taoyi92.github.io/tags/collections/"/>
-    
-      <category term="tools" scheme="http://taoyi92.github.io/tags/tools/"/>
     
   </entry>
   
   <entry>
-    <title>Python3中鲜为人知的特性（积累中）</title>
-    <link href="http://taoyi92.github.io/tutorial/Python3%E4%B8%AD%E9%B2%9C%E4%B8%BA%E4%BA%BA%E7%9F%A5%E7%9A%84%E7%89%B9%E6%80%A7%EF%BC%88%E7%A7%AF%E7%B4%AF%E4%B8%AD%EF%BC%89/"/>
-    <id>http://taoyi92.github.io/tutorial/Python3中鲜为人知的特性（积累中）/</id>
-    <published>2019-06-15T10:06:00.000Z</published>
-    <updated>2019-06-17T06:31:22.791Z</updated>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>小众知识点，说不定有奇效</p></blockquote><a id="more"></a><h3 id="1-列表超出索引范围不会报错的情况"><a href="#1-列表超出索引范围不会报错的情况" class="headerlink" title="1. 列表超出索引范围不会报错的情况"></a>1. 列表超出索引范围不会报错的情况</h3><p>通常当我们试图去访问一个列表的超出其最大索引的元素时，是会报错的<br><figure class="highlight python"><figcaption><span>console</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_list[<span class="number">4</span>]          <span class="comment"># 索引合法</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_list[<span class="number">5</span>]          <span class="comment"># 索引非法</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">IndexError: list index out of range</span><br></pre></td></tr></table></figure></p><p>然而，如果使用<strong>切片</strong>方式尝试超限访问<br><figure class="highlight python"><figcaption><span>console</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_list[<span class="number">5</span>:]</span><br><span class="line">[]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_list[:<span class="number">6</span>]</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure></p><p>结果却没有报错。<br>并且实际上，字符串和<code>numpy</code>数组也具有类似的特性。</p><h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3>]]></content>
+    <content type="html"><![CDATA[{{ post.content | noControlChars | safe }}]]></content>
     
     <summary type="html">
     
-      Python3中鲜为人知的特性（积累中）
+      {{ post.description }}
     
     </summary>
     
-      <category term="tutorial" scheme="http://taoyi92.github.io/categories/tutorial/"/>
+      <category term="{{ category.name }}" scheme="{{ (url + category.path) | uriencode }}"/>
     
     
-      <category term="Python3" scheme="http://taoyi92.github.io/tags/Python3/"/>
+      <category term="{{ tag.name }}" scheme="{{ (url + tag.path) | uriencode }}"/>
     
-      <category term="语言特性" scheme="http://taoyi92.github.io/tags/%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/"/>
+      <category term="{{ tag.name }}" scheme="{{ (url + tag.path) | uriencode }}"/>
+    
+  </entry>
+  
+  <entry>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
+    
+    <content type="html"><![CDATA[{{ post.content | noControlChars | safe }}]]></content>
+    
+    <summary type="html">
+    
+      {{ post.description }}
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
+    
+    <content type="html"><![CDATA[{{ post.content | noControlChars | safe }}]]></content>
+    
+    <summary type="html">
+    
+      {{ post.description }}
+    
+    </summary>
+    
+      <category term="{{ category.name }}" scheme="{{ (url + category.path) | uriencode }}"/>
+    
+    
+      <category term="{{ tag.name }}" scheme="{{ (url + tag.path) | uriencode }}"/>
+    
+      <category term="{{ tag.name }}" scheme="{{ (url + tag.path) | uriencode }}"/>
+    
+      <category term="{{ tag.name }}" scheme="{{ (url + tag.path) | uriencode }}"/>
+    
+  </entry>
+  
+  <entry>
+    <title>{{ post.title }}</title>
+    <link href="{{ (url + post.path) | uriencode }}"/>
+    <id>{{ url + post.path }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.updated.toISOString() }}</updated>
+    
+    <content type="html"><![CDATA[{{ post.content | noControlChars | safe }}]]></content>
+    
+    <summary type="html">
+    
+      {{ post.description }}
+    
+    </summary>
+    
+      <category term="{{ category.name }}" scheme="{{ (url + category.path) | uriencode }}"/>
+    
+    
+      <category term="{{ tag.name }}" scheme="{{ (url + tag.path) | uriencode }}"/>
+    
+      <category term="{{ tag.name }}" scheme="{{ (url + tag.path) | uriencode }}"/>
+    
+      <category term="{{ tag.name }}" scheme="{{ (url + tag.path) | uriencode }}"/>
     
   </entry>
   
