@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="一些重要的步骤记录">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-12T07:29:43.000Z">
+<meta property="og:updated_time" content="2020-07-14T13:46:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「服务器运维记录系列」之「当机器换了机房之后」">
 <meta name="twitter:description" content="一些重要的步骤记录">
@@ -212,7 +212,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">401字</span>
+        <span class="post-count">398字</span>
       </span>
     </span>
 
@@ -244,12 +244,12 @@ var _hmt = _hmt || [];
 <p>换机房的技术部分记录</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="修改IP地址"><a href="#修改IP地址" class="headerlink" title="修改IP地址"></a>修改IP地址</h3><p>由于物理网口变化，设备的IP地址也随之改变，我们记新的IP为<code>1WW.XXX.YYY.ZZ</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/network/interfaces</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改IP地址"><a href="#修改IP地址" class="headerlink" title="修改IP地址"></a>修改IP地址</h3><p>由于物理网口变化，设备的IP地址也随之改变，我们记新的IP为<code>1WW.XXX.YYY.ZZ</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/network/interfaces</span><br></pre></td></tr></table></figure></p>
 <p>找到<code>auto enp1s0f0</code>段落的<code>address</code>字段，将其更改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">address 1WW.XXX.YYY.ZZ</span><br></pre></td></tr></table></figure></p>
 <p>同时相应的网关等参数也需要修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">network 1WW.XXX.YYY.0</span><br><span class="line">gateway 1WW.XXX.YYY.1</span><br><span class="line">dns-nameservers 1WW.XXX.A.BBB 1WW.XXX.A.CCC  # 根据机房管理人员提供的信息</span><br></pre></td></tr></table></figure></p>
 <p>重启机器。（去学校信息中心申请网络账户IP解绑和绑定新IP，以及申请域名的过程略去不表）</p>
-<h3 id="开放特定端口"><a href="#开放特定端口" class="headerlink" title="开放特定端口"></a>开放特定端口</h3><p>当发现IP地址<code>1WW.XXX.YYY.ZZ</code>可以被<code>ping</code>通之后，说明网络连接已经没有问题。但是如果这时无法正常通过SSH访问（当然<strong>搬机房之前</strong>SSH配置已经完成了，这里讲的是换机房的操作，第一次set-up时会更繁琐些）。<br>修改防火墙配置，允许端口<code>&lt;PORT&gt;</code>放行（如<code>3456</code>），注意要注明协议<code>tcp</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ufw allow &lt;PORT&gt;/tcp</span><br></pre></td></tr></table></figure></p>
-<h3 id="挂载存储服务器"><a href="#挂载存储服务器" class="headerlink" title="挂载存储服务器"></a>挂载存储服务器</h3><p>可以注意到，在上面提及的<code>/etc/network/interfaces</code>已经配好了在局域网中计算服务器的内网IP地址<code>192.168.2.1</code>。现在我们需要在计算服务器上挂载存储服务器，然后就可以在计算服务器上直接访问存储数据了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mount -t nfs 192.168.PP.QQ:/data /data</span><br></pre></td></tr></table></figure></p>
+<h3 id="开放特定端口"><a href="#开放特定端口" class="headerlink" title="开放特定端口"></a>开放特定端口</h3><p>当发现IP地址<code>1WW.XXX.YYY.ZZ</code>可以被<code>ping</code>通之后，说明网络连接已经没有问题。但是如果这时无法正常通过SSH访问（当然<strong>搬机房之前</strong>SSH配置已经完成了，这里讲的是换机房的操作，第一次set-up时会更繁琐些）。<br>修改防火墙配置，允许端口<code>&lt;PORT&gt;</code>放行（如<code>3456</code>），注意要注明协议<code>tcp</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow &lt;PORT&gt;/tcp</span><br></pre></td></tr></table></figure></p>
+<h3 id="挂载存储服务器"><a href="#挂载存储服务器" class="headerlink" title="挂载存储服务器"></a>挂载存储服务器</h3><p>可以注意到，在上面提及的<code>/etc/network/interfaces</code>已经配好了在局域网中计算服务器的内网IP地址<code>192.168.2.1</code>。现在我们需要在计算服务器上挂载存储服务器，然后就可以在计算服务器上直接访问存储数据了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -t nfs 192.168.PP.QQ:/data /data</span><br></pre></td></tr></table></figure></p>
 <h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>以上操作结束后，就可以正常使用服务器了。</p>
 <h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ul>
 <li>计算服务器<a href="https://www.supermicro.org.cn/manuals/superserver/4U/MNL-1583.pdf" target="_blank" rel="noopener">手册</a></li>
@@ -680,7 +680,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TEST</a>
+                <a href="javascript:void(0)" class="js-tag color1">web server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -689,22 +689,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">python3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">字符编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件读取</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -729,6 +713,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文本匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">python3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">字符编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件读取</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -780,14 +776,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">collections</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">tools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">statistics</a>
               </li>
              
@@ -797,6 +785,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">正态分布</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">collections</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">tools</a>
               </li>
              
               <li class="article-tag-list-item">

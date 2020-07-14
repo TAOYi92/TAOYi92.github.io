@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="详细记录将原先服务器上的博客迁移至本地机上的过程">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-12T10:42:05.000Z">
+<meta property="og:updated_time" content="2020-07-14T13:38:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Hexo系列」之「迁移Hexo博客（CentOS-to-MacOS）」">
 <meta name="twitter:description" content="详细记录将原先服务器上的博客迁移至本地机上的过程">
@@ -212,7 +212,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">592字</span>
+        <span class="post-count">353字</span>
       </span>
     </span>
 
@@ -221,7 +221,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">1分</span>
       </span>
     </span>
 </div>
@@ -244,24 +244,14 @@ var _hmt = _hmt || [];
 <p>这篇文章记录我将Hexo博客迁移至本地机（MacOS系统）上的过程。</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h1><p>养成隔离项目环境的好习惯<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python3 -m venv venv_blog    <span class="comment"># 创建虚拟环境</span></span><br><span class="line">$ . venv_blog/bin/activate     <span class="comment"># 激活虚拟环境</span></span><br><span class="line">$ mkdir Blog &amp;&amp; <span class="built_in">cd</span> Blog        <span class="comment"># 创建并进入项目目录</span></span><br></pre></td></tr></table></figure></p>
-<h1 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装<code>Node.js</code></h1><p>这是第一个坑，千万不要使用<code>yum</code>直接安装，似乎是直接安装版本太低，后面会有问题而无法继续。</p>
-<h2 id="下载特定版本"><a href="#下载特定版本" class="headerlink" title="下载特定版本"></a>下载特定版本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载</span></span><br><span class="line">$ wget https://nodejs.org/dist/v9.3.0/node-v9.3.0-linux-x64.tar.xz</span><br><span class="line"><span class="comment"># 解压</span></span><br><span class="line">$ xz -d node-v9.3.0-linux-x64.tar.xz</span><br><span class="line">$ tar -xvf node-v9.3.0-linux-x64.tar</span><br><span class="line"><span class="comment"># 移至指定目录</span></span><br><span class="line">$ mv node-v9.3.0-linux-x64 /usr/<span class="built_in">local</span>/node</span><br><span class="line">$ rm node-v9.3.0-linux-x64.tar.xz  <span class="comment"># 或保持在`Blog`目录下rm -rf *</span></span><br></pre></td></tr></table></figure>
-<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><p>打开配置文件<code>/etc/profile</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/profile</span><br></pre></td></tr></table></figure></p>
-<p>在底部添加<code>PATH</code>变量<br><figure class="highlight bash"><figcaption><span>profile</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/node/bin</span><br></pre></td></tr></table></figure></p>
-<p>保存退出</p>
-<h1 id="安装git和npm-常用"><a href="#安装git和npm-常用" class="headerlink" title="安装git和npm (常用)"></a>安装<code>git</code>和<code>npm</code> (常用)</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum -y install git npm</span><br></pre></td></tr></table></figure>
-<h1 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可能会遇到下载速度太慢的问题，可切换至淘宝镜像源</span></span><br><span class="line">$ npm install cnpm -g --registry=https://registry.npm.taobao.org</span><br><span class="line"><span class="comment"># 安装hexo命令行客户端</span></span><br><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<h1 id="运行Hexo"><a href="#运行Hexo" class="headerlink" title="运行Hexo"></a>运行Hexo</h1><h2 id="初始化安装"><a href="#初始化安装" class="headerlink" title="初始化安装"></a>初始化安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init    # 初始化</span><br><span class="line">$ npm install</span><br><span class="line">$ hexo -v      # 涉及到的各种组件版本</span><br></pre></td></tr></table></figure>
-<h2 id="本地启动（用于测试，可跳过）"><a href="#本地启动（用于测试，可跳过）" class="headerlink" title="本地启动（用于测试，可跳过）"></a>本地启动（用于测试，可跳过）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s       <span class="comment"># 等价于`hexo server`</span></span><br><span class="line"><span class="comment"># 在另一个终端下</span></span><br><span class="line">$ elinks http://localhost:4000/</span><br></pre></td></tr></table></figure>
-<p>执行上面第一条命令时如遇到“FATAL Port 4000 has been used. Try other port instead.”，则需要切换端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s -p 5000    <span class="comment"># 其他端口类似</span></span><br><span class="line"><span class="comment"># 在另一个终端下</span></span><br><span class="line">$ elinks http://localhost:5000/</span><br></pre></td></tr></table></figure></p>
-<p><code>Ctrl + C</code>退出。</p>
-<h1 id="部署到Github-Page"><a href="#部署到Github-Page" class="headerlink" title="部署到Github Page"></a>部署到Github Page</h1><h2 id="创建指定repo"><a href="#创建指定repo" class="headerlink" title="创建指定repo"></a>创建指定repo</h2><p>首先需要到你的Github上开启一个新的项目，但是需要按照一定规则：假设你的Github用户名是“<code>&lt;guser&gt;</code>”，那么repo名称必须为<code>&lt;guser&gt;.github.io.git</code>，随后创建即可。</p>
-<h2 id="安装git-deployer插件"><a href="#安装git-deployer插件" class="headerlink" title="安装git deployer插件"></a>安装git deployer插件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<h2 id="修改网站配置文件-config-yml"><a href="#修改网站配置文件-config-yml" class="headerlink" title="修改网站配置文件_config.yml"></a>修改网站配置文件<code>_config.yml</code></h2><p>打开<code>Blog</code>目录下的<code>_config.yml</code>文件，找到<code># Deployment</code>部分（一般是文件末尾处），<code>deploy</code>下的参数设置如下<br><figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/&lt;guser&gt;/&lt;guser&gt;.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></p>
-<p>保存退出。</p>
-<h2 id="完成部署"><a href="#完成部署" class="headerlink" title="完成部署"></a>完成部署</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g      <span class="comment"># 或者`hexo generate`</span></span><br><span class="line">$ hexo d      <span class="comment"># 或者`hexo deploy`</span></span><br></pre></td></tr></table></figure>
-<h1 id="浏览器访问"><a href="#浏览器访问" class="headerlink" title="浏览器访问"></a>浏览器访问</h1><p>访问地址为<code>https://&lt;guser&gt;.github.io/</code></p>
+<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><p>保证本地机已经安装好了<code>Node.js</code>,<code>git</code>和<code>npm</code>（安装过程略）。</p>
+<h1 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装hexo命令行客户端(如果速度慢记得换源)</span></span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"><span class="comment"># 创建并进入项目目录</span></span><br><span class="line">mkdir HexoBlog &amp;&amp; <span class="built_in">cd</span> HexoBlog</span><br></pre></td></tr></table></figure>
+<h1 id="将必需的文件和目录拷贝到本地"><a href="#将必需的文件和目录拷贝到本地" class="headerlink" title="将必需的文件和目录拷贝到本地"></a>将必需的文件和目录拷贝到本地</h1><p>这些文件包括<code>_config.yml</code>，<code>package.json</code>，<code>scaffolds/</code>，<code>source/</code>，<code>themes/</code>，<code>.gitignore</code>和<code>.deploy_git/</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">scp &lt;我的账户&gt;@&lt;我的ECS公网ip&gt;:Blog/_config.yml .</span><br><span class="line">scp &lt;我的账户&gt;@&lt;我的ECS公网ip&gt;:Blog/package.json . </span><br><span class="line">scp -r &lt;我的账户&gt;@&lt;我的ECS公网ip&gt;:Blog/scaffolds .</span><br><span class="line">scp -r &lt;我的账户&gt;@&lt;我的ECS公网ip&gt;:Blog/<span class="built_in">source</span> .</span><br><span class="line">scp -r &lt;我的账户&gt;@&lt;我的ECS公网ip&gt;:Blog/themes .</span><br><span class="line">scp &lt;我的账户&gt;@&lt;我的ECS公网ip&gt;:Blog/.gitignore .</span><br><span class="line">scp -r &lt;我的账户&gt;@&lt;我的ECS公网ip&gt;:Blog/.deploy_git .</span><br></pre></td></tr></table></figure>
+<h1 id="安装一些插件"><a href="#安装一些插件" class="headerlink" title="安装一些插件"></a>安装一些插件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
+<h1 id="完成部署"><a href="#完成部署" class="headerlink" title="完成部署"></a>完成部署</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g      <span class="comment"># 或者`hexo generate`</span></span><br><span class="line">hexo d      <span class="comment"># 或者`hexo deploy`</span></span><br><span class="line"><span class="comment"># 后两步可合并为</span></span><br></pre></td></tr></table></figure>
+<p>注意：这里遇到一个hexo不兼容<code>{{}}</code>标签的问题（标签冲突），参照<a href="http://xcoding.tech/2020/01/18/hexo/如何从根本解决hexo不兼容{{}}标签问题/" target="_blank" rel="noopener">这篇博客</a>修改相应文件即可。</p>
+<h1 id="浏览器访问"><a href="#浏览器访问" class="headerlink" title="浏览器访问"></a>浏览器访问</h1><p>访问地址为<code>https://&lt;guser&gt;.github.io/</code>，发现博客文章已经可以在本地更新了。</p>
 <p>完成！！</p>
 
       
@@ -415,8 +405,8 @@ var _hmt = _hmt || [];
 <nav id="article-nav">
   
   
-    <a href="/TEST/test/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">test</div>
+    <a href="/academic/CMFT-Note01-从粒子到场/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CMFT_Note01_从粒子到场</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -443,7 +433,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#创建虚拟环境"><span class="toc-number">1.</span> <span class="toc-text">创建虚拟环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Node-js"><span class="toc-number">2.</span> <span class="toc-text">安装Node.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载特定版本"><span class="toc-number">2.1.</span> <span class="toc-text">下载特定版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置环境变量"><span class="toc-number">2.2.</span> <span class="toc-text">配置环境变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装git和npm-常用"><span class="toc-number">3.</span> <span class="toc-text">安装git和npm (常用)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Hexo"><span class="toc-number">4.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行Hexo"><span class="toc-number">5.</span> <span class="toc-text">运行Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化安装"><span class="toc-number">5.1.</span> <span class="toc-text">初始化安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地启动（用于测试，可跳过）"><span class="toc-number">5.2.</span> <span class="toc-text">本地启动（用于测试，可跳过）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署到Github-Page"><span class="toc-number">6.</span> <span class="toc-text">部署到Github Page</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建指定repo"><span class="toc-number">6.1.</span> <span class="toc-text">创建指定repo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装git-deployer插件"><span class="toc-number">6.2.</span> <span class="toc-text">安装git deployer插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改网站配置文件-config-yml"><span class="toc-number">6.3.</span> <span class="toc-text">修改网站配置文件_config.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完成部署"><span class="toc-number">6.4.</span> <span class="toc-text">完成部署</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#浏览器访问"><span class="toc-number">7.</span> <span class="toc-text">浏览器访问</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前期准备"><span class="toc-number">1.</span> <span class="toc-text">前期准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Hexo"><span class="toc-number">2.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将必需的文件和目录拷贝到本地"><span class="toc-number">3.</span> <span class="toc-text">将必需的文件和目录拷贝到本地</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装一些插件"><span class="toc-number">4.</span> <span class="toc-text">安装一些插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#完成部署"><span class="toc-number">5.</span> <span class="toc-text">完成部署</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#浏览器访问"><span class="toc-number">6.</span> <span class="toc-text">浏览器访问</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -671,7 +661,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TEST</a>
+                <a href="javascript:void(0)" class="js-tag color1">web server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -680,22 +670,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">python3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">字符编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件读取</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -720,6 +694,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文本匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">python3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">字符编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件读取</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -771,14 +757,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">collections</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">tools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">statistics</a>
               </li>
              
@@ -788,6 +766,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">正态分布</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">collections</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">tools</a>
               </li>
              
               <li class="article-tag-list-item">

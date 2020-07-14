@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="误差分布是正态分布的高斯证明方法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-12T07:29:44.000Z">
+<meta property="og:updated_time" content="2020-07-14T14:02:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="误差分布是正态分布">
 <meta name="twitter:description" content="误差分布是正态分布的高斯证明方法">
@@ -264,7 +264,7 @@ var _hmt = _hmt || [];
 \end{align}</script><p>这是一个关于$g’ (x_{j}-\bar{x}), j=1,\cdots,n$为的$n$元线性方程组，其中任意两个方程（标记为$j_1, j_2$）相减可得</p>
 <script type="math/tex; mode=display">\begin{equation} 
   g' (x_{j_1}-\bar{x}) = g' (x_{j_2}-\bar{x}),\quad \forall j_1 \neq j_2 
-\end{equation}</script><p>因此该线性方程组的解向量为<script type="math/tex">\vec{g} = c(1, 1, \cdots, 1)^{T}</script>，$c$为任意常数。注意到$x<em>{j}, j=1,\cdots,n$其实是任意一组实验的结果，也就是说当$y</em>{j} \equiv x_{j}- \bar{x}$取任意值的时候都满足</p>
+\end{equation}</script><p>因此该线性方程组的解向量为<script type="math/tex">\vec{g'} = c(1, 1, \cdots, 1)^{T}</script>，$c$为任意常数。注意到$x<em>{j}, j=1,\cdots,n$其实是任意一组实验的结果，也就是说当$y</em>{j} \equiv x_{j}- \bar{x}$取任意值的时候都满足</p>
 <script type="math/tex; mode=display">\begin{equation} 
   g' (y_{j}) \equiv g' (x_{j}-\bar{x}) = c, \quad \forall y_{j} 
 \end{equation}</script><p>于是我们有</p>
@@ -287,7 +287,7 @@ var _hmt = _hmt || [];
 \end{align}</script><p>是一致的。</p>
 <h2 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h2><p>Q1. 既然中心极限定理在$n \rightarrow \infty$时才给出正态分布，那么这个条件在上述证明推导中体现在哪里？<br>A1. 就体现在“先验的认为$\bar{x}$是$X$真值的有效估计量”这句话中，因为只有在实验次数足够多的情况下，这句话才是正确的。</p>
 <p>Q2. $\mu$和$\bar{x}$好像不是一回事？<br>A2. 没错，因此上面最后说的“一致性”实际上是频率学派的一种观点，$\mu = E(X)$是$X$的期望，而$\bar{x}$是观测值的平均值，只有在“频率即概率”的含义下，这才是成立的。中心极限定理保证了大$n$情况下$\bar{x}$是$\mu$的有效估计量，即$\hat{\mu} = \bar{x}$。</p>
-<p>Q3. 为什么是关于$x$的似然函数？似然函数不是应该关于未知参数吗？<br>A3. 真值$x$就是这个问题里面的位置参数，我们的似然函数实际上是以下概率：</p>
+<p>Q3. 为什么是关于$x$的似然函数？似然函数不是应该关于未知参数吗？<br>A3. 真值$x$就是这个问题里面的未知参数，我们的似然函数实际上是以下概率：</p>
 <script type="math/tex; mode=display">\begin{align} L(x) = P(X_1 = x_1, \cdots, X_n = x_n ; x) \end{align}</script><p>描述真值为$x$时，我们$n$次试验观测到的值分别为$x_1 , \cdots , x_n$的概率。在这个问题的处理过程中，尽管我们最终目的是得到$f(y)$的具体形式，但是一开始我们假装这一形式是知道的，然后采用传统的极大似人估计手段按部就班推导，直到需要求怎样的$x$使得似然函数最大化这一步骤时，我们先验的知道解就是$x = \bar{x}$，于是我们先前作似然估计是要解关于参数的代数方程，而现在则是要解关于分布形式的函数方程。</p>
 <p>Q4. 这个证明方法是谁给出的？<br>A4. 大名鼎鼎的高斯。</p>
 
@@ -711,7 +711,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TEST</a>
+                <a href="javascript:void(0)" class="js-tag color1">web server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -720,22 +720,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">python3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">字符编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件读取</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -760,6 +744,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文本匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">python3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">字符编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件读取</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -811,14 +807,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">collections</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">tools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">statistics</a>
               </li>
              
@@ -828,6 +816,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">正态分布</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">collections</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">tools</a>
               </li>
              
               <li class="article-tag-list-item">
