@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="Condensed Matter Field Theory (A. Altland and B. Simons) 第一章笔记">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-12T07:29:43.000Z">
+<meta property="og:updated_time" content="2020-07-14T16:03:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMFT_Note01_从粒子到场">
 <meta name="twitter:description" content="Condensed Matter Field Theory (A. Altland and B. Simons) 第一章笔记">
@@ -212,7 +212,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">73字</span>
+        <span class="post-count">87字</span>
       </span>
     </span>
 
@@ -240,7 +240,11 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第一章-从粒子到场"><a href="#第一章-从粒子到场" class="headerlink" title="第一章 从粒子到场"></a>第一章 从粒子到场</h1><h2 id="General"><a href="#General" class="headerlink" title="General"></a>General</h2><h3 id="Prototype-Hamiltonian"><a href="#Prototype-Hamiltonian" class="headerlink" title="Prototype Hamiltonian"></a>Prototype Hamiltonian</h3><p>多粒子哈密顿量的最简单形式（没有考虑粒子自旋、无序性、晶格结构等）：$H = H<em>{\text{e}} + H</em>{\text{i}} + H_{\text{ei}}$</p>
+        <blockquote>
+<p>凝聚态系统中引入场的理论描述</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="第一章-从粒子到场"><a href="#第一章-从粒子到场" class="headerlink" title="第一章 从粒子到场"></a>第一章 从粒子到场</h1><h2 id="General"><a href="#General" class="headerlink" title="General"></a>General</h2><h3 id="Prototype-Hamiltonian"><a href="#Prototype-Hamiltonian" class="headerlink" title="Prototype Hamiltonian"></a>Prototype Hamiltonian</h3><p>多粒子哈密顿量的最简单形式（没有考虑粒子自旋、无序性、晶格结构等）：$H = H<em>{\text{e}} + H</em>{\text{i}} + H_{\text{ei}}$</p>
 <script type="math/tex; mode=display">\begin{align} \text{价电子动力学:}\quad H_{\text{e}} &= \sum_{i}\frac{\vec{p}_{i}^2}{2m} + \sum_{i<j}V_{\text{ee}}(\vec{r}_{i}-\vec{r}_{j}) \\ \text{离子核动力学:}\quad H_{\text{i}} &= \sum_{I}\frac{\vec{P}_{I}^2}{2M} + \sum_{I<J}V_{\text{ii}}(\vec{R}_{I}-\vec{R}_{J}) \\ \text{电子离子相互作用:}\quad H_{\text{ei}} &= \sum_{iI}V_{\text{ei}}(\vec{R}_{I}-\vec{r}_{i}) \end{align}</script><h3 id="凝聚态系统的通用基本原理"><a href="#凝聚态系统的通用基本原理" class="headerlink" title="凝聚态系统的通用基本原理"></a>凝聚态系统的通用基本原理</h3><ol>
 <li>结构的<strong>可还原性（可化归）</strong>：$H<em>{\text{e}}$、$H</em>{\text{i}}$和$H_{\text{ei}}$彼此之间在特定问题中可视为独立的。(还原论思想)</li>
 <li>凝聚态物理中通常只关心一些<strong>低能态动力学</strong>。一方面是由于日常生活中我们所关注的能态范围，另一方面，低温下不同的微观细节通常有相同的集体行为。</li>
@@ -342,11 +346,8 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <h4 id="【补充1】"><a href="#【补充1】" class="headerlink" title="【补充1】"></a>【补充1】</h4><ul>
-<li><p><strong>场</strong>是一个由给定流形（基流形$M$）向目标流形（场流形$T$）的光滑映射</p>
-<script type="math/tex; mode=display">\begin{align} \phi:\qquad M \quad &\rightarrow \quad T \\ z \quad &\mapsto \quad \phi(z) \end{align}</script><p>凝聚态领域中，最广泛的应用形式是$M (\subset \mathcal{R}\times\mathcal{T}) \rightarrow T$，$M$为时空区间乘积，$T$是一个类空(?)流形。</p>
-</li>
-<li><p>在应用场论中，场不是作为最终结果，而是泛函的输入，泛函也是一种映射$S: \phi\mapsto S[\phi] \in \mathbb{R}$。$S[\phi]$决定了一个场论。凝聚态场论通常是离散映射的极限，有时候考虑离散图景是很有帮助的，这时泛函就化为了有限维微积分。</p>
-</li>
+<li><strong>场</strong>是一个由给定流形（基流形$M$）向目标流形（场流形$T$）的光滑映射<script type="math/tex; mode=display">\begin{align} \phi:\qquad M \quad &\rightarrow \quad T \\ z \quad &\mapsto \quad \phi(z) \end{align}</script>凝聚态领域中，最广泛的应用形式是$M (\subset \mathcal{R}\times\mathcal{T}) \rightarrow T$，$M$为时空区间乘积，$T$是一个类空(?)流形。</li>
+<li>在应用场论中，场不是作为最终结果，而是泛函的输入，泛函也是一种映射$S: \phi\mapsto S[\phi] \in \mathbb{R}$。$S[\phi]$决定了一个场论。凝聚态场论通常是离散映射的极限，有时候考虑离散图景是很有帮助的，这时泛函就化为了有限维微积分。</li>
 </ul>
 <h4 id="【补充2】"><a href="#【补充2】" class="headerlink" title="【补充2】"></a>【补充2】</h4><ul>
 <li><strong>Lorentz不变性</strong>的含义是：对于给定的(逆变)$4$-矢量$X<em>{\mu}$，若线性坐标变换$X</em>{\mu} \rightarrow X<em>{\mu}’ \equiv T</em>{\mu\nu}X<em>{\nu}$使度规$g={g^{\mu\nu}}=\text{diag}{1,-1,-1,-1}$保持不变（$T^{T}gT=g$），则称这个线性变换是一个Lorentz变换。协变矢量$X^{\mu} = g^{\mu\nu}X</em>{\nu}$，Lorentz不变性表示为：$X^{\mu}X<em>{\mu} = X’^{\mu}X’</em>{\mu}$，其中等号左右两端表示坐标变换前后。</li>
@@ -417,7 +418,8 @@ var _hmt = _hmt || [];
 <li><p>方案一：认为Maxwell方程组是基本的，试图通过变分原理从作用量给出Maxwell方程组。</p>
 </li>
 <li><p>方案二：从对称性出发。电磁理论需要满足<strong>Lorentz不变性</strong>、<strong>规范不变性</strong>、形式简单的基本假设。最高至$A$的二阶(微分)项的选择为：</p>
-<script type="math/tex; mode=display">\begin{align} S[A] = \int (c_1 F_{\mu\nu} F^{\mu\nu} + c_2 A_{\mu}j^{\mu}) \text{d}^{4}x \end{align}, \quad 其中\text{d}^{4}x = \prod_{\mu}\text{d}x_{\mu} = \text{d}t\text{d}x_1\text{d}x_2\text{d}x_3</script></li>
+<script type="math/tex; mode=display">\begin{align} S[A] = \int (c_1 F_{\mu\nu} F^{\mu\nu} + c_2 A_{\mu}j^{\mu}) \text{d}^{4}x,\end{align}</script><p>其中$\text{d}^{4}x = \prod<em>{\mu}\text{d}x</em>{\mu} = \text{d}t\text{d}x_1\text{d}x_2\text{d}x_3$</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -934,6 +936,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">collections</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">tools</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">statistics</a>
               </li>
              
@@ -943,14 +953,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">正态分布</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">collections</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">tools</a>
               </li>
              
               <li class="article-tag-list-item">
