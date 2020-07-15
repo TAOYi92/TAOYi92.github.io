@@ -245,8 +245,8 @@ var _hmt = _hmt || [];
 </blockquote>
 <a id="more"></a>
 <p>泛函的宗量是函数。与函数的研究类似，我们在研究泛函时也是对泛函的(微小)变化时的行为、泛函驻点感兴趣。泛函的驻点的含义是：在变换$f \rightarrow f+h$下（$h$是无穷小增量函数），泛函保持不变。一个泛函$F$称为可微的，若</p>
-<script type="math/tex; mode=display">\begin{align} F[f + \varepsilon g] - F[f] = \varepsilon\cdot \text{D}F_{f}[g] + \mathcal{O}(\varepsilon^2) \end{align}</script><p>其中，<strong>$\text{D}F_{f}$是线性泛函</strong>（满足$\text{D}F<em>{f}[g</em>{1}+g<em>{2}] = \text{D}F</em>{f}[g<em>{1}] + \text{D}F</em>{f}[g<em>{2}]$），$\varepsilon$是无穷小参数，$g$是任意函数。**定义泛函$F$的驻点在$f$，当且仅当$\text{D}F</em>{f} = 0$。**</p>
-<p>为了更好地理解泛函$F[f]$的总量$f$，将它视为$N$维矢量$\vec{f}={f<em>{n} \equiv f(x</em>{n}), n=1,\cdots,N}$在$N\rightarrow\infty$的极限（$x_n$是一组线性无关矢量，或一组<strong>基</strong>）。于是$F(\vec{f})$是一个定义在$N$维空间上的函数，在连续极限下，$\vec{f}\rightarrow f$演变为函数，同时$F(\vec{f})\rightarrow F[f]$演变为泛函。下表对于离散和取连续极限两种情形作了一个对比总结：</p>
+<script type="math/tex; mode=display">\begin{align} F[f + \varepsilon g] - F[f] = \varepsilon\cdot \text{D}F_{f}[g] + \mathcal{O}(\varepsilon^2) \end{align}</script><p>其中，<strong>$\text{D}F_{f}$是线性泛函</strong>（满足$\text{D}F_{f}[g_{1}+g_{2}] = \text{D}F_{f}[g_{1}] + \text{D}F_{f}[g_{2}]$），$\varepsilon$是无穷小参数，$g$是任意函数。<strong>定义泛函$F$的驻点在$f$，当且仅当$\text{D}F_{f} = 0$。</strong></p>
+<p>为了更好地理解泛函$F[f]$的总量$f$，将它视为$N$维矢量$\vec{f}=\{f_{n} \equiv f(x_{n}), n=1,\cdots,N\}$在$N\rightarrow\infty$的极限（$x_n$是一组线性无关矢量，或一组<strong>基</strong>）。于是$F(\vec{f})$是一个定义在$N$维空间上的函数，在连续极限下，$\vec{f}\rightarrow f$演变为函数，同时$F(\vec{f})\rightarrow F[f]$演变为泛函。下表对于离散和取连续极限两种情形作了一个对比总结：</p>
 <div class="table-container">
 <table>
 <thead>
@@ -265,7 +265,7 @@ var _hmt = _hmt || [];
 <tr>
 <td style="text-align:center">单位基</td>
 <td style="text-align:center">$\vec{e}_{n}$，只有第$n$分量为$1$，其余为0</td>
-<td style="text-align:center">$\delta<em>{x}$，其中$\delta</em>{x}(x’) \equiv \delta(x-x’)$</td>
+<td style="text-align:center">$\delta_{x}$，其中$\delta_{x}(x’) \equiv \delta(x-x’)$</td>
 </tr>
 <tr>
 <td style="text-align:center">内积</td>
@@ -274,12 +274,12 @@ var _hmt = _hmt || [];
 </tr>
 <tr>
 <td style="text-align:center">宗量</td>
-<td style="text-align:center">$\vec{f} = {f<em>{n} \equiv f(x</em>{n}), n=1,\cdots,N}$</td>
+<td style="text-align:center">$\vec{f} = \{f_{n} \equiv f(x_{n}), n=1,\cdots,N\}$</td>
 <td style="text-align:center">$f$</td>
 </tr>
 <tr>
 <td style="text-align:center">宗量投影分量</td>
-<td style="text-align:center"><script type="math/tex">\begin{align}f_{n} = \langle \vec{f},\vec{e}_n \rangle = \sum_{m=1}^{N}f_{m}(\vec{e}_{n})_{m}\end{align}</script>，$(\vec{e}<em>{n})</em>{m} = \delta_{nm}$</td>
+<td style="text-align:center"><script type="math/tex">\begin{align}f_{n} = \langle \vec{f},\vec{e}_n \rangle = \sum_{m=1}^{N}f_{m}(\vec{e}_{n})_{m}\end{align}</script>，$(\vec{e}_{n})_{m} = \delta_{nm}$</td>
 <td style="text-align:center"><script type="math/tex">\begin{align}f(x) = \langle f, \delta_x \rangle = \int f(x')\delta_{x}(x')\text{d}x'\end{align}</script></td>
 </tr>
 <tr>
@@ -733,6 +733,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">node.js</a>
               </li>
              
@@ -741,27 +745,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Linux Shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Imagemagick</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">convert</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">动态GIF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -778,6 +766,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文本匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Imagemagick</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">convert</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">动态GIF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1072,6 +1072,8 @@ MathJax.Hub.Queue(function() {
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>

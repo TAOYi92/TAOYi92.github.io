@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="详细记录将原先服务器上的博客迁移至本地机上的过程">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-14T13:38:45.000Z">
+<meta property="og:updated_time" content="2020-07-15T07:49:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Hexo系列」之「迁移Hexo博客（CentOS-to-MacOS）」">
 <meta name="twitter:description" content="详细记录将原先服务器上的博客迁移至本地机上的过程">
@@ -212,7 +212,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">353字</span>
+        <span class="post-count">384字</span>
       </span>
     </span>
 
@@ -245,10 +245,10 @@ var _hmt = _hmt || [];
 </blockquote>
 <a id="more"></a>
 <h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><p>保证本地机已经安装好了<code>Node.js</code>,<code>git</code>和<code>npm</code>（安装过程略）。</p>
-<h1 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装hexo命令行客户端(如果速度慢记得换源)</span></span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"><span class="comment"># 创建并进入项目目录</span></span><br><span class="line">mkdir HexoBlog &amp;&amp; <span class="built_in">cd</span> HexoBlog</span><br></pre></td></tr></table></figure>
+<h1 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装hexo命令行客户端(如果速度慢记得换源)</span></span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"><span class="comment"># 创建并进入项目目录</span></span><br><span class="line">mkdir HexoBlog &amp;&amp; <span class="built_in">cd</span> HexoBlog</span><br><span class="line"><span class="comment"># 初始化Node.js模块</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
 <h1 id="将必需的文件和目录拷贝到本地"><a href="#将必需的文件和目录拷贝到本地" class="headerlink" title="将必需的文件和目录拷贝到本地"></a>将必需的文件和目录拷贝到本地</h1><p>这些文件包括<code>_config.yml</code>，<code>package.json</code>，<code>scaffolds/</code>，<code>source/</code>，<code>themes/</code>，<code>.gitignore</code>和<code>.deploy_git/</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">scp &lt;我的账户&gt;@&lt;我的ECS公网ip&gt;:Blog/_config.yml .</span><br><span class="line">scp &lt;我的账户&gt;@&lt;我的ECS公网ip&gt;:Blog/package.json . </span><br><span class="line">scp -r &lt;我的账户&gt;@&lt;我的ECS公网ip&gt;:Blog/scaffolds .</span><br><span class="line">scp -r &lt;我的账户&gt;@&lt;我的ECS公网ip&gt;:Blog/<span class="built_in">source</span> .</span><br><span class="line">scp -r &lt;我的账户&gt;@&lt;我的ECS公网ip&gt;:Blog/themes .</span><br><span class="line">scp &lt;我的账户&gt;@&lt;我的ECS公网ip&gt;:Blog/.gitignore .</span><br><span class="line">scp -r &lt;我的账户&gt;@&lt;我的ECS公网ip&gt;:Blog/.deploy_git .</span><br></pre></td></tr></table></figure>
-<h1 id="安装一些插件"><a href="#安装一些插件" class="headerlink" title="安装一些插件"></a>安装一些插件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
+<h1 id="安装一些插件"><a href="#安装一些插件" class="headerlink" title="安装一些插件"></a>安装一些插件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save             <span class="comment"># 为了使用Github Pages</span></span><br><span class="line">npm install hexo-generator-feed --save           <span class="comment"># 添加RSS</span></span><br><span class="line">npm install hexo-generator-sitemap --save        <span class="comment"># Google收录</span></span><br><span class="line">npm install hexo-generator-baidu-sitemap --save  <span class="comment"># 百度收录</span></span><br><span class="line">npm uninstall</span><br></pre></td></tr></table></figure>
 <h1 id="完成部署"><a href="#完成部署" class="headerlink" title="完成部署"></a>完成部署</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g      <span class="comment"># 或者`hexo generate`</span></span><br><span class="line">hexo d      <span class="comment"># 或者`hexo deploy`</span></span><br><span class="line"><span class="comment"># 后两步可合并为</span></span><br></pre></td></tr></table></figure>
 <p>注意：这里遇到一个hexo不兼容<code>{{}}</code>标签的问题（标签冲突），参照<a href="http://xcoding.tech/2020/01/18/hexo/如何从根本解决hexo不兼容{{}}标签问题/" target="_blank" rel="noopener">这篇博客</a>修改相应文件即可。</p>
 <h1 id="浏览器访问"><a href="#浏览器访问" class="headerlink" title="浏览器访问"></a>浏览器访问</h1><p>访问地址为<code>https://&lt;guser&gt;.github.io/</code>，发现博客文章已经可以在本地更新了。</p>
@@ -670,6 +670,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">node.js</a>
               </li>
              
@@ -678,27 +682,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Linux Shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Imagemagick</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">convert</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">动态GIF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -715,6 +703,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文本匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Imagemagick</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">convert</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">动态GIF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1009,6 +1009,8 @@ MathJax.Hub.Queue(function() {
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>

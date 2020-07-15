@@ -244,8 +244,8 @@ var _hmt = _hmt || [];
 <p>高斯当年的证明方式</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>对于某个随机变量$X$，设现在有$n$个独立的实验观测值$x<em>{i}, i=1,\cdots,n$，记所有观测值的平均值为$\bar{x} = \cfrac{1}{n}\sum</em>{i=1}^{n}x_{i}$，并先验的认为$\bar{x}$是$X$真值的有效估计量（基于等概率假设），由此可以推导出$X$的误差满足正态分布$N(0, \sigma^2)$。</p>
-<h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>某个实测值$x<em>{o}$和真值$x$之间的误差为$\Delta x</em>{o} = x_{o} - x$，设$X$的归一化误差分布函数为$f(\Delta x)$，则我们可以写出关于$x$的似然函数</p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>对于某个随机变量$X$，设现在有$n$个独立的实验观测值$x_{i}, i=1,\cdots,n$，记所有观测值的平均值为$\bar{x} = \cfrac{1}{n}\sum_{i=1}^{n}x_{i}$，并先验的认为$\bar{x}$是$X$真值的有效估计量（基于等概率假设），由此可以推导出$X$的误差满足正态分布$N(0, \sigma^2)$。</p>
+<h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>某个实测值$x_{o}$和真值$x$之间的误差为$\Delta x_{o} = x_{o} - x$，设$X$的归一化误差分布函数为$f(\Delta x)$，则我们可以写出关于$x$的似然函数</p>
 <script type="math/tex; mode=display">\begin{align} 
   L(x) = \prod_{i=1}^{n}f(\Delta x_{i}) = \prod_{i=1}^{n}f(x_{i}-x) 
 \end{align}</script><p>对数似然函数及其对$x$的导数分别为</p>
@@ -264,13 +264,13 @@ var _hmt = _hmt || [];
 \end{align}</script><p>这是一个关于$g’ (x_{j}-\bar{x}), j=1,\cdots,n$为的$n$元线性方程组，其中任意两个方程（标记为$j_1, j_2$）相减可得</p>
 <script type="math/tex; mode=display">\begin{equation} 
   g' (x_{j_1}-\bar{x}) = g' (x_{j_2}-\bar{x}),\quad \forall j_1 \neq j_2 
-\end{equation}</script><p>因此该线性方程组的解向量为<script type="math/tex">\vec{g'} = c(1, 1, \cdots, 1)^{T}</script>，$c$为任意常数。注意到$x<em>{j}, j=1,\cdots,n$其实是任意一组实验的结果，也就是说当$y</em>{j} \equiv x_{j}- \bar{x}$取任意值的时候都满足</p>
+\end{equation}</script><p>因此该线性方程组的解向量为<script type="math/tex">\vec{g'} = c(1, 1, \cdots, 1)^{T}</script>，$c$为任意常数。注意到$x_{j}, j=1,\cdots,n$其实是任意一组实验的结果，也就是说当$y_{j} \equiv x_{j}- \bar{x}$取任意值的时候都满足</p>
 <script type="math/tex; mode=display">\begin{equation} 
   g' (y_{j}) \equiv g' (x_{j}-\bar{x}) = c, \quad \forall y_{j} 
 \end{equation}</script><p>于是我们有</p>
 <script type="math/tex; mode=display">\begin{equation} 
   g(y) = cy+b 
-\end{equation}</script><p>带入$(\star)$式，注意到$\sum<em>{i=1}^{n} x</em>{i} = n\bar{x}$，得</p>
+\end{equation}</script><p>带入$(\star)$式，注意到$\sum_{i=1}^{n} x_{i} = n\bar{x}$，得</p>
 <script type="math/tex; mode=display">\begin{align} 
   \sum_{i=1}^{n}g(x_{i}-\bar{x}) = \sum_{i=1}^{n}[c(x_{i} - \bar{x})+b] = nb = 0 \quad \Rightarrow \quad b=0 
 \end{align}</script><script type="math/tex; mode=display">\begin{align} 
@@ -711,6 +711,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">node.js</a>
               </li>
              
@@ -719,27 +723,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Linux Shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Imagemagick</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">convert</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">动态GIF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -756,6 +744,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文本匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Imagemagick</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">convert</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">动态GIF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1050,6 +1050,8 @@ MathJax.Hub.Queue(function() {
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>

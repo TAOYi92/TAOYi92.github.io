@@ -244,10 +244,10 @@ var _hmt = _hmt || [];
 <p><strong>GDA</strong>: <strong>G</strong>aussian <strong>D</strong>iscriminant <strong>A</strong>nalysis 高斯判别分析<br><strong>MLE</strong>: <strong>M</strong>aximum <strong>L</strong>ikelihood <strong>E</strong>stimate 最大似然估计</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h3><p>1）假设目标变量$y\in{0,\cdots,k-1}$服从$k$项式分布$(\phi_{s}, s = 1,\cdots,k-1)$：</p>
+<h3 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h3><p>1）假设目标变量$y\in\{0,\cdots,k-1\}$服从$k$项式分布$(\phi_{s}, s = 1,\cdots,k-1)$：</p>
 <script type="math/tex; mode=display">\begin{align} 
   p(y; \phi_{s}, s = 1,\cdots,k-1) = \prod_{s=0}^{k}\phi_{s}^{ \mathbf{1} \{ y = s \} }  = (1 - \sum_{s=1}^{k-1} \phi_{s})^{1 - \sum_{s=1}^{k-1} \mathbf{1} \{ y = s \} } \cdot \prod_{s=1}^{k-1}\phi_{s}^{ \mathbf{1} \{ y = s \} } 
-\end{align}</script><p>其中$\mathbf{1} { \cdot }$是<strong>指示函数</strong>，满足<script type="math/tex">\mathbf{1} \{ \text{True} \} = 1, \mathbf{1} \{ \text{False} \} = 0</script>。<br>2）假设特征向量对于不同类别均满足Gauss分布，并且有共同的协方差矩阵$\Sigma$：<script type="math/tex">\quad \vec{x}|y = s \ \sim N(\vec{\mu}_{s}, \Sigma), \quad s=0, 1, \cdots, k-1</script> <script type="math/tex">p(\vec{x}|y = s) = \frac{1}{(2\pi)^{\frac{n}{2}}|\Sigma|^{\frac{1}{2}}}\exp{[-\frac{1}{2}(\vec{x}-\vec{\mu}_{s})^{T}\Sigma^{-1}(\vec{x}-\vec{\mu}_{s})]}, \quad s=0, 1, \cdots, k-1</script><br>全部模型参数：$\phi<em>{s}$，$ \vec{\mu}</em>{s<em>{a}}$，$\Sigma$，$s = 1,\cdots,k-1$，$s</em>{a} = 0,\cdots,k-1$</p>
+\end{align}</script><p>其中$\mathbf{1} \{ \cdot \}$是<strong>指示函数</strong>，满足<script type="math/tex">\mathbf{1} \{ \text{True} \} = 1, \mathbf{1} \{ \text{False} \} = 0</script>。<br>2）假设特征向量对于不同类别均满足Gauss分布，并且有共同的协方差矩阵$\Sigma$：<script type="math/tex">\quad \vec{x}|y = s \ \sim N(\vec{\mu}_{s}, \Sigma), \quad s=0, 1, \cdots, k-1</script> <script type="math/tex">p(\vec{x}|y = s) = \frac{1}{(2\pi)^{\frac{n}{2}}|\Sigma|^{\frac{1}{2}}}\exp{[-\frac{1}{2}(\vec{x}-\vec{\mu}_{s})^{T}\Sigma^{-1}(\vec{x}-\vec{\mu}_{s})]}, \quad s=0, 1, \cdots, k-1</script><br>全部模型参数：$\phi_{s}$，$ \vec{\mu}_{s_{a}}$，$\Sigma$，$s = 1,\cdots,k-1$，$s_{a} = 0,\cdots,k-1$</p>
 <h3 id="对数似然函数"><a href="#对数似然函数" class="headerlink" title="对数似然函数"></a>对数似然函数</h3><script type="math/tex; mode=display">\begin{align} 
   & l(\phi_{s}, \vec{\mu}_{s_{a}}, \Sigma, s = 1,\cdots,k-1, s_{a} = 0,\cdots,k-1)  \\ 
   =& \log{\prod_{i=1}^{m} p(\vec{x}^{(i)}, y^{(i)}; \phi_{s}, \vec{\mu}_{s_{a}}, \Sigma, s = 1,\cdots,k-1, s_{a} = 0,\cdots,k-1 )} \\ 
@@ -266,12 +266,12 @@ var _hmt = _hmt || [];
   & \frac{\phi_{s}}{\sum_{i=1}^m \mathbf{1} \{ y^{(i)} = s \}} = \frac{(1 - \sum_{s'=1}^{k-1}\phi_{s'})}{\sum_{i=1}^m (1 - \sum_{s'=1}^{k-1} \mathbf{1} \{ y^{(i)} = s' \} )} = \frac{\phi_{0}}{\sum_{i=1}^m \mathbf{1} \{ y^{(i)}=0 \}} \\ 
   & \Rightarrow \qquad\qquad\quad \phi_{s} = \frac{\phi_{0}}{\sum_{i=1}^m \mathbf{1} \{ y^{(i)}=0 \}}\sum_{i=1}^m \mathbf{1} \{ y^{(i)} = s \} \qquad\qquad\qquad (\star)
 \end{align}</script><p>对$s$求和，</p>
-<p>$(\star)$式左$=\sum<em>{s=0}^{k}\phi</em>{s}=1$</p>
-<p>$(\star)$式右$= \frac{\phi<em>{0}}{\sum</em>{i=1}^m \mathbf{1} { y^{(i)}=0 }}\sum<em>{s=0}^{k}\sum</em>{i=1}^{m}\mathbf{1} { y^{(i)} = s } = m\cdot\frac{\phi<em>{0}}{\sum</em>{i=1}^m \mathbf{1} { y^{(i)}=0 }}$</p>
-<p>因此$\frac{\phi<em>{0}}{\sum</em>{i=1}^m \mathbf{1} { y^{(i)}=0 }} = \frac{1}{m}$，带入$(\star)$式得到：</p>
+<p>$(\star)$式左$=\sum_{s=0}^{k}\phi_{s}=1$</p>
+<p>$(\star)$式右$= \frac{\phi_{0}}{\sum_{i=1}^m \mathbf{1} \{ y^{(i)}=0 \}}\sum_{s=0}^{k}\sum_{i=1}^{m}\mathbf{1} \{ y^{(i)} = s \} = m\cdot\frac{\phi_{0}}{\sum_{i=1}^m \mathbf{1} \{ y^{(i)}=0 \}}$</p>
+<p>因此$\frac{\phi_{0}}{\sum_{i=1}^m \mathbf{1} \{ y^{(i)}=0 \}} = \frac{1}{m}$，带入$(\star)$式得到：</p>
 <script type="math/tex; mode=display">\begin{align} 
   \phi_{s} = \frac{1}{m} \sum_{i=1}^{m} \mathbf{1} \{ y^{(i)} = s \}, \quad s=1,\cdots,k-1
-\end{align}</script><p>2）对$\vec{\mu}<em>{s</em>{a}}, s_{a} = 0,1,\cdots, k-1$求偏导：</p>
+\end{align}</script><p>2）对$\vec{\mu}_{s_{a}}, s_{a} = 0,1,\cdots, k-1$求偏导：</p>
 <script type="math/tex; mode=display">\begin{align} 
   & \frac{\partial l(\phi_{s}, \vec{\mu}_{s_{a}}, \Sigma, s = 1,\cdots,k-1, s_{a} = 0,\cdots,k-1) }{\partial \vec{\mu}_{s_{a}}} \\ 
   =& \frac{\partial}{\partial \vec{\mu}_{s_{a}}} \big( \sum_{i=1}^{m} \mathbf{1} \{ y^{(i)} = s_{a} \} \log{p(\vec{x}^{(i)}|y^{(i)} = s_{a}; \vec{\mu}_{s_{a}}, \Sigma)} \big) \\ 
@@ -724,6 +724,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">node.js</a>
               </li>
              
@@ -732,27 +736,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Linux Shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Imagemagick</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">convert</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">动态GIF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -769,6 +757,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文本匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Imagemagick</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">convert</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">动态GIF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1063,6 +1063,8 @@ MathJax.Hub.Queue(function() {
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>

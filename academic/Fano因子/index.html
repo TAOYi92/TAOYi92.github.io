@@ -241,7 +241,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>在电离探测器中，对于给定的能量损失，载荷子对（电子-离子对）的产生是一种随机过程。载荷子对数若按Poisson统计涨落应为$\sqrt{n}$，而实际上由于受能量守恒定律的约束，这个涨落会不同于$\sqrt{n}$，并且依赖于物质种类，记为$\sqrt{F}\ (F &lt; n)$。本文根据已有文献的思路整理了这一结论的证明。</p>
+<p>在电离探测器中，对于给定的能量损失，载荷子对（电子-离子对）的产生是一种随机过程。载荷子对数若按Poisson统计涨落应为$\sqrt{n}$，而实际上由于受能量守恒定律的约束，这个涨落会不同于$\sqrt{n}$，并且依赖于物质种类，记为$\sqrt{F} (F &lt; n)$。本文根据已有文献的思路整理了这一结论的证明。</p>
 </blockquote>
 <a id="more"></a>
 <p><strong>证明：</strong></p>
@@ -259,13 +259,13 @@ R_{\text{Poisson}} = 2.35\times \frac{W\times\sqrt{\bar{n}}}{W\times\bar{n}} = 2
 \end{align}</script>满足<script type="math/tex; mode=display">\begin{align} 
 \sum^{N}_{i=1}\bar{m_i} = \bar{n},\quad \sum^{N}_{i=1} E_i = E 
 \end{align}</script></li>
-<li>设我们共进行了$L$次理想实验，第$k$次实验中产生的电子-离子对总数为$n<em>k$对，相应地，能量分$N_k$次相互作用传递给探测器介质，第$i$个径迹段（第$i$次相互作用）中产生的电离数为$m</em>{ik}$个，于是：<script type="math/tex; mode=display">\begin{align}
+<li>设我们共进行了$L$次理想实验，第$k$次实验中产生的电子-离子对总数为$n_k$对，相应地，能量分$N_k$次相互作用传递给探测器介质，第$i$个径迹段（第$i$次相互作用）中产生的电离数为$m_{ik}$个，于是：<script type="math/tex; mode=display">\begin{align}
 \sigma^{2}(n) &= \overline{(n-\bar{n})^2} = \frac{1}{L}\sum_{k=1}^{L}(n_k - \bar{n})^2 = \frac{1}{L}\sum_{k=1}^{L} (\sum_{i=1}^{N_k}m_{ik}-\frac{E}{W})^2 \qquad \\ 
 &= \frac{1}{L}\sum_{k=1}^{L} (\sum_{i=1}^{N_k}m_{ik}-\frac{1}{W}\sum_{i=1}^{N_k}E_{ik})^2 = \frac{1}{L}\sum_{k=1}^{L}[\sum_{i=1}^{N_k}(m_{ik} - \frac{E_{ik}}{W})]^2
-\end{align}</script>引入符号$\nu<em>{ik} = m</em>{ik} - \cfrac{E_{ik}}{W}$，则<script type="math/tex; mode=display">\begin{align} 
+\end{align}</script>引入符号$\nu_{ik} = m_{ik} - \cfrac{E_{ik}}{W}$，则<script type="math/tex; mode=display">\begin{align} 
 \sigma^{2}(n) &= \frac{1}{L}\sum_{k=1}^{L}(\sum_{i=1}^{N_k}\nu_{ik})^2 = \frac{1}{L}(\sum_{k=1}^{L}\sum_{i=1}^{N_k}\nu^{2}_{ik} + \sum_{k}^{L}\sum_{i\neq j}^{N_k}\nu_{ik}\nu_{jk}) \\ 
 &= \frac{1}{L}(\sum_{k=1}^{L}\sum_{i=1}^{N_k}\nu^{2}_{ik} + \sum_{k=1}^{L}\sum_{i=1}^{N_k}\nu_{ik}(\sum_{j=1}^{N_k}\nu_{jk} - \nu_{ik}))
-\end{align}</script>这里我们记平均值$\bar{\nu}<em>{k} = \cfrac{1}{N_k}\sum</em>{j=1}^{N<em>k}\nu</em>{jk}$，上式化为（这里将右端最后一项$\nu_{ik}$用$\bar{\nu}_k$近似，假定$N_k$与$\bar{\nu}_k$不相关联，且当$N_k$足够大时$\bar{\nu}_k=\bar{\nu}$）：<script type="math/tex; mode=display">\begin{align} 
+\end{align}</script>这里我们记平均值$\bar{\nu}_{k} = \cfrac{1}{N_k}\sum_{j=1}^{N_k}\nu_{jk}$，上式化为（这里将右端最后一项$\nu_{ik}$用$\bar{\nu}_k$近似，假定$N_k$与$\bar{\nu}_k$不相关联，且当$N_k$足够大时$\bar{\nu}_k=\bar{\nu}$）：<script type="math/tex; mode=display">\begin{align} 
 \sigma^{2}(n) =& \frac{1}{L}(\sum_{k=1}^{L}N_{k}\overline{\nu_{k}^2} + \sum_{k=1}^{L}N_{k}\bar{\nu}_{k}(N_{k}{\nu}_{k}-{\nu}_{k})) \\ 
 =& \overline{N}\overline{\nu^2} + (\overline{N^2} - \overline{N}) \bar{\nu}^2
 \end{align}</script>注意到$\bar{\nu}=\overline{m_i-\frac{E_i}{W}}=\overline{m_i} - \frac{E_i}{W}=0$，因此只有第一项有贡献。由理想实验自洽性，$\overline{N}=\frac{\bar{n}}{\bar{m}_i}$，所以<script type="math/tex; mode=display">\begin{align} 
@@ -701,6 +701,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">node.js</a>
               </li>
              
@@ -709,27 +713,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Linux Shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Imagemagick</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">convert</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">动态GIF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -746,6 +734,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文本匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Imagemagick</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">convert</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">动态GIF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1040,6 +1040,8 @@ MathJax.Hub.Queue(function() {
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
