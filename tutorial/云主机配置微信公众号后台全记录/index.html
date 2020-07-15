@@ -278,7 +278,7 @@ var _hmt = _hmt || [];
 <h1 id="配置过程-1-6"><a href="#配置过程-1-6" class="headerlink" title="配置过程$^{[1-6]}$"></a>配置过程<a href="#参考资料">$^{[1-6]}$</a></h1><h2 id="0-创建新用户"><a href="#0-创建新用户" class="headerlink" title="0. 创建新用户"></a>0. 创建新用户</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">adduser &lt;user_name&gt;                        <span class="comment"># 创建新用户&lt;user_name&gt;</span></span><br><span class="line">passwd &lt;user_name&gt;                         <span class="comment"># 设置新用户的密码</span></span><br><span class="line">usermod -aG wheel &lt;user_name&gt;              <span class="comment"># 使&lt;user_name&gt;获得sudo权限</span></span><br><span class="line">su &lt;user_name&gt;                             <span class="comment"># 切换至用户&lt;user_name&gt;</span></span><br></pre></td></tr></table></figure>
 <p><strong>注意：</strong><br>(1) “<code>&lt;user_name&gt;</code>”替换成你实际的项目名称；<br>(2) 你会发现，非<code>root</code>用户的主目录是<code>/home</code>的子目录。<br>(3) 设置密码的步骤<strong>是</strong>必须的。</p>
 <h2 id="1-更新包管理器yum及安装相关工具包"><a href="#1-更新包管理器yum及安装相关工具包" class="headerlink" title="1. 更新包管理器yum及安装相关工具包"></a>1. 更新包管理器<code>yum</code>及安装相关工具包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update                            <span class="comment"># 更新yum</span></span><br><span class="line">sudo yum install yum-utils                 <span class="comment"># 安装yum-utils</span></span><br><span class="line">sudo yum groupinstall development          <span class="comment"># 一并安装一系列常用包</span></span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong><br>(1) 由于是个人使用，在<code>root</code>账号下，以下的<code>sudo</code>命令其实都是不必需的；<br>(2) <code>yum</code>是类似于<code>Ubuntu</code>下<code>apt-get</code>般的存在；<br>(3) 尽管CentOS下shell的命令提示符为<code>#</code>，但为了此处不与Markdown的记号冲突，我会始终使用<script type="math/tex">`。[2020-07-14修改]然而现在我发现markdown的bash代码段是会自动高亮一些常用的shell命令，添加`</script>会导致这些高亮不可用，因此现在博文中的代码块内将不再标注任何命令提示符。<br><strong>说明：此步骤无报错。每个命令运行成功输出内容均以“Complete!”结尾，中间遇到的确认一律yes(输入<code>y</code>)，当然你也可以选择对于每一个<code>yum</code>命令添加<code>-y</code>参数，就会一路yes自动安装下去了，下同。</strong></p>
+<p><strong>注意：</strong><br>(1) 由于是个人使用，在<code>root</code>账号下，以下的<code>sudo</code>命令其实都是不必需的；<br>(2) <code>yum</code>是类似于<code>Ubuntu</code>下<code>apt-get</code>般的存在；<br>(3) 尽管CentOS下shell的命令提示符为<code>#</code>，但为了此处不与Markdown的记号冲突，我会始终使用<code>$</code>。[2020-07-14修改]然而现在我发现markdown的bash代码段是会自动高亮一些常用的shell命令，添加<code>$</code>会导致这些高亮不可用，因此现在博文中的代码块内将不再标注任何命令提示符。<br><strong>说明：此步骤无报错。每个命令运行成功输出内容均以“Complete!”结尾，中间遇到的确认一律yes(输入<code>y</code>)，当然你也可以选择对于每一个<code>yum</code>命令添加<code>-y</code>参数，就会一路yes自动安装下去了，下同。</strong></p>
 <h2 id="2-安装Python3"><a href="#2-安装Python3" class="headerlink" title="2. 安装Python3"></a>2. 安装Python3</h2><h3 id="2-1-基础安装"><a href="#2-1-基础安装" class="headerlink" title="2.1 基础安装"></a>2.1 基础安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install https://centos7.iuscommunity.org/ius-release.rpm  <span class="comment"># 安装IUM repo</span></span><br><span class="line">sudo yum install python36u                 <span class="comment"># 安装Python3.6</span></span><br><span class="line">sudo yum install python36u-pip             <span class="comment"># 安装pip包管理</span></span><br><span class="line">sudo yum install python36u-devel           <span class="comment"># 安装其他相关开发包</span></span><br></pre></td></tr></table></figure>
 <p><strong>注意：</strong><br>(1) 执行<code>python3.6 -V</code> 在2019.2.19的结果是Python 3.6.7；<br>(2) 此时如果使用<code>which python3</code>或<code>which pip3</code>均会报错，因为它们的实际名字分别是<code>python3.6</code>和<code>pip3.6</code>；<br>(3) 如果你是用其他方式安装的Python3，那么这里你可能会遇到文件冲突（尤其是当Python3的版本不一致的时候）；<br>(4) 不推荐源码编译安装（除非你是娴熟的老司机）。<br><strong>说明：此步骤无报错。</strong></p>
 <h3 id="2-2-软-链接python3和pip3"><a href="#2-2-软-链接python3和pip3" class="headerlink" title="2.2 (软)链接python3和pip3"></a>2.2 (软)链接<code>python3</code>和<code>pip3</code></h3><p>好了，对于在MacOS已经习惯使用<code>python3</code>和<code>pip3</code>这样的命令的我们来说，每次都要写<code>3.6</code>未免也太臃肿了（简单估算一下是要多28.6%的敲击频率），而且一些代码也需要额外做调整，费时费力。我们可以使用<code>ln</code>来创建(软)链接：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s /usr/bin/python3.6 /usr/bin/python3  <span class="comment"># (软)链接python3</span></span><br><span class="line">$ ln -s /usr/bin/pip3.6 /usr/bin/pip3        <span class="comment"># (软)链接pip3</span></span><br></pre></td></tr></table></figure></p>
@@ -774,10 +774,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">node.js</a>
               </li>
              
@@ -786,11 +782,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Linux Shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Imagemagick</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">convert</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">动态GIF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -807,18 +819,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文本匹配</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Imagemagick</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">convert</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">动态GIF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1113,8 +1113,6 @@ MathJax.Hub.Queue(function() {
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
