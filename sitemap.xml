@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://taoyi92.github.io/academic/%E3%80%90Stat%E3%80%91%E6%95%88%E7%8E%87%E7%9A%84%E8%AF%AF%E5%B7%AE%E4%BC%B0%E8%AE%A1/</loc>
+    
+    <lastmod>2021-05-01T09:18:50.078Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://taoyi92.github.io/tutorial/%E3%80%90ROOT%E3%80%91Win10-WSL%E5%AE%89%E8%A3%85CERN%20ROOT%20(root6)/</loc>
     
     <lastmod>2021-05-01T05:44:14.171Z</lastmod>
@@ -215,13 +222,6 @@
     <loc>https://taoyi92.github.io/tutorial/%E3%80%90Python%E7%88%AC%E8%99%AB%E3%80%91CentOS7%E4%B8%8A%E4%BD%BF%E7%94%A8Chrome%E7%9A%84%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8/</loc>
     
     <lastmod>2021-04-24T11:53:08.784Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://taoyi92.github.io/academic/%E3%80%90Stat%E3%80%91%E6%95%88%E7%8E%87%E7%9A%84%E8%AF%AF%E5%B7%AE%E4%BC%B0%E8%AE%A1/</loc>
-    
-    <lastmod>2021-04-24T11:35:06.606Z</lastmod>
     
   </url>
   

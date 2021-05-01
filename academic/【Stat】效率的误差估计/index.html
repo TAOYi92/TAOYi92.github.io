@@ -16,10 +16,13 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="Fano因子的理论模型">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-04-24T11:35:06.606Z">
+<meta property="og:image" content="c:/Users/Dolphin92/AppData/Roaming/Typora/typora-user-images/image-20210501164708027.png">
+<meta property="og:image" content="c:/Users/Dolphin92/AppData/Roaming/Typora/typora-user-images/image-20210501164016095.png">
+<meta property="og:updated_time" content="2021-05-01T09:18:50.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Stat】效率的误差估计">
 <meta name="twitter:description" content="Fano因子的理论模型">
+<meta name="twitter:image" content="c:/Users/Dolphin92/AppData/Roaming/Typora/typora-user-images/image-20210501164708027.png">
   
     <link rel="alternative" href="/atom.xml" title="Yi&#39;s Blog" type="application/atom+xml">
   
@@ -212,7 +215,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.3k字</span>
+        <span class="post-count">1.5k字</span>
       </span>
     </span>
 
@@ -221,7 +224,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
 </div>
@@ -248,7 +251,7 @@ var _hmt = _hmt || [];
 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>记所研究区间的总计数为$n$（或$n_i$，下同），该区间中选出的计数为$k$，则选择效率$\varepsilon=\cfrac{k}{n}$。为了描述方便，下文以“事例通过某种事例截断条件“这一应用场景为例进行讨论，这时kk是所研究区间通过了截断条件的事例数量，简称好事例计数，$n$为在应用这一截断条件的总计数。</p>
 <h2 id="问题的解决"><a href="#问题的解决" class="headerlink" title="问题的解决"></a>问题的解决</h2><h3 id="Poisson统计"><a href="#Poisson统计" class="headerlink" title="Poisson统计"></a>Poisson统计</h3><p>在Poisson统计方法下，认为$k$和$n$是独立的，它们的误差分别是$\sigma_k = \sqrt{k}$和$\sigma_n = \sqrt{n}$，从误差传递公式出发</p>
 <script type="math/tex; mode=display">
-\sigma_\varepsilon^2 = \Big(\frac{\partial\varepsilon}{\partial k}\Big)^2\sigma_k + \Big(\frac{\partial\varepsilon}{\partial n}\Big)^2\sigma_n = \frac{1}{n^2}k+\frac{k^2}{n^4}n = \frac{\varepsilon(1+\varepsilon)}{n}</script><p>更一般的，对于两个随机变量的积或商（即$\varepsilon = xy$或$\varepsilon = x/y$），误差传递遵循（亦可由$\sigma_{\mathrm{ln}\varepsilon}^2 = \sigma_{\mathrm{ln}x}^2 + \sigma_{\mathrm{ln}y}^2$直接得到）</p>
+\sigma_\varepsilon^2 = \Big(\frac{\partial\varepsilon}{\partial k}\Big)^2\sigma_k^2 + \Big(\frac{\partial\varepsilon}{\partial n}\Big)^2\sigma_n^2 = \frac{1}{n^2}k+\frac{k^2}{n^4}n = \frac{\varepsilon(1+\varepsilon)}{n}</script><p>更一般的，对于两个随机变量的积或商（即$\varepsilon = xy$或$\varepsilon = x/y$），误差传递遵循（亦可由$\sigma_{\mathrm{ln}\varepsilon}^2 = \sigma_{\mathrm{ln}x}^2 + \sigma_{\mathrm{ln}y}^2$直接得到）</p>
 <script type="math/tex; mode=display">
 \Big(\frac{\sigma_\varepsilon}{\varepsilon}\Big)^2 = \Big(\frac{\sigma_x}{x}\Big)^2 + \Big(\frac{\sigma_y}{y}\Big)^2</script><ul>
 <li>Poisson统计的问题：<ul>
@@ -297,6 +300,54 @@ P(\varepsilon;k,n) = \frac{(n+1)!}{k!(n−k)!}\varepsilon^k(1−\varepsilon)^{n�
 <li>$\sigma_\varepsilon\Big\vert_{k=0} = \sigma_\varepsilon\Big\vert_{k=n} = \cfrac{n+1}{(n+2)^2(n+3)}$，当$n$很大时，这个值趋近于$\cfrac{1}{n^2}$。</li>
 </ul>
 </li>
+</ul>
+<h2 id="对比与总结"><a href="#对比与总结" class="headerlink" title="对比与总结"></a>对比与总结</h2><ul>
+<li>将以上三种计算效率的误差方式对三种$n$的情况进行对比：</li>
+</ul>
+<p><img src="C:\Users\Dolphin92\AppData\Roaming\Typora\typora-user-images\image-20210501164708027.png" alt="image-20210501164708027"></p>
+<p>可以看到，当$n$给定时，二项分布在$k$较小时趋于Possion分布，在$k$较大时趋于Bayes统计分布。  </p>
+<ul>
+<li>下图则更明显地显示出Possion统计在效率较大时的偏离问题，以及Bayes统计对于极端情形下更合理的结果。注意到，统计量越大时（指$n$越大），每一种统计得到的效率的误差都越小，这是符合预期的。</li>
+</ul>
+<p><img src="C:\Users\Dolphin92\AppData\Roaming\Typora\typora-user-images\image-20210501164016095.png" alt="image-20210501164016095"></p>
+<ul>
+<li>统计结果汇总于下表</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">统计方法</th>
+<th style="text-align:center">效率均值</th>
+<th style="text-align:center">效率最可几值</th>
+<th style="text-align:center">效率误差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Possion统计</td>
+<td style="text-align:center">$\varepsilon\equiv\cfrac{k}{n}$</td>
+<td style="text-align:center">$\varepsilon$</td>
+<td style="text-align:center">$\cfrac{\varepsilon(1+\varepsilon)}{n}$</td>
+</tr>
+<tr>
+<td style="text-align:center">二项分布统计</td>
+<td style="text-align:center">$\varepsilon$</td>
+<td style="text-align:center">$\varepsilon$</td>
+<td style="text-align:center">$\cfrac{\varepsilon(1−\varepsilon)}{n}$</td>
+</tr>
+<tr>
+<td style="text-align:center">Bayes统计</td>
+<td style="text-align:center">$\cfrac{k+1}{n+2}$</td>
+<td style="text-align:center">$\varepsilon$</td>
+<td style="text-align:center">$\sqrt{\cfrac{(n-k+1)(k+1)}{(n+2)^2(n+3)}}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://facultystaff.richmond.edu/~ggilfoyl/research/EfficiencyErrors.pdf" target="_blank" rel="noopener">Calculating Efficiency Uncertainties (richmond.edu)</a></li>
+<li><a href="https://lss.fnal.gov/archive/test-tm/2000/fermilab-tm-2286-cd.pdf" target="_blank" rel="noopener">fermilab-tm-2286-cd.pdf (fnal.gov)</a></li>
 </ul>
 
       
@@ -482,7 +533,7 @@ P(\varepsilon;k,n) = \frac{(n+1)!}{k!(n−k)!}\varepsilon^k(1−\varepsilon)^{n�
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述"><span class="toc-number">2.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题的解决"><span class="toc-number">3.</span> <span class="toc-text">问题的解决</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Poisson统计"><span class="toc-number">3.1.</span> <span class="toc-text">Poisson统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二项分布统计"><span class="toc-number">3.2.</span> <span class="toc-text">二项分布统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bayes统计"><span class="toc-number">3.3.</span> <span class="toc-text">Bayes统计</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述"><span class="toc-number">2.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题的解决"><span class="toc-number">3.</span> <span class="toc-text">问题的解决</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Poisson统计"><span class="toc-number">3.1.</span> <span class="toc-text">Poisson统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二项分布统计"><span class="toc-number">3.2.</span> <span class="toc-text">二项分布统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bayes统计"><span class="toc-number">3.3.</span> <span class="toc-text">Bayes统计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对比与总结"><span class="toc-number">4.</span> <span class="toc-text">对比与总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li></ol>
                     </div>
                 </span>
             </div>
