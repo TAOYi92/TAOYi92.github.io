@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yi&#39;s Blog">
 <meta property="og:description" content="关于WIMP的理论模型推导">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-04-24T11:58:01.943Z">
+<meta property="og:updated_time" content="2022-07-11T11:54:36.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【DM】WIMP">
 <meta name="twitter:description" content="关于WIMP的理论模型推导">
@@ -294,7 +294,7 @@ var _hmt = _hmt || [];
  \frac{1}{a^3}\frac{\text{d}(n_\chi a^3)}{\text{d}t} = \frac{1}{a^3}(\dot{n}_\chi a^3 + 3n_\chi a^2 \dot{a}) = \dot{n}_\chi + 3n_\chi \frac{\dot{a}}{a} = \frac{\text{d}n_\chi}{\text{d}t} + 3Hn_\chi
 \end{align}</script>最后一步用到了Hubble常数的定义。</li>
 <li><span id="appendix_2">假设宇宙在膨胀过程中总熵守恒，则粒子数密度$n$与熵密度$s$都在随膨胀而有一个$a^{-3}$因子的变化（一般称$a^3$为共动体积），因而它们的比值$Y = \cfrac{n}{s}$为常数，之所以说近似，是考虑到由于热运动而造成的局域密度变化。</span></li>
-<li><span id="appendix_3">(1) 不确定关系给出粒子的坐标不确定度$\Delta{q}$与其共轭动量的不确定度满足关系$\Delta{q}\Delta{p}\approx h$。自由度为$1$ 的粒子的相格大小(由$q$、$p$描述的粒子运动状态，即相体积)为$h$。因此三维自由粒子（这里已经假设暗物质退耦阶段的早期宇宙空间是三维的）在相体积$V\text{d}p_x\text{d}p_y\text{d}p_z$中的量子态数为$\cfrac{V\text{d}p_x\text{d}p_y\text{d}p_z}{h^3}$，而数密度则为$\cfrac{\text{d}p_x\text{d}p_y\text{d}p_z}{h^3}$。（三维相格大小为$h^3$，并且由于物理规律在空间中的平移旋转不变性，$\int \text{d}q_x\text{d}q_y\text{d}q_z$直接积分得到坐标体积$V$）。在自然单位制之下$h=(2\pi\hbar=)2\pi$，于是我们得到了积分元$\cfrac{\text{d}^3\vec{p}}{(2\pi)^3}$。<br>(2) 注意到$\rho$就是能量密度，<br><script type="math/tex">\begin{align}
+<li><span id="appendix_3">(1) 不确定关系给出粒子的坐标不确定度$\Delta{q}$与其共轭动量的不确定度满足关系$\Delta{q}\Delta{p}\approx h$。自由度为$1$ 的粒子的相格大小(由$q$、$p$描述的粒子运动状态，即相体积)为$h$。因此三维自由粒子（这里已经假设暗物质退耦阶段的早期宇宙空间是三维的）在相体积$V\text{d}p_x\text{d}p_y\text{d}p_z$中的量子态数为$\cfrac{V\text{d}p_x\text{d}p_y\text{d}p_z}{h^3}$，而数密度则为$\cfrac{\text{d}p_x\text{d}p_y\text{d}p_z}{h^3}$。（三维相格大小为$h^3$，并且由于物理规律在空间中的平移旋转不变性，$\int \text{d}q_x\text{d}q_y\text{d}q_z$直接积分得到坐标体积$V$）。在自然单位制之下$h=(2\pi\hbar=)2\pi$，于是我们得到了积分元$\cfrac{\text{d}^3\vec{p}}{(2\pi)^3}$。<br>(2) 注意到$\rho$就是能量密度，<script type="math/tex; mode=display">\begin{align}
  s=\frac{S}{V}=\frac{1}{V}\int\frac{\text{d}U+P\text{d}V}{T}=\frac{1}{V}\int\frac{\rho \text{d}V+P\text{d}V}{T}=\frac{\rho+P}{T}
 \end{align}</script></span></li>
 <li><span id="appendix_4">（几乎是从第一性原理出发）分别计算$\rho$和$P$，对于辐射(光子气体)，服从Bose-Einstein分布，由于黑体不断辐射和吸收光子，光子数是不守恒的（也就是说能量$E$守恒但数目$N$不守恒，平衡态下光子的化学势为$0$）所以光子气体的统计分布为：</span><script type="math/tex; mode=display">\begin{align}
@@ -1138,22 +1138,5 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
