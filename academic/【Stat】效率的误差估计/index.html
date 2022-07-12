@@ -18,7 +18,8 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://taoyi92.github.io/academic/【Stat】效率的误差估计/eff_err_vs_k.png">
 <meta property="og:image" content="https://taoyi92.github.io/academic/【Stat】效率的误差估计/eff_err_vs_eff.png">
-<meta property="og:updated_time" content="2021-06-10T10:25:06.982Z">
+<meta property="og:image" content="https://taoyi92.github.io/academic/【Stat】效率的误差估计/1sigma.png">
+<meta property="og:updated_time" content="2022-07-12T05:23:18.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Stat】效率的误差估计">
 <meta name="twitter:description" content="Fano因子的理论模型">
@@ -311,11 +312,13 @@ P(\varepsilon;k,n) = \frac{(n+1)!}{k!(n−k)!}\varepsilon^k(1−\varepsilon)^{n�
 </ul>
 <p><img src="/academic/【Stat】效率的误差估计/eff_err_vs_eff.png" style="zoom: 25%;" div align="center"></p>
 <ul>
-<li>Bayes统计方案，从$\varepsilon$的分布律中可以看到误差$\sigma_\varepsilon$相较于最可几值是左右不对称的（取平均值左右$1$个$\sigma$），分别为（注意：由于效率定义的特殊性，大于1（或小于0）将被直接限制在1（或0））<script type="math/tex; mode=display">
-\sigma_\varepsilon^\mathrm{left} = \varepsilon_\mathrm{m.p.} - \bar{\varepsilon} + \sigma_\varepsilon,\qquad \sigma_\varepsilon^\mathrm{right} =  \bar{\varepsilon} + \sigma_\varepsilon - \varepsilon_\mathrm{m.p.}</script>我们可以检验这种误差的合理性，下图中给出了$\sigma_\varepsilon^\mathrm{left}$到$\sigma_\varepsilon^\mathrm{right}$覆盖范围与高斯分布左右$1\sigma(\sim68.3\%)$的对比：</li>
-</ul>
-<ul>
-<li>统计结果汇总于下表</li>
+<li><p>Bayes统计方案，从$\varepsilon$的分布律中可以看到误差$\sigma_\varepsilon$相较于最可几值是左右不对称的（取平均值左右$1$个$\sigma$），分别为（注意：由于效率定义的特殊性，大于1（或小于0）将被直接限制在1（或0））</p>
+<script type="math/tex; mode=display">
+\sigma_\varepsilon^\mathrm{left} = \varepsilon_\mathrm{m.p.} - \bar{\varepsilon} + \sigma_\varepsilon,\qquad \sigma_\varepsilon^\mathrm{right} =  \bar{\varepsilon} + \sigma_\varepsilon - \varepsilon_\mathrm{m.p.}</script><p>我们可以检验这种误差的合理性，下图中给出了$\sigma_\varepsilon^\mathrm{left}$到$\sigma_\varepsilon^\mathrm{right}$覆盖范围与高斯分布左右$1\sigma(\sim68.3\%)$的对比：</p>
+<p><img src="/academic/【Stat】效率的误差估计/1sigma.png" style="zoom: 100%;" div align="center"></p>
+</li>
+<li><p>统计结果汇总于下表</p>
+</li>
 </ul>
 <div class="table-container">
 <table>
@@ -1131,5 +1134,22 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
