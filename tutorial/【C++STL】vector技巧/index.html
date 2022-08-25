@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://taoyi92.github.io/tutorial/【C++STL】vector技巧/vector_append.png">
 <meta property="og:image" content="https://taoyi92.github.io/tutorial/【C++STL】vector技巧/vector_plus_append.png">
-<meta property="og:updated_time" content="2022-07-09T06:19:59.266Z">
+<meta property="og:updated_time" content="2022-07-13T16:41:09.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【C++STL】vector技巧">
 <meta name="twitter:description" content="STL容器操作技巧，以std::vector为例">
@@ -215,7 +215,7 @@ var _hmt = _hmt || [];
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">186字</span>
+        <span class="post-count">235字</span>
       </span>
     </span>
 
@@ -247,7 +247,15 @@ var _hmt = _hmt || [];
 <p>STL容器操作技巧，以std::vector为例</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="vector的拼接"><a href="#vector的拼接" class="headerlink" title="vector的拼接"></a>vector的拼接</h3><ul>
+<h2 id="单个vector的操作"><a href="#单个vector的操作" class="headerlink" title="单个vector的操作"></a>单个vector的操作</h2><h3 id="元素求和"><a href="#元素求和" class="headerlink" title="元素求和"></a>元素求和</h3><ul>
+<li>全部元素求和</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> sum = <span class="built_in">std</span>::accumulate(v.begin(), v.sum(), <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>部分和</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> start = <span class="number">5</span>, stop = <span class="number">9</span>;</span><br><span class="line"><span class="keyword">auto</span> part_sum = <span class="built_in">std</span>::accumulate(v.begin() + start, v.begin() + stop, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="多个vector的操作"><a href="#多个vector的操作" class="headerlink" title="多个vector的操作"></a>多个vector的操作</h2><h3 id="vector的拼接"><a href="#vector的拼接" class="headerlink" title="vector的拼接"></a>vector的拼接</h3><ul>
 <li>把<code>v2</code>拼接到<code>v1</code>后面形成<code>v3</code></li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;T&gt; <span class="title">v3</span><span class="params">(v1)</span></span>;  <span class="comment">// T是v1和v2的元素类型</span></span><br><span class="line"><span class="comment">// 方法一</span></span><br><span class="line">v3.insert(v3.end(), v2.begin(), v2.end());</span><br><span class="line"><span class="comment">// 方法二</span></span><br><span class="line"><span class="comment">//   当v2尺寸很小时（size==2），效率比方法一高一倍</span></span><br><span class="line"><span class="comment">//   v2尺寸较大时(size)，效率将逊于方法一</span></span><br><span class="line"><span class="comment">//   测试代码 node-01:/home/taoyi/workspace/p4gitlab/P4ChainWorkTree/super_heavy_dm/script/test/speed_append_vector.cpp</span></span><br><span class="line"><span class="built_in">std</span>::move(v2.begin(), v2.end(), <span class="built_in">std</span>::back_inserter(v1));</span><br></pre></td></tr></table></figure>
@@ -412,6 +420,15 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
+    <a href="/academic/【DM】DM Models/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          DM Models References
+        
+      </div>
+    </a>
+  
   
     <a href="/academic/【Stat】效率的误差估计/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">【Stat】效率的误差估计</div>
@@ -441,7 +458,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vector的拼接"><span class="toc-number">1.</span> <span class="toc-text">vector的拼接</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#单个vector的操作"><span class="toc-number">1.</span> <span class="toc-text">单个vector的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#元素求和"><span class="toc-number">1.1.</span> <span class="toc-text">元素求和</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多个vector的操作"><span class="toc-number">2.</span> <span class="toc-text">多个vector的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vector的拼接"><span class="toc-number">2.1.</span> <span class="toc-text">vector的拼接</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -629,6 +646,18 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">STL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vector</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">physics</a>
               </li>
              
@@ -645,22 +674,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">STL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vector</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">node.js</a>
               </li>
              
@@ -669,11 +682,31 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
+                <a href="javascript:void(0)" class="js-tag color2">Linux Shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Linux Shell</a>
+                <a href="javascript:void(0)" class="js-tag color5">grep</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">sed</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">awk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文本匹配</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Github Pages</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -697,6 +730,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">语言特性</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数学基础</a>
               </li>
              
@@ -709,23 +750,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Python3</a>
+                <a href="javascript:void(0)" class="js-tag color4">WSL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">语言特性</a>
+                <a href="javascript:void(0)" class="js-tag color4">HEP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">python3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">字符编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件读取</a>
+                <a href="javascript:void(0)" class="js-tag color5">ROOT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,30 +775,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Chrome无头浏览器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WSL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">HEP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ROOT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">statistics</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">likelihood</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">正态分布</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -793,27 +802,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">python3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">字符编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件读取</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">collections</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">tools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">grep</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sed</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">awk</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文本匹配</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -826,6 +831,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Poisson process</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">statistics</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">likelihood</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">正态分布</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -853,6 +870,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">解谜游戏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
@@ -866,14 +891,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">systemd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">解谜游戏</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1026,22 +1043,5 @@ MathJax.Hub.Queue(function() {
 
 </div>
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
